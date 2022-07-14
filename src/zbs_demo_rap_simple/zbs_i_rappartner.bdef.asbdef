@@ -1,0 +1,22 @@
+managed implementation in class zbp_bs_demo_rappartner unique;
+strict;
+
+define behavior for ZBS_I_RAPPartner alias Partner
+persistent table zbs_dmo_partner
+lock master
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+
+  mapping for zbs_dmo_partner
+  {
+    PartnerNumber = partner;
+    PartnerName = name;
+    Street = street;
+    City = city;
+    Country = country;
+    PaymentCurrency = payment_currency;
+  }
+}

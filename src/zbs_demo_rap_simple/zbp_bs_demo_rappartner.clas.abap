@@ -1,0 +1,5 @@
+CLASS zbp_bs_demo_rappartner DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zbs_i_rappartner.
+ENDCLASS.
+
+CLASS zbp_bs_demo_rappartner IMPLEMENTATION.
+ENDCLASS.

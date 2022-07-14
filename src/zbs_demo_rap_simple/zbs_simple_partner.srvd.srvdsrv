@@ -1,0 +1,4 @@
+@EndUserText.label: 'Simple Partner Service'
+define service ZBS_SIMPLE_PARTNER {
+  expose ZBS_I_RAPPartner as Partner;
+}
