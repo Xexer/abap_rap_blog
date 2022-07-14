@@ -1,2 +1,5 @@
-# abap_rap_blog
-ABAP RESTful Programming Model
+# Ressources for RAP Blog
+Hi there,
+here are the example ressources for my blog https://software-heroes.com/.
+
+Greetings
