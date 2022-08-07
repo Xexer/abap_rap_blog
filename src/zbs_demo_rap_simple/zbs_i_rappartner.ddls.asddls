@@ -1,6 +1,5 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'RAP interface for Partner'
-@Metadata.allowExtensions: true
 define root view entity ZBS_I_RAPPartner
   as select from zbs_dmo_partner
 {

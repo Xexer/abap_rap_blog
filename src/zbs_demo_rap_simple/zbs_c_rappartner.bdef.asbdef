@@ -1,0 +1,9 @@
+projection;
+strict;
+
+define behavior for ZBS_C_RAPPartner alias Partner
+{
+  use create;
+  use update;
+  use delete;
+}
