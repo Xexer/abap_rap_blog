@@ -8,6 +8,9 @@ CLASS lhc_Partner DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS validatecoredata FOR VALIDATE ON SAVE
       IMPORTING keys FOR partner~validatecoredata.
+
+    METHODS fillcurrency FOR DETERMINE ON MODIFY
+      IMPORTING keys FOR partner~fillcurrency.
 ENDCLASS.
 
 CLASS lhc_Partner IMPLEMENTATION.
@@ -64,6 +67,22 @@ CLASS lhc_Partner IMPLEMENTATION.
            %element-paymentcurrency = if_abap_behv=>mk-on
         ) INTO TABLE reported-partner.
       ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD fillCurrency.
+    READ ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
+      ENTITY Partner
+      FIELDS ( PaymentCurrency )
+      WITH CORRESPONDING #( keys )
+      RESULT DATA(lt_partner_data).
+
+    LOOP AT lt_partner_data INTO DATA(ls_partner) WHERE PaymentCurrency IS INITIAL.
+      MODIFY ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
+        ENTITY Partner
+        UPDATE FIELDS ( PaymentCurrency )
+        WITH VALUE #( ( %tky = ls_partner-%tky PaymentCurrency = 'EUR' %control-paymentcurrency = if_abap_behv=>mk-on ) ).
     ENDLOOP.
   ENDMETHOD.
 ENDCLASS.

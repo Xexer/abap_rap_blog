@@ -13,6 +13,8 @@ authorization master ( instance )
   validation validateKeyIsFilled on save { create; }
   validation validateCoreData on save { create; field Country, PaymentCurrency; }
 
+  determination fillCurrency on modify { create; update; }
+
   mapping for zbs_dmo_partner
   {
     PartnerNumber = partner;
