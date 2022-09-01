@@ -12,7 +12,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_bs_demo_simple_eml IMPLEMENTATION.
+CLASS ZCL_BS_DEMO_SIMPLE_EML IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     DATA:
       lt_selection TYPE TABLE FOR READ IMPORT ZBS_I_RAPPartner,

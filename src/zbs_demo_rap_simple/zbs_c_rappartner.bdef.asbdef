@@ -6,4 +6,7 @@ define behavior for ZBS_C_RAPPartner alias Partner
   use create;
   use update;
   use delete;
+
+  use action fillEmptyStreets;
+  use action clearAllEmptyStreets;
 }

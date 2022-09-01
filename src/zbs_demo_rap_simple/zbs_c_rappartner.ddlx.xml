@@ -5,9 +5,8 @@
    <DDLX>
     <METADATA>
      <NAME>ZBS_C_RAPPARTNER</NAME>
-     <DESCRIPTION>MEtadata for consumption (Partner)</DESCRIPTION>
+     <DESCRIPTION>Metadata for consumption (Partner)</DESCRIPTION>
      <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
-     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
     </METADATA>
    </DDLX>
   </asx:values>

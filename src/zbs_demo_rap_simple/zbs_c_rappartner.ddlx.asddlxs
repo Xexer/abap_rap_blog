@@ -30,7 +30,11 @@ annotate entity ZBS_C_RAPPartner with
   ]
 
   @UI.selectionField : [ { position: 10 } ]
-  @UI.lineItem: [{ position: 20, importance: #MEDIUM }]
+  @UI.lineItem: [
+    { position: 20, importance: #MEDIUM },
+    { position: 10, type: #FOR_ACTION, label: 'Fill', dataAction: 'fillEmptyStreets' },
+    { position: 20, type: #FOR_ACTION, label: 'Clear All', dataAction: 'clearAllEmptyStreets' }
+  ]
   @UI.identification: [{ position: 10, qualifier: 'PARTNER_INFO' }]
   @EndUserText.label: 'Partner'
   @EndUserText.quickInfo: 'Identifier of the partner'
