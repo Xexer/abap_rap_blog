@@ -15,8 +15,9 @@ authorization master ( instance )
 
   determination fillCurrency on modify { create; update; }
 
-  action fillEmptyStreets;
+  action fillEmptyStreets result [1] $self;
   static action clearAllEmptyStreets;
+  factory action copyLine [1];
 
   mapping for zbs_dmo_partner
   {
