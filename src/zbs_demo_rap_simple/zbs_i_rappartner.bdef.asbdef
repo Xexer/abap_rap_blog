@@ -15,6 +15,7 @@ authorization master ( instance )
 
   determination fillCurrency on modify { create; update; }
 
+  static action withPopup parameter ZBS_I_PopupEntity;
   action fillEmptyStreets result [1] $self;
   static action clearAllEmptyStreets;
   factory action copyLine [1];

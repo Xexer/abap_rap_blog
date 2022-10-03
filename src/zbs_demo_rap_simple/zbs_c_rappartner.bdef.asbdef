@@ -10,4 +10,5 @@ define behavior for ZBS_C_RAPPartner alias Partner
   use action fillEmptyStreets;
   use action clearAllEmptyStreets;
   use action copyLine;
+  use action withPopup;
 }
