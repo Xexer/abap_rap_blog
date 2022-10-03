@@ -177,7 +177,45 @@ CLASS lhc_Partner IMPLEMENTATION.
 
 
   METHOD withPopup.
-    IF 0 = 0.
-    ENDIF.
+    TRY.
+        DATA(ls_key) = keys[ 1 ].
+      CATCH cx_sy_itab_line_not_found.
+        RETURN.
+    ENDTRY.
+
+    CASE ls_key-%param-MessageType.
+      WHEN 1.
+        INSERT VALUE #(
+          %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success text = 'Dummy message' )
+        ) INTO TABLE reported-partner.
+      WHEN 2.
+        INSERT VALUE #(
+          %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information text = 'Dummy message' )
+        ) INTO TABLE reported-partner.
+      WHEN 3.
+        INSERT VALUE #(
+          %msg = new_message_with_text( severity = if_abap_behv_message=>severity-warning text = 'Dummy message' )
+        ) INTO TABLE reported-partner.
+      WHEN 4.
+        INSERT VALUE #(
+          %msg = new_message_with_text( severity = if_abap_behv_message=>severity-error text = 'Dummy message' )
+        ) INTO TABLE reported-partner.
+      WHEN 5.
+        INSERT VALUE #(
+          %msg = new_message_with_text( severity = if_abap_behv_message=>severity-none text = 'Dummy message' )
+        ) INTO TABLE reported-partner.
+      WHEN 6.
+        reported-partner = VALUE #(
+          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success text = 'Dummy message' ) )
+          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information text = 'Dummy message' ) )
+        ).
+      WHEN 7.
+        reported-partner = VALUE #(
+          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success text = 'Dummy message' ) )
+          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-error text = 'Dummy message' ) )
+          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-warning text = 'Dummy message' ) )
+          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information text = 'Dummy message' ) )
+        ).
+    ENDCASE.
   ENDMETHOD.
 ENDCLASS.
