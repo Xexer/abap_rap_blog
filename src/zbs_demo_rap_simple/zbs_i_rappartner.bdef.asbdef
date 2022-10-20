@@ -5,10 +5,13 @@ define behavior for ZBS_I_RAPPartner alias Partner
 persistent table zbs_dmo_partner
 lock master
 authorization master ( instance )
+late numbering
 {
   create;
   update;
   delete;
+
+  field ( readonly ) PartnerNumber;
 
   validation validateKeyIsFilled on save { create; }
   validation validateCoreData on save { create; field Country, PaymentCurrency; }

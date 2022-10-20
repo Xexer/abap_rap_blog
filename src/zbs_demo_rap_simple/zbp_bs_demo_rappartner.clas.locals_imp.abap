@@ -31,14 +31,14 @@ CLASS lhc_Partner IMPLEMENTATION.
 
 
   METHOD validateKeyIsFilled.
-    LOOP AT keys INTO DATA(ls_key) WHERE PartnerNumber IS INITIAL.
-      INSERT VALUE #( PartnerNumber = ls_key-PartnerNumber ) INTO TABLE failed-partner.
-
-      INSERT VALUE #(
-        PartnerNumber = ls_key-PartnerNumber
-         %msg = new_message_with_text( severity = if_abap_behv_message=>severity-error text = 'PartnerNumber is mandatory' )
-      ) INTO TABLE reported-partner.
-    ENDLOOP.
+*    LOOP AT keys INTO DATA(ls_key) WHERE PartnerNumber IS INITIAL.
+*      INSERT VALUE #( PartnerNumber = ls_key-PartnerNumber ) INTO TABLE failed-partner.
+*
+*      INSERT VALUE #(
+*        PartnerNumber = ls_key-PartnerNumber
+*         %msg = new_message_with_text( severity = if_abap_behv_message=>severity-error text = 'PartnerNumber is mandatory' )
+*      ) INTO TABLE reported-partner.
+*    ENDLOOP.
   ENDMETHOD.
 
 
@@ -217,5 +217,24 @@ CLASS lhc_Partner IMPLEMENTATION.
           ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information text = 'Dummy message' ) )
         ).
     ENDCASE.
+  ENDMETHOD.
+ENDCLASS.
+
+
+CLASS lsc_zbs_i_rappartner DEFINITION INHERITING FROM cl_abap_behavior_saver.
+  PROTECTED SECTION.
+    METHODS adjust_numbers REDEFINITION.
+ENDCLASS.
+
+CLASS lsc_zbs_i_rappartner IMPLEMENTATION.
+  METHOD adjust_numbers.
+    SELECT FROM zbs_dmo_partner
+      FIELDS MAX( partner )
+      INTO @DATA(ld_max_partner).
+
+    LOOP AT mapped-partner REFERENCE INTO DATA(lr_partner).
+      ld_max_partner += 1.
+      lr_partner->PartnerNumber = ld_max_partner.
+    ENDLOOP.
   ENDMETHOD.
 ENDCLASS.
