@@ -128,6 +128,7 @@ CLASS lhc_Partner IMPLEMENTATION.
 
     LOOP AT lt_partner_data INTO DATA(ls_partner) WHERE Street IS INITIAL.
       ls_partner-Street = 'EMPTY'.
+      DATA(ls_key) = keys[ sy-tabix ].
 
       MODIFY ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
         ENTITY Partner
@@ -156,7 +157,7 @@ CLASS lhc_Partner IMPLEMENTATION.
       ls_partner-PartnerNumber = ld_number.
       ls_partner-PartnerName &&= ` copy`.
 
-      INSERT VALUE #( %cid = |I{ sy-tabix }| ) INTO TABLE lt_creation REFERENCE INTO DATA(lr_create).
+      INSERT VALUE #( %cid = keys[ sy-tabix ]-%cid ) INTO TABLE lt_creation REFERENCE INTO DATA(lr_create).
       lr_create->%data = CORRESPONDING #( ls_partner ).
       lr_create->%control-PartnerNumber = if_abap_behv=>mk-on.
       lr_create->%control-PartnerName = if_abap_behv=>mk-on.
