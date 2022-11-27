@@ -1,5 +1,6 @@
 projection;
 strict;
+use draft;
 
 define behavior for ZBS_C_RAPPartner alias Partner
 {
@@ -11,4 +12,10 @@ define behavior for ZBS_C_RAPPartner alias Partner
   use action clearAllEmptyStreets;
   use action copyLine;
   use action withPopup;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+  use action Resume;
 }

@@ -9,5 +9,6 @@ define root view entity ZBS_I_RAPPartner
       street           as Street,
       city             as City,
       country          as Country,
-      payment_currency as PaymentCurrency
+      payment_currency as PaymentCurrency,
+      last_changed_at  as LastChangedAt
 }

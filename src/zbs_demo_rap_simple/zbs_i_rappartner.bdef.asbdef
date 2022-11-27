@@ -1,17 +1,31 @@
 managed implementation in class zbp_bs_demo_rappartner unique;
 strict;
+with draft;
 
 define behavior for ZBS_I_RAPPartner alias Partner
 persistent table zbs_dmo_partner
-lock master
+draft table zbs_dmo_dpartner
+lock master total etag LastChangedAt
 authorization master ( instance )
 late numbering
+etag master LastChangedAt
 {
   create;
   update;
   delete ( features : global );
 
   field ( readonly ) PartnerNumber;
+
+  draft action Resume;
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+
+  draft determine action Prepare
+  {
+    validation validateKeyIsFilled;
+    validation validateCoreData;
+  }
 
   validation validateKeyIsFilled on save { create; }
   validation validateCoreData on save { create; field Country, PaymentCurrency; }
@@ -31,5 +45,6 @@ late numbering
     City = city;
     Country = country;
     PaymentCurrency = payment_currency;
+    LastChangedAt = last_changed_at;
   }
 }
