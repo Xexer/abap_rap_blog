@@ -23,6 +23,12 @@ CLASS lhc_Partner DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS withpopup FOR MODIFY
       IMPORTING keys FOR ACTION partner~withpopup.
+
+    METHODS get_instance_features FOR INSTANCE FEATURES
+      IMPORTING keys REQUEST requested_features FOR partner RESULT result.
+
+    METHODS get_global_features FOR GLOBAL FEATURES
+      IMPORTING REQUEST requested_features FOR partner RESULT result.
 ENDCLASS.
 
 CLASS lhc_Partner IMPLEMENTATION.
@@ -218,6 +224,54 @@ CLASS lhc_Partner IMPLEMENTATION.
           ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information text = 'Dummy message' ) )
         ).
     ENDCASE.
+  ENDMETHOD.
+
+
+  METHOD get_instance_features.
+    " Variante A
+*    IF requested_features-%action-fillEmptyStreets = if_abap_behv=>mk-on.
+*      READ ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
+*        ENTITY Partner FIELDS ( Street ) WITH CORRESPONDING #( keys )
+*        RESULT DATA(lt_partner_data).
+*
+*      LOOP AT lt_partner_data INTO DATA(ls_partner).
+*        DATA(ld_deactivate) = COND #(
+*          WHEN ls_partner-Street IS INITIAL THEN if_abap_behv=>mk-off
+*          ELSE if_abap_behv=>mk-on
+*        ).
+*
+*        INSERT VALUE #(
+*          partnernumber = ls_partner-PartnerNumber
+*          %action-fillemptystreets = ld_deactivate
+*        ) INTO TABLE result.
+*      ENDLOOP.
+*    ENDIF.
+
+    " Variante B
+    IF requested_features-%action-fillEmptyStreets = if_abap_behv=>mk-on.
+      READ ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
+        ENTITY Partner FIELDS ( Street ) WITH CORRESPONDING #( keys )
+        RESULT DATA(lt_partner_data).
+
+      LOOP AT lt_partner_data INTO DATA(ls_partner) WHERE Street IS NOT INITIAL.
+        INSERT VALUE #(
+          partnernumber = ls_partner-PartnerNumber
+          %action-fillemptystreets = if_abap_behv=>mk-on
+        ) INTO TABLE result.
+      ENDLOOP.
+    ENDIF.
+  ENDMETHOD.
+
+
+  METHOD get_global_features.
+    IF requested_features-%delete = if_abap_behv=>mk-on.
+      DATA(ld_deactivate) = COND #(
+        WHEN cl_abap_context_info=>get_user_alias( ) = '<USER>' THEN if_abap_behv=>mk-off
+        ELSE if_abap_behv=>mk-on
+      ).
+
+      result-%delete = ld_deactivate.
+    ENDIF.
   ENDMETHOD.
 ENDCLASS.
 
