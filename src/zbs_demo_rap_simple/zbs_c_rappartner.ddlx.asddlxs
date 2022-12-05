@@ -5,6 +5,7 @@
     typeNamePlural: 'Partners'
   }
 }
+@UI.headerInfo.title: { type: #STANDARD, value: 'PartnerName' }
 annotate entity ZBS_C_RAPPartner with
 {
   @UI.facet      : [
@@ -66,4 +67,6 @@ annotate entity ZBS_C_RAPPartner with
   @EndUserText.label: 'PayCurr'
   @EndUserText.quickInfo: 'Payment currency'
   PaymentCurrency;
+  @UI.hidden: true
+  LocalLastChangedAt;
 }

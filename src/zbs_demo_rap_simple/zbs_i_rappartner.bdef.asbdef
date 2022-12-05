@@ -8,7 +8,7 @@ draft table zbs_dmo_dpartner
 lock master total etag LastChangedAt
 authorization master ( instance )
 late numbering
-etag master LastChangedAt
+etag master LocalLastChangedAt
 {
   create;
   update;
@@ -46,5 +46,9 @@ etag master LastChangedAt
     Country = country;
     PaymentCurrency = payment_currency;
     LastChangedAt = last_changed_at;
+    LastChangedBy = last_changed_by;
+    CreatedAt = created_at;
+    CreatedBy = created_by;
+    LocalLastChangedAt = local_last_changed_at;
   }
 }
