@@ -12,7 +12,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_bs_demo_action_eml IMPLEMENTATION.
+CLASS ZCL_BS_DEMO_ACTION_EML IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     MODIFY ENTITIES OF ZBS_I_RAPPartner
       ENTITY Partner EXECUTE fillEmptyStreets
