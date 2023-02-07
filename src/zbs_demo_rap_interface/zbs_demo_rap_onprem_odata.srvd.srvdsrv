@@ -1,0 +1,5 @@
+@EndUserText.label: 'ZBS_DEMO_RAP_ONPREM_ODATA'
+@OData.schema.name: 'cds_zbs_demo_company_names'
+define service ZBS_DEMO_RAP_ONPREM_ODATA {
+ expose ZBS_RAP_COMPANYNAMES; 
+ } 
