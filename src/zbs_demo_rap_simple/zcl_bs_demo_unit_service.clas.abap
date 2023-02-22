@@ -35,7 +35,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_bs_demo_unit_service IMPLEMENTATION.
+CLASS ZCL_BS_DEMO_UNIT_SERVICE IMPLEMENTATION.
+
+
   METHOD class_setup.
     DATA:
       lt_partner TYPE STANDARD TABLE OF zbs_dmo_partner WITH EMPTY KEY.

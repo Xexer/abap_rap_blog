@@ -12,7 +12,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_bs_demo_unit_cleanup IMPLEMENTATION.
+CLASS ZCL_BS_DEMO_UNIT_CLEANUP IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     DELETE FROM zbs_dmo_partner
       WHERE name = 'Do it Yourself'.

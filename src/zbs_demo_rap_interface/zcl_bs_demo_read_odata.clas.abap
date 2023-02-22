@@ -21,7 +21,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_bs_demo_read_odata IMPLEMENTATION.
+CLASS ZCL_BS_DEMO_READ_ODATA IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     DATA:
       lt_business_data TYPE TABLE OF zbs_rap_companynames.
@@ -46,7 +48,6 @@ CLASS zcl_bs_demo_read_odata IMPLEMENTATION.
         out->write( lo_error->get_text( ) ).
     ENDTRY.
   ENDMETHOD.
-
 
 
   METHOD get_client.

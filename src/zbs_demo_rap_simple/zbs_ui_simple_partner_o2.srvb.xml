@@ -40,6 +40,7 @@
       </item>
      </LINKS>
      <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
     </METADATA>
     <CONTENT>
      <BIND_TYPE_IMPL>
@@ -59,6 +60,11 @@
           <TYPE>SRVD/SRV</TYPE>
           <NAME>ZBS_SIMPLE_PARTNER</NAME>
          </SRVD_REF>
+         <BIND_TYPE_DATA>
+          <CONTENT>
+           <ENCODING>base64</ENCODING>
+          </CONTENT>
+         </BIND_TYPE_DATA>
         </item>
        </SERVICE_CONTENT>
       </item>

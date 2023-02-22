@@ -25,7 +25,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_bs_demo_unit_rap IMPLEMENTATION.
+CLASS ZCL_BS_DEMO_UNIT_RAP IMPLEMENTATION.
+
+
   METHOD class_setup.
     DATA:
       lt_partner TYPE STANDARD TABLE OF zbs_dmo_partner WITH EMPTY KEY.

@@ -264,14 +264,14 @@ CLASS lhc_Partner IMPLEMENTATION.
 
 
   METHOD get_global_features.
-    IF requested_features-%delete = if_abap_behv=>mk-on.
-      DATA(ld_deactivate) = COND #(
-        WHEN cl_abap_context_info=>get_user_alias( ) = '<USER>' THEN if_abap_behv=>mk-off
-        ELSE if_abap_behv=>mk-on
-      ).
-
-      result-%delete = ld_deactivate.
-    ENDIF.
+*    IF requested_features-%delete = if_abap_behv=>mk-on.
+*      DATA(ld_deactivate) = COND #(
+*        WHEN cl_abap_context_info=>get_user_alias( ) = 'A130A5D' THEN if_abap_behv=>mk-off
+*        ELSE if_abap_behv=>mk-on
+*      ). "<USER>
+*
+*      result-%delete = ld_deactivate.
+*    ENDIF.
   ENDMETHOD.
 ENDCLASS.
 
