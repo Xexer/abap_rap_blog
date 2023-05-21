@@ -14,7 +14,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_bs_demo_read_func IMPLEMENTATION.
+CLASS ZCL_BS_DEMO_READ_FUNC IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     TRY.
         DATA(lo_destination) = cl_rfc_destination_provider=>create_by_cloud_destination( c_destination ).

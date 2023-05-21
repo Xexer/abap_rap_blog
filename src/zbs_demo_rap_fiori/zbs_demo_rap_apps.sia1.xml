@@ -33,6 +33,7 @@
       <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
      </item>
     </BUCAPP>
+    <PUBLISH_STATUS>p</PUBLISH_STATUS>
    </SIA1>
   </asx:values>
  </asx:abap>

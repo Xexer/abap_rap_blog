@@ -30,7 +30,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_bs_demo_cust_cname_query IMPLEMENTATION.
+CLASS ZCL_BS_DEMO_CUST_CNAME_QUERY IMPLEMENTATION.
+
+
   METHOD if_rap_query_provider~select.
     " Read data from OData on-premise
     read_data_by_request(
@@ -143,5 +145,3 @@ CLASS zcl_bs_demo_cust_cname_query IMPLEMENTATION.
     ENDTRY.
   ENDMETHOD.
 ENDCLASS.
-
-

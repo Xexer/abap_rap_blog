@@ -45,13 +45,13 @@
         <VALUES>
          <item>
           <FIELD>ACTVT</FIELD>
-          <VALUE>Change, Display</VALUE>
+          <VALUE>Display, Change</VALUE>
           <VALUES>
            <item>
-            <LOW_VALUE>02</LOW_VALUE>
+            <LOW_VALUE>03</LOW_VALUE>
            </item>
            <item>
-            <LOW_VALUE>03</LOW_VALUE>
+            <LOW_VALUE>02</LOW_VALUE>
            </item>
           </VALUES>
           <TEXT>Activity</TEXT>
@@ -74,6 +74,7 @@
       </AUTH_ITEM>
      </item>
     </AUTH>
+    <PUBLISH_STATUS>p</PUBLISH_STATUS>
    </SIA6>
   </asx:values>
  </asx:abap>

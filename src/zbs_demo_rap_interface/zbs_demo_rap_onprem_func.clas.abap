@@ -44,7 +44,7 @@ ENDCLASS.
 
 
 
-CLASS zbs_demo_rap_onprem_func IMPLEMENTATION.
+CLASS ZBS_DEMO_RAP_ONPREM_FUNC IMPLEMENTATION.
 
 
   METHOD constructor.

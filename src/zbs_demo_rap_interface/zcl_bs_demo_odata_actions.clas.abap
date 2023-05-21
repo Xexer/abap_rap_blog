@@ -40,7 +40,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_bs_demo_odata_actions IMPLEMENTATION.
+CLASS ZCL_BS_DEMO_ODATA_ACTIONS IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     TRY.
         read_data_with_filter( out ).
