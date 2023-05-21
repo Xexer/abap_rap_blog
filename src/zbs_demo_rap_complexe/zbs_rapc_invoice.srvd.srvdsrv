@@ -1,0 +1,5 @@
+@EndUserText.label: 'Invoice Service'
+define service ZBS_RAPC_INVOICE {
+  expose ZBS_C_RAPCInvoice as Invoice;
+  expose ZBS_C_RAPCPosition as Position;
+}

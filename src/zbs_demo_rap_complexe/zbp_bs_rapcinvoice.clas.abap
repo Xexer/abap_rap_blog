@@ -1,0 +1,5 @@
+CLASS zbp_bs_rapcinvoice DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zbs_r_rapcinvoice.
+ENDCLASS.
+
+CLASS zbp_bs_rapcinvoice IMPLEMENTATION.
+ENDCLASS.
