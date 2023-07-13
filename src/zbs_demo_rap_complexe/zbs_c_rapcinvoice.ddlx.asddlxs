@@ -35,7 +35,8 @@ annotate entity ZBS_C_RAPCInvoice with
 
   @UI            : {
     selectionField : [ { position: 10 } ],
-    lineItem     : [{ position: 10 }]
+    lineItem     : [{ position: 10 },
+                    { position: 20, type: #FOR_ACTION, dataAction: 'sendTestMail', label: 'Send Mail' }]
   }
   Document;
   @UI            : {
@@ -55,4 +56,3 @@ annotate entity ZBS_C_RAPCInvoice with
   }
   Partner;
 }
-

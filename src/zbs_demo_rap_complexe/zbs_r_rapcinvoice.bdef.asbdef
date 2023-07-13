@@ -12,6 +12,8 @@ authorization master ( instance )
 
   field ( readonly:update ) Document;
 
+  action sendTestMail parameter ZBS_I_RAPCMailPopup;
+
   association _Position { create; }
   mapping for zbs_dmo_invoice
     {
