@@ -1,0 +1,20 @@
+unmanaged implementation in class zbp_bs_demo_unmanaged unique;
+strict ( 1 );
+
+define behavior for ZBS_R_DMOUnmanaged alias Unmanaged
+lock master
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly ) TableKey;
+
+  mapping for zbs_dmo_unmgnd
+    {
+      TableKey     = gen_key;
+      Description  = text;
+      CreationDate = cdate;
+    }
+ }

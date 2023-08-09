@@ -1,0 +1,5 @@
+CLASS zbp_bs_demo_unmanaged DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zbs_r_dmounmanaged.
+ENDCLASS.
+
+CLASS zbp_bs_demo_unmanaged IMPLEMENTATION.
+ENDCLASS.

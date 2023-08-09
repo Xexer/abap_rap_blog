@@ -1,0 +1,9 @@
+projection;
+strict ( 1 );
+
+define behavior for ZBS_C_DMOUnmanaged alias Unmanaged
+{
+  use create;
+  use update;
+  use delete;
+}

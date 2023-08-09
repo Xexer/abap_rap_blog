@@ -1,0 +1,4 @@
+@EndUserText.label: 'Unmanaged Service'
+define service ZBS_DEMO_UNMANAGED {
+  expose ZBS_C_DMOUnmanaged as Unmanaged;
+}
