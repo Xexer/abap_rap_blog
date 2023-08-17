@@ -1,0 +1,13 @@
+unmanaged implementation in class zbp_bs_demo_company_names unique;
+strict ( 1 );
+
+define behavior for ZBS_R_RAPCustomCompanyNames alias CompanyNames
+lock master
+authorization master ( instance )
+{
+  field ( readonly : update ) CompanyName;
+
+  create;
+  update;
+  delete;
+}

@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service for Company Names'
+define service ZBS_DEMO_COMPANY_NAMES {
+  expose ZBS_R_RAPCustomCompanyNames as CompanyNames;
+}

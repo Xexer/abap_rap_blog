@@ -45,13 +45,13 @@
         <VALUES>
          <item>
           <FIELD>ACTVT</FIELD>
-          <VALUE>Display, Change</VALUE>
+          <VALUE>Change, Display</VALUE>
           <VALUES>
            <item>
-            <LOW_VALUE>03</LOW_VALUE>
+            <LOW_VALUE>02</LOW_VALUE>
            </item>
            <item>
-            <LOW_VALUE>02</LOW_VALUE>
+            <LOW_VALUE>03</LOW_VALUE>
            </item>
           </VALUES>
           <TEXT>Activity</TEXT>
