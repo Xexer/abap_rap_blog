@@ -8,7 +8,10 @@ CLASS zcl_bs_demo_crap_mail DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_crap_mail IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_CRAP_MAIL IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     TRY.
         DATA(lo_mail) = cl_bcs_mail_message=>create_instance( ).

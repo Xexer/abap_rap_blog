@@ -11,7 +11,10 @@ CLASS zcl_bs_demo_rap_data_handler DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_rap_data_handler IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_RAP_DATA_HANDLER IMPLEMENTATION.
+
+
   METHOD create_instance.
     ro_result = NEW zcl_bs_demo_rap_data_handler( ).
   ENDMETHOD.

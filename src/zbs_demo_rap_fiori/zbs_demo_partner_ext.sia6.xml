@@ -38,6 +38,7 @@
       <TEXT>Table Access by Generic Standard Tools</TEXT>
       <AUTH_ITEM>
        <item>
+        <UUID>AkR5LDVCHu2iwKgUqJvLOw==</UUID>
         <AUTH_OBJECT>S_TABU_NAM</AUTH_OBJECT>
         <AUTH_OBJECT_INSTANCE>0001</AUTH_OBJECT_INSTANCE>
         <TEXT>Table Access by Generic Standard Tools</TEXT>
@@ -45,12 +46,14 @@
         <VALUES>
          <item>
           <FIELD>ACTVT</FIELD>
-          <VALUE>Change, Display</VALUE>
+          <VALUE>Change,Display</VALUE>
           <VALUES>
            <item>
+            <UUID>AkR5LDVCHu2iwKgUqJvrOw==</UUID>
             <LOW_VALUE>02</LOW_VALUE>
            </item>
            <item>
+            <UUID>AkR5LDVCHu2iwKgUqJwLOw==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
            </item>
           </VALUES>
@@ -63,6 +66,7 @@
           <VALUE>ZBS_DMO_PARTNER</VALUE>
           <VALUES>
            <item>
+            <UUID>AkR5LDVCHu2iwKgUqJwrOw==</UUID>
             <LOW_VALUE>ZBS_DMO_PARTNER</LOW_VALUE>
            </item>
           </VALUES>

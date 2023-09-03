@@ -8,7 +8,10 @@ CLASS zcl_bs_demo_crap_ve_exit DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_crap_ve_exit IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_CRAP_VE_EXIT IMPLEMENTATION.
+
+
   METHOD if_sadl_exit_calc_element_read~calculate.
     LOOP AT it_requested_calc_elements INTO DATA(ld_virtual_field).
       LOOP AT ct_calculated_data ASSIGNING FIELD-SYMBOL(<ls_calculated_data>).

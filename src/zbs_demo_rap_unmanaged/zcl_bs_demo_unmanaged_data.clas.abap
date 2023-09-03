@@ -8,7 +8,10 @@ CLASS zcl_bs_demo_unmanaged_data DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_unmanaged_data IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_UNMANAGED_DATA IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     DATA(lo_rap) = zcl_bs_demo_rap_data_handler=>create_instance( ).
 

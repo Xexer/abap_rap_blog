@@ -22,7 +22,10 @@ CLASS zcl_bs_demo_custom_company_qry DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_custom_company_qry IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_CUSTOM_COMPANY_QRY IMPLEMENTATION.
+
+
   METHOD if_rap_query_provider~select.
     DATA lt_result TYPE STANDARD TABLE OF ZBS_R_RAPCustomCompanyNames.
 

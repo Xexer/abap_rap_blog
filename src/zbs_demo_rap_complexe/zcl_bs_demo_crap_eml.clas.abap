@@ -19,7 +19,10 @@ CLASS zcl_bs_demo_crap_eml DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_crap_eml IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_CRAP_EML IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     read_data( out ).
     insert_data( out ).

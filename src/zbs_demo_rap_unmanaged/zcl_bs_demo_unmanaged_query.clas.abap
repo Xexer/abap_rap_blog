@@ -14,7 +14,10 @@ CLASS zcl_bs_demo_unmanaged_query DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_unmanaged_query IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_UNMANAGED_QUERY IMPLEMENTATION.
+
+
   METHOD if_rap_query_provider~select.
     DATA lt_output TYPE STANDARD TABLE OF ZBS_C_DMOUnmanaged.
 
