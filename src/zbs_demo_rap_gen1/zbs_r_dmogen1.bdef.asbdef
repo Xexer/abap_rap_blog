@@ -1,0 +1,43 @@
+managed implementation in class ZBP_BS_DEMO_SIMPLE_GEN1 unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZBS_R_DMOGEN1 alias Simple
+persistent table zbs_dmo_gen1
+draft table ZBS_DMO_GEN1_D
+etag master LocalLastChanged
+lock master total etag LastChanged
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   UuidKey;
+
+  field ( readonly )
+   LastChanged,
+   LocalLastChanged;
+
+  field ( readonly : update )
+   UuidKey;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZBS_DMO_GEN1
+  {
+    UuidKey = uuid_key;
+    Description = description;
+    Price = price;
+    Currency = currency;
+    LocalLastChanged = local_last_changed;
+    LastChanged = last_changed;
+  }
+}
