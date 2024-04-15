@@ -60,13 +60,13 @@ CLASS ZCL_BS_DEMO_CRAP_EML IMPLEMENTATION.
     DATA lt_new_invoice  TYPE TABLE FOR CREATE ZBS_R_RAPCInvoice.
     DATA lt_new_position TYPE TABLE FOR CREATE ZBS_R_RAPCInvoice\_Position.
 
-    lt_new_invoice = VALUE #( ( %cid     = 'B1'
+    lt_new_invoice = VALUE #( ( %cid     = 'B0'
                                 Document = '40000000'
                                 Partner  = '1000000004'
                                 %control = VALUE #( Document = if_abap_behv=>mk-on Partner = if_abap_behv=>mk-on ) ) ).
 
     lt_new_position = VALUE #(
-        ( %cid_ref = 'B1'
+        ( %cid_ref = 'B0'
           %target  = VALUE #(
               ( %cid           = 'P1'
                 PositionNumber = 1
