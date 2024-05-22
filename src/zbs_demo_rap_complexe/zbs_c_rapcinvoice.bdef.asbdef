@@ -8,6 +8,7 @@ define behavior for ZBS_C_RAPCInvoice alias Invoice
   use delete;
 
   use action sendTestMail;
+  use action CreateInvoiceDocument;
 
   use association _Position { create; }
 }

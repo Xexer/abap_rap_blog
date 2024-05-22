@@ -5,6 +5,8 @@ CLASS lhc_Invoice DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS sendtestmail FOR MODIFY
       IMPORTING keys FOR ACTION invoice~sendtestmail.
+    METHODS createinvoicedocument FOR MODIFY
+      IMPORTING keys FOR ACTION invoice~createinvoicedocument.
 
     METHODS send_mail_with_attachement
       IMPORTING id_mail_content TYPE string
@@ -49,5 +51,11 @@ CLASS lhc_Invoice IMPLEMENTATION.
                                                                     iv_filename     = 'Attachment.txt' ) ).
 
     lo_mail->send( ).
+  ENDMETHOD.
+
+
+  METHOD CreateInvoiceDocument.
+    IF 0 = 0.
+    ENDIF.
   ENDMETHOD.
 ENDCLASS.

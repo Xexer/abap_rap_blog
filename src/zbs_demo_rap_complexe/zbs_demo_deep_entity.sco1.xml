@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCO1" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCO1>
+    <COMMUNICATION_SCENARIO_ID>ZBS_DEMO_DEEP_ENTITY</COMMUNICATION_SCENARIO_ID>
+    <COMMUNICATION_SCENARIO_TYPE>1</COMMUNICATION_SCENARIO_TYPE>
+    <ALLOWED_CA_INSTANCES>1</ALLOWED_CA_INSTANCES>
+    <CONTAINS_INBOUND>X</CONTAINS_INBOUND>
+    <IB_TRUST_PSE_ID>SSLC_CUSTOMER_DEFAULT</IB_TRUST_PSE_ID>
+    <IB_BASIC_AUTH>X</IB_BASIC_AUTH>
+    <IB_X509_AUTH>X</IB_X509_AUTH>
+    <INBOUND_ROLE_ID>ZCR_Y3VYYCFBXAPO7BUF5FBSYMAPP4</INBOUND_ROLE_ID>
+    <OB_AUTH_PSE_ID>SSLC_CUSTOMER_DEFAULT</OB_AUTH_PSE_ID>
+    <OB_TRUST_PSE_ID>SSLC_CUSTOMER_DEFAULT</OB_TRUST_PSE_ID>
+    <OB_BASIC_AUTH>X</OB_BASIC_AUTH>
+    <OB_X509_AUTH>X</OB_X509_AUTH>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
+    <MAIN_OBJECT>
+     <NAME>ZBS_DEMO_DEEP_ENTITY</NAME>
+     <TYPE>SCO1</TYPE>
+     <DESCRIPTION>Create via Deep Action</DESCRIPTION>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </MAIN_OBJECT>
+    <SCOPE_STATUS>3</SCOPE_STATUS>
+    <SCOPE_STATUS_TEXT>On</SCOPE_STATUS_TEXT>
+    <INBOUND>
+     <item>
+      <COMMUNICATION_SCENARIO_ID>ZBS_DEMO_DEEP_ENTITY</COMMUNICATION_SCENARIO_ID>
+      <INBOUND_ID>0001</INBOUND_ID>
+      <IBS_ID>ZBS_UI_RAPC_INVOICE_O2_IWSG</IBS_ID>
+      <RELEASE_STATUS>1</RELEASE_STATUS>
+      <IBS_TYPE>IWSG</IBS_TYPE>
+      <IBS_TYPE_TEXT>OData V2</IBS_TYPE_TEXT>
+      <TEXT>ZBS_UI_RAPC_INVOICE_O2</TEXT>
+     </item>
+     <item>
+      <COMMUNICATION_SCENARIO_ID>ZBS_DEMO_DEEP_ENTITY</COMMUNICATION_SCENARIO_ID>
+      <INBOUND_ID>0002</INBOUND_ID>
+      <IBS_ID>ZBS_API_RAPC_INVOICE_O4_0001_G4BA</IBS_ID>
+      <RELEASE_STATUS>1</RELEASE_STATUS>
+      <IBS_TYPE>G4BA</IBS_TYPE>
+      <IBS_TYPE_TEXT>OData V4</IBS_TYPE_TEXT>
+      <TEXT>ZBS_API_RAPC_INVOICE_O4</TEXT>
+      <SRVC_TYPE>HT</SRVC_TYPE>
+      <SRVC_NAME>41D9289329D07BBECCEEA6F202C5FC</SRVC_NAME>
+     </item>
+    </INBOUND>
+    <AUTH>
+     <item>
+      <AUTH_OBJECT>S_TABU_NAM</AUTH_OBJECT>
+      <STATUS>U</STATUS>
+      <TEXT>Table Access by Generic Standard Tools</TEXT>
+      <AUTH_ITEM>
+       <item>
+        <AUTH_OBJECT>S_TABU_NAM</AUTH_OBJECT>
+        <AUTH_OBJECT_INSTANCE>0001</AUTH_OBJECT_INSTANCE>
+        <TEXT>Table Access by Generic Standard Tools</TEXT>
+        <STATUS>U</STATUS>
+        <VALUES>
+         <item>
+          <FIELD>ACTVT</FIELD>
+          <VALUE>Display, Change</VALUE>
+          <VALUES>
+           <item>
+            <LOW_VALUE>03</LOW_VALUE>
+           </item>
+           <item>
+            <LOW_VALUE>02</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Activity</TEXT>
+          <STATUS>U</STATUS>
+          <IS_ACTVT>X</IS_ACTVT>
+         </item>
+         <item>
+          <FIELD>TABLE</FIELD>
+          <VALUE>ZBS_DMO_INVOICE, ZBS_DMO_POSITION</VALUE>
+          <VALUES>
+           <item>
+            <LOW_VALUE>ZBS_DMO_INVOICE</LOW_VALUE>
+           </item>
+           <item>
+            <LOW_VALUE>ZBS_DMO_POSITION</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Table Name</TEXT>
+          <STATUS>U</STATUS>
+         </item>
+        </VALUES>
+       </item>
+      </AUTH_ITEM>
+     </item>
+    </AUTH>
+    <PUBLISH_STATUS>p</PUBLISH_STATUS>
+    <PLUGIN_CONFIG>
+     <item>
+      <UI_OBJECT>cscn_type_selection</UI_OBJECT>
+      <IS_VISIBLE>X</IS_VISIBLE>
+      <IS_ENABLED>X</IS_ENABLED>
+     </item>
+     <item>
+      <UI_OBJECT>cscn_allow_create_by_key_checkbox</UI_OBJECT>
+     </item>
+     <item>
+      <UI_OBJECT>cscn_badi_impl_class_input</UI_OBJECT>
+     </item>
+     <item>
+      <UI_OBJECT>cscn_scope_status</UI_OBJECT>
+     </item>
+    </PLUGIN_CONFIG>
+   </SCO1>
+  </asx:values>
+ </asx:abap>
+</abapGit>
