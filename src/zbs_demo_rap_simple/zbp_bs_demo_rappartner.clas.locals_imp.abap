@@ -29,7 +29,9 @@ CLASS lhc_Partner DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS get_global_features FOR GLOBAL FEATURES
       IMPORTING REQUEST requested_features FOR partner RESULT result.
+
 ENDCLASS.
+
 
 CLASS lhc_Partner IMPLEMENTATION.
   METHOD get_instance_authorizations.
@@ -50,40 +52,42 @@ CLASS lhc_Partner IMPLEMENTATION.
 
   METHOD validateCoreData.
     READ ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
-      ENTITY Partner
-      FIELDS ( Country PaymentCurrency )
-      WITH CORRESPONDING #( keys )
-      RESULT DATA(lt_partner_data)
-      FAILED DATA(ls_failed)
-      REPORTED DATA(ls_reported).
+         ENTITY Partner
+         FIELDS ( Country PaymentCurrency )
+         WITH CORRESPONDING #( keys )
+         RESULT DATA(lt_partner_data)
+         " TODO: variable is assigned but never used (ABAP cleaner)
+         FAILED DATA(ls_failed)
+         " TODO: variable is assigned but never used (ABAP cleaner)
+         REPORTED DATA(ls_reported).
 
     LOOP AT lt_partner_data INTO DATA(ls_partner).
       SELECT SINGLE FROM I_Country
         FIELDS Country
         WHERE Country = @ls_partner-Country
+        " TODO: variable is assigned but never used (ABAP cleaner)
         INTO @DATA(ld_found_country).
       IF sy-subrc <> 0.
         INSERT VALUE #( PartnerNumber = ls_partner-PartnerNumber ) INTO TABLE failed-partner.
 
-        INSERT VALUE #(
-          PartnerNumber = ls_partner-PartnerNumber
-           %msg = new_message_with_text( text = 'Country not found in I_Country' )
-           %element-country = if_abap_behv=>mk-on
-        ) INTO TABLE reported-partner.
+        INSERT VALUE #( PartnerNumber    = ls_partner-PartnerNumber
+                        %msg             = new_message_with_text( text = 'Country not found in I_Country' )
+                        %element-country = if_abap_behv=>mk-on )
+               INTO TABLE reported-partner.
       ENDIF.
 
       SELECT SINGLE FROM I_Currency
         FIELDS Currency
         WHERE Currency = @ls_partner-PaymentCurrency
+        " TODO: variable is assigned but never used (ABAP cleaner)
         INTO @DATA(ld_found_currency).
       IF sy-subrc <> 0.
         INSERT VALUE #( PartnerNumber = ls_partner-PartnerNumber ) INTO TABLE failed-partner.
 
-        INSERT VALUE #(
-          PartnerNumber = ls_partner-PartnerNumber
-           %msg = new_message_with_text( text = 'Currency not found in I_Currency' )
-           %element-paymentcurrency = if_abap_behv=>mk-on
-        ) INTO TABLE reported-partner.
+        INSERT VALUE #( PartnerNumber            = ls_partner-PartnerNumber
+                        %msg                     = new_message_with_text( text = 'Currency not found in I_Currency' )
+                        %element-paymentcurrency = if_abap_behv=>mk-on )
+               INTO TABLE reported-partner.
       ENDIF.
     ENDLOOP.
   ENDMETHOD.
@@ -91,16 +95,17 @@ CLASS lhc_Partner IMPLEMENTATION.
 
   METHOD fillCurrency.
     READ ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
-      ENTITY Partner
-      FIELDS ( PaymentCurrency )
-      WITH CORRESPONDING #( keys )
-      RESULT DATA(lt_partner_data).
+         ENTITY Partner
+         FIELDS ( PaymentCurrency )
+         WITH CORRESPONDING #( keys )
+         RESULT DATA(lt_partner_data).
 
     LOOP AT lt_partner_data INTO DATA(ls_partner) WHERE PaymentCurrency IS INITIAL.
       MODIFY ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
-        ENTITY Partner
-        UPDATE FIELDS ( PaymentCurrency )
-        WITH VALUE #( ( %tky = ls_partner-%tky PaymentCurrency = 'EUR' %control-paymentcurrency = if_abap_behv=>mk-on ) ).
+             ENTITY Partner
+             UPDATE FIELDS ( PaymentCurrency )
+             WITH VALUE #(
+                 ( %tky = ls_partner-%tky PaymentCurrency = 'EUR' %control-paymentcurrency = if_abap_behv=>mk-on ) ).
     ENDLOOP.
   ENDMETHOD.
 
@@ -113,46 +118,46 @@ CLASS lhc_Partner IMPLEMENTATION.
 
     LOOP AT lt_partner_data INTO DATA(ls_partner).
       MODIFY ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
-        ENTITY Partner
-        UPDATE FIELDS ( Street )
-        WITH VALUE #( ( PartnerNumber = ls_partner-partner Street = '' %control-Street = if_abap_behv=>mk-on ) ).
+             ENTITY Partner
+             UPDATE FIELDS ( Street )
+             WITH VALUE #( ( PartnerNumber = ls_partner-partner Street = '' %control-Street = if_abap_behv=>mk-on ) ).
     ENDLOOP.
 
-    INSERT VALUE #(
-      %msg = new_message_with_text( text = |{ lines( lt_partner_data ) } records changed|
-      severity = if_abap_behv_message=>severity-success )
-    ) INTO TABLE reported-partner.
+    INSERT VALUE #( %msg = new_message_with_text( text     = |{ lines( lt_partner_data ) } records changed|
+                                                  severity = if_abap_behv_message=>severity-success ) )
+           INTO TABLE reported-partner.
   ENDMETHOD.
 
 
   METHOD fillEmptyStreets.
     READ ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
-      ENTITY Partner
-      FIELDS ( Street )
-      WITH CORRESPONDING #( keys )
-      RESULT DATA(lt_partner_data).
+         ENTITY Partner
+         FIELDS ( Street )
+         WITH CORRESPONDING #( keys )
+         RESULT DATA(lt_partner_data).
 
     LOOP AT lt_partner_data INTO DATA(ls_partner) WHERE Street IS INITIAL.
       ls_partner-Street = 'EMPTY'.
+      " TODO: variable is assigned but never used (ABAP cleaner)
       DATA(ls_key) = keys[ sy-tabix ].
 
       MODIFY ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
-        ENTITY Partner
-        UPDATE FIELDS ( Street )
-        WITH VALUE #( ( %tky = ls_partner-%tky Street = ls_partner-Street %control-Street = if_abap_behv=>mk-on ) ).
+             ENTITY Partner
+             UPDATE FIELDS ( Street )
+             WITH VALUE #( ( %tky = ls_partner-%tky Street = ls_partner-Street %control-Street = if_abap_behv=>mk-on ) ).
 
-      INSERT VALUE #( %tky = ls_partner-%tky %param = ls_partner ) INTO TABLE result.
+      INSERT VALUE #( %tky   = ls_partner-%tky
+                      %param = ls_partner ) INTO TABLE result.
     ENDLOOP.
   ENDMETHOD.
 
 
   METHOD copyLine.
-    DATA:
-      lt_creation TYPE TABLE FOR CREATE ZBS_I_RAPPartner.
+    DATA lt_creation TYPE TABLE FOR CREATE ZBS_I_RAPPartner.
 
     READ ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
-      ENTITY Partner ALL FIELDS WITH CORRESPONDING #( keys )
-      RESULT DATA(lt_partner_data).
+         ENTITY Partner ALL FIELDS WITH CORRESPONDING #( keys )
+         RESULT DATA(lt_partner_data).
 
     SELECT FROM zbs_dmo_partner
       FIELDS MAX( partner )
@@ -160,24 +165,26 @@ CLASS lhc_Partner IMPLEMENTATION.
 
     LOOP AT lt_partner_data INTO DATA(ls_partner).
       ld_number += 1.
-      ls_partner-PartnerNumber = ld_number.
-      ls_partner-PartnerName &&= ` copy`.
+      ls_partner-PartnerNumber   = ld_number.
+      ls_partner-PartnerName   &&= ` copy`.
 
       INSERT VALUE #( %cid = keys[ sy-tabix ]-%cid ) INTO TABLE lt_creation REFERENCE INTO DATA(lr_create).
       lr_create->%data = CORRESPONDING #( ls_partner ).
-      lr_create->%control-PartnerNumber = if_abap_behv=>mk-on.
-      lr_create->%control-PartnerName = if_abap_behv=>mk-on.
-      lr_create->%control-Street = if_abap_behv=>mk-on.
-      lr_create->%control-City = if_abap_behv=>mk-on.
-      lr_create->%control-Country = if_abap_behv=>mk-on.
+      lr_create->%control-PartnerNumber   = if_abap_behv=>mk-on.
+      lr_create->%control-PartnerName     = if_abap_behv=>mk-on.
+      lr_create->%control-Street          = if_abap_behv=>mk-on.
+      lr_create->%control-City            = if_abap_behv=>mk-on.
+      lr_create->%control-Country         = if_abap_behv=>mk-on.
       lr_create->%control-PaymentCurrency = if_abap_behv=>mk-on.
     ENDLOOP.
 
     MODIFY ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
-      ENTITY Partner CREATE FROM lt_creation
-      FAILED DATA(ls_failed)
-      MAPPED DATA(ls_mapped)
-      REPORTED DATA(ls_reported).
+           ENTITY Partner CREATE FROM lt_creation
+           " TODO: variable is assigned but never used (ABAP cleaner)
+           FAILED DATA(ls_failed)
+           MAPPED DATA(ls_mapped)
+           " TODO: variable is assigned but never used (ABAP cleaner)
+           REPORTED DATA(ls_reported).
 
     mapped-partner = ls_mapped-partner.
   ENDMETHOD.
@@ -192,37 +199,41 @@ CLASS lhc_Partner IMPLEMENTATION.
 
     CASE ls_key-%param-MessageType.
       WHEN 1.
-        INSERT VALUE #(
-          %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success text = 'Dummy message' )
-        ) INTO TABLE reported-partner.
+        INSERT VALUE #( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success
+                                                      text     = 'Dummy message' ) )
+               INTO TABLE reported-partner.
       WHEN 2.
-        INSERT VALUE #(
-          %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information text = 'Dummy message' )
-        ) INTO TABLE reported-partner.
+        INSERT VALUE #( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information
+                                                      text     = 'Dummy message' ) )
+               INTO TABLE reported-partner.
       WHEN 3.
-        INSERT VALUE #(
-          %msg = new_message_with_text( severity = if_abap_behv_message=>severity-warning text = 'Dummy message' )
-        ) INTO TABLE reported-partner.
+        INSERT VALUE #( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-warning
+                                                      text     = 'Dummy message' ) )
+               INTO TABLE reported-partner.
       WHEN 4.
-        INSERT VALUE #(
-          %msg = new_message_with_text( severity = if_abap_behv_message=>severity-error text = 'Dummy message' )
-        ) INTO TABLE reported-partner.
+        INSERT VALUE #( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-error
+                                                      text     = 'Dummy message' ) )
+               INTO TABLE reported-partner.
       WHEN 5.
-        INSERT VALUE #(
-          %msg = new_message_with_text( severity = if_abap_behv_message=>severity-none text = 'Dummy message' )
-        ) INTO TABLE reported-partner.
+        INSERT VALUE #( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-none
+                                                      text     = 'Dummy message' ) )
+               INTO TABLE reported-partner.
       WHEN 6.
         reported-partner = VALUE #(
-          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success text = 'Dummy message' ) )
-          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information text = 'Dummy message' ) )
-        ).
+            ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success
+                                            text     = 'Dummy message' ) )
+            ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information
+                                            text     = 'Dummy message' ) ) ).
       WHEN 7.
         reported-partner = VALUE #(
-          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success text = 'Dummy message' ) )
-          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-error text = 'Dummy message' ) )
-          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-warning text = 'Dummy message' ) )
-          ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information text = 'Dummy message' ) )
-        ).
+            ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-success
+                                            text     = 'Dummy message' ) )
+            ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-error
+                                            text     = 'Dummy message' ) )
+            ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-warning
+                                            text     = 'Dummy message' ) )
+            ( %msg = new_message_with_text( severity = if_abap_behv_message=>severity-information
+                                            text     = 'Dummy message' ) ) ).
     ENDCASE.
   ENDMETHOD.
 
@@ -250,14 +261,13 @@ CLASS lhc_Partner IMPLEMENTATION.
     " Variante B
     IF requested_features-%action-fillEmptyStreets = if_abap_behv=>mk-on.
       READ ENTITIES OF ZBS_I_RAPPartner IN LOCAL MODE
-        ENTITY Partner FIELDS ( Street ) WITH CORRESPONDING #( keys )
-        RESULT DATA(lt_partner_data).
+           ENTITY Partner FIELDS ( Street ) WITH CORRESPONDING #( keys )
+           RESULT DATA(lt_partner_data).
 
       LOOP AT lt_partner_data INTO DATA(ls_partner) WHERE Street IS NOT INITIAL.
-        INSERT VALUE #(
-          partnernumber = ls_partner-PartnerNumber
-          %action-fillemptystreets = if_abap_behv=>mk-on
-        ) INTO TABLE result.
+        INSERT VALUE #( partnernumber            = ls_partner-PartnerNumber
+                        %action-fillemptystreets = if_abap_behv=>mk-on )
+               INTO TABLE result.
       ENDLOOP.
     ENDIF.
   ENDMETHOD.
@@ -278,8 +288,10 @@ ENDCLASS.
 
 CLASS lsc_zbs_i_rappartner DEFINITION INHERITING FROM cl_abap_behavior_saver.
   PROTECTED SECTION.
-    METHODS adjust_numbers REDEFINITION.
+    METHODS
+      adjust_numbers REDEFINITION.
 ENDCLASS.
+
 
 CLASS lsc_zbs_i_rappartner IMPLEMENTATION.
   METHOD adjust_numbers.

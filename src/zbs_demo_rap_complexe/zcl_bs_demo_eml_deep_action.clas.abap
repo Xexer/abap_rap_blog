@@ -4,12 +4,14 @@ CLASS zcl_bs_demo_eml_deep_action DEFINITION
 
   PUBLIC SECTION.
     INTERFACES if_oo_adt_classrun.
+
+    TYPES: tt_document TYPE TABLE FOR ACTION IMPORT ZBS_R_RAPCInvoice~CreateInvoiceDocument.
 ENDCLASS.
 
 
 CLASS zcl_bs_demo_eml_deep_action IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
-    DATA lt_document TYPE TABLE FOR ACTION IMPORT ZBS_R_RAPCInvoice~CreateInvoiceDocument.
+    DATA lt_document TYPE tt_document.
 
     lt_document = VALUE #( ( %cid   = to_upper( cl_uuid_factory=>create_system_uuid( )->create_uuid_x16( ) )
                              %param = VALUE #( Document  = 'TEST'
