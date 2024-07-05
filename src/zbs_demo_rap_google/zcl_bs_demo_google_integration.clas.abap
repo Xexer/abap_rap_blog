@@ -3,8 +3,19 @@ CLASS zcl_bs_demo_google_integration DEFINITION
   CREATE PUBLIC.
 
   PUBLIC SECTION.
-    INTERFACES if_oo_adt_classrun.
+    "! Translate a single text
+    "! @parameter id_text | Text to be translated
+    "! @parameter id_target_language | Target language
+    "! @parameter rd_result | Translated text
+    METHODS translate_text
+      IMPORTING id_text            TYPE string
+                id_target_language TYPE string DEFAULT `en`
+      RETURNING VALUE(rd_result)   TYPE string.
 
+    "! Translates a table of texts into the target language
+    "! @parameter it_text | Table of texts
+    "! @parameter id_target_language | Target language
+    "! @parameter rt_result | Table of translated texts
     METHODS translate_texts
       IMPORTING it_text            TYPE string_table
                 id_target_language TYPE string DEFAULT `en`
@@ -22,8 +33,8 @@ CLASS zcl_bs_demo_google_integration DEFINITION
     TYPES: BEGIN OF ts_translation,
              translatedtext         TYPE string,
              detectedsourcelanguage TYPE string,
-           END OF ts_translation,
-           tt_translation TYPE STANDARD TABLE OF ts_translation WITH EMPTY KEY.
+           END OF ts_translation.
+    TYPES tt_translation TYPE STANDARD TABLE OF ts_translation WITH EMPTY KEY.
 
     TYPES: BEGIN OF ts_data,
              translations TYPE tt_translation,
@@ -49,14 +60,15 @@ ENDCLASS.
 
 
 CLASS zcl_bs_demo_google_integration IMPLEMENTATION.
-  METHOD if_oo_adt_classrun~main.
-    DATA(lo_google) = NEW zcl_bs_demo_google_integration( ).
+  METHOD translate_text.
+    DATA(lt_result) = translate_texts( it_text            = VALUE #( ( id_text ) )
+                                       id_target_language = id_target_language ).
 
-    out->write( `Input: Apfel, Birne` ).
-    out->write( `Output:` ).
-
-    out->write( lo_google->translate_texts( VALUE #( ( `Apfel` ) ( `Birne` ) ) ) ).
+    IF line_exists( lt_result[ 1 ] ).
+      rd_result = lt_result[ 1 ].
+    ENDIF.
   ENDMETHOD.
+
 
   METHOD translate_texts.
     DATA(ld_url) = create_url( ).
@@ -79,9 +91,11 @@ CLASS zcl_bs_demo_google_integration IMPLEMENTATION.
     ENDTRY.
   ENDMETHOD.
 
+
   METHOD create_url.
     rd_url = |{ c_api_endpoint }?key={ c_api_key }|.
   ENDMETHOD.
+
 
   METHOD create_payload.
     DATA(ls_google_request) = VALUE ts_google_request( q      = it_text
@@ -91,6 +105,7 @@ CLASS zcl_bs_demo_google_integration IMPLEMENTATION.
                                          name_mappings = VALUE #( ( abap = 'Q' json = 'q' )
                                                                   ( abap = 'TARGET' json = 'target' ) ) ).
   ENDMETHOD.
+
 
   METHOD map_result.
     DATA ls_google_result TYPE ts_google_result.
