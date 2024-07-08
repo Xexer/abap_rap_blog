@@ -9,6 +9,7 @@ define root view entity ZBS_C_RAPPartner
       @Consumption.valueHelpDefinition: [{ entity: { name: 'ZBS_I_RAPCustomEntityCNames', element: 'CompanyName' } }]
       PartnerName,
       Street,
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'ZBS_I_RAPCityVH', element: 'City' } }]
       City,
       @Consumption.valueHelpDefinition: [{ entity: { name: 'ZBS_C_CountryVH', element: 'Country' } }]
       Country,
