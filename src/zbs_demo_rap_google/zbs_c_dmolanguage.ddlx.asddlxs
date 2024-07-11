@@ -1,0 +1,71 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'SourceText'
+annotate view ZBS_C_DMOLanguage with
+{
+  @UI.facet: [ 
+    {
+      label: 'Source', 
+      id: 'idSource', 
+      purpose: #STANDARD, 
+      position: 10 , 
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'SOURCE'
+    },
+    {
+      label: 'Target', 
+      id: 'idTarget', 
+      purpose: #STANDARD, 
+      position: 20 , 
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'TARGET'
+    }   
+  ]
+  
+  
+  @UI.hidden: true
+  @EndUserText.label: 'Identification'
+  Identification;
+  
+  @UI.identification: [ { position: 10, qualifier: 'SOURCE' },
+                        { position: 10, type: #FOR_ACTION, dataAction: 'TranslateText', label: 'Translate' } ]
+  @UI.lineItem: [ { position: 10 },
+                  { position: 10, type: #FOR_ACTION, dataAction: 'TranslateText', label: 'Translate' } ]
+  @UI.selectionField: [ { position: 10 } ]
+  @EndUserText.label: 'Source Language'  
+  SourceLanguage;
+  
+  @UI.identification: [ { position: 20, qualifier: 'SOURCE' } ]
+  @UI.lineItem: [ { position: 20, importance: #HIGH } ]
+  @UI.multiLineText: true
+  @EndUserText.label: 'Source Text'  
+  SourceText;
+  
+  @UI.identification: [ { position: 10, qualifier: 'TARGET' } ]
+  @UI.lineItem: [ { position: 30 } ]
+  @UI.selectionField: [ { position: 20 } ]  
+  @EndUserText.label: 'Target Language'  
+  TargetLanguage;
+  
+  @UI.identification: [ { position: 20, qualifier: 'TARGET' } ]
+  @UI.lineItem: [ { position: 40, importance: #HIGH } ]
+  @UI.multiLineText: true
+  @EndUserText.label: 'Target Text'  
+  TargetText;
+  
+  @UI.hidden: true
+  @EndUserText.label: 'Created By'
+  LocalCreatedBy;
+  
+  @UI.hidden: true
+  @EndUserText.label: 'Changed By'
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  @EndUserText.label: 'Changed On'
+  LocalLastChanged;
+  
+  @UI.hidden: true
+  @EndUserText.label: 'Changed On'
+  LastChanged;
+}

@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZBS_C_DMOLanguage'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZBS_C_DMOLanguage'
+  }
+}
+define service ZBS_DEMO_LANGUAGE provider contracts odata_v4_ui {
+  expose ZBS_C_DMOLANGUAGE as Language;
+}
