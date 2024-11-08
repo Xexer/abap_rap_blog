@@ -53,6 +53,7 @@
       <TEXT>Table Access by Generic Standard Tools</TEXT>
       <AUTH_ITEM>
        <item>
+        <UUID>xuuMCKG4Hu+GhjcBrBdxyg==</UUID>
         <AUTH_OBJECT>S_TABU_NAM</AUTH_OBJECT>
         <AUTH_OBJECT_INSTANCE>0001</AUTH_OBJECT_INSTANCE>
         <TEXT>Table Access by Generic Standard Tools</TEXT>
@@ -63,9 +64,11 @@
           <VALUE>Display, Change</VALUE>
           <VALUES>
            <item>
+            <UUID>xuuMCKG4Hu+GhjcBrBeRyg==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
            </item>
            <item>
+            <UUID>xuuMCKG4Hu+GhjcBrBexyg==</UUID>
             <LOW_VALUE>02</LOW_VALUE>
            </item>
           </VALUES>
@@ -78,9 +81,11 @@
           <VALUE>ZBS_DMO_POSITION, ZBS_DMO_INVOICE</VALUE>
           <VALUES>
            <item>
+            <UUID>xuuMCKG4Hu+GhjcBrBfRyg==</UUID>
             <LOW_VALUE>ZBS_DMO_POSITION</LOW_VALUE>
            </item>
            <item>
+            <UUID>xuuMCKG4Hu+GhjcBrBfxyg==</UUID>
             <LOW_VALUE>ZBS_DMO_INVOICE</LOW_VALUE>
            </item>
           </VALUES>
