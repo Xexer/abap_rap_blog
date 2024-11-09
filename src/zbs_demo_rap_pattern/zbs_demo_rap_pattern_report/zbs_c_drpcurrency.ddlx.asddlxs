@@ -5,7 +5,7 @@
     typeNamePlural: 'Currencies',
     title: { value: 'Currency' },
     description: { value: 'CurrencyName' },
-    imageUrl: 'PictureURL'
+    imageUrl: 'PictureAttachement'
   }
 }
 annotate entity ZBS_C_DRPCurrency with
@@ -31,6 +31,13 @@ annotate entity ZBS_C_DRPCurrency with
       position   : 30,
       type       : #IDENTIFICATION_REFERENCE,
       targetQualifier: 'DOCU'
+    },
+    {
+      id         : 'idFiles',
+      label      : 'Files',
+      position   : 35,
+      type       : #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'FILE'
     },
     {
       id         : 'idChanges',
@@ -90,19 +97,19 @@ annotate entity ZBS_C_DRPCurrency with
     identification: [{ position: 50, qualifier: 'DOCU' }]
   }
   @UI.multiLineText: true
-  @EndUserText.label: 'Informations'  
+  @EndUserText.label: 'Informations'
   Documentation;
 
   @UI:{
     identification: [{ position: 60, qualifier: 'ADD' }]
   }
-  @EndUserText.label: 'Currency Image'  
+  @EndUserText.label: 'Currency Image'
   PictureURL;
 
   @UI:{
     identification: [{ position: 70, qualifier: 'CHANGE' }]
   }
-  @EndUserText.label: 'Last Changer (ID)'  
+  @EndUserText.label: 'Last Changer (ID)'
   LastEditor;
 
   @UI:{
@@ -111,4 +118,28 @@ annotate entity ZBS_C_DRPCurrency with
   }
   @EndUserText.label: 'Last Changer'
   EditorName;
+
+  @UI:{
+    identification: [{ position: 80, qualifier: 'FILE' }]
+  }
+  @EndUserText.label: 'Excel'
+  ExcelAttachement;
+
+  @UI.hidden: true
+  ExcelMimetype;
+
+  @UI.hidden: true
+  ExcelFilename;
+
+  @UI:{
+    identification: [{ position: 80, qualifier: 'FILE' }]
+  }
+  @EndUserText.label: 'Picture'
+  PictureAttachement;
+
+  @UI.hidden: true
+  PictureMimetype;
+
+  @UI.hidden: true
+  PictureFilename;
 }

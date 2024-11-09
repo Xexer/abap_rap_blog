@@ -24,6 +24,26 @@ define root view entity ZBS_C_DRPCurrency
       CurrencyComment,
       Documentation,
       PictureURL,
+      @Semantics.largeObject: {
+        mimeType : 'ExcelMimetype',
+        fileName : 'ExcelFilename',
+        contentDispositionPreference: #INLINE,
+        acceptableMimeTypes: [ 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ]
+      }
+      ExcelAttachement,
+      @Semantics.mimeType: true
+      ExcelMimetype,
+      ExcelFilename,
+      @Semantics.largeObject: {
+        mimeType : 'PictureMimetype',
+        fileName : 'PictureFilename',
+        contentDispositionPreference: #INLINE,
+        acceptableMimeTypes: [ 'image/*' ]
+      }
+      PictureAttachement,
+      @Semantics.mimeType: true
+      PictureMimetype,
+      PictureFilename,
       LastEditor,
       _User.PersonFullName as EditorName,
       _Country : redirected to composition child ZBS_C_DRPCurrencyCountry

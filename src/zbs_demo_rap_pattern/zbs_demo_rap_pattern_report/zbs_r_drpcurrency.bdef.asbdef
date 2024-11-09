@@ -30,13 +30,19 @@ authorization master ( instance )
 
   mapping for zbs_drp_addcurr
     {
-      Currency         = currency;
-      CurrencyComment  = ccomment;
-      Documentation    = documentation;
-      PictureURL       = picture_url;
-      LastEditor       = last_editor;
-      LocalLastChanged = local_last_changed;
-      LastChanged      = last_changed;
+      Currency           = currency;
+      CurrencyComment    = ccomment;
+      Documentation      = documentation;
+      PictureURL         = picture_url;
+      LastEditor         = last_editor;
+      ExcelAttachement   = excel_attachment;
+      ExcelMimetype      = excel_mimetype;
+      ExcelFilename      = excel_filename;
+      PictureAttachement = picture_attachment;
+      PictureMimetype    = picture_mimetype;
+      PictureFilename    = picture_filename;
+      LocalLastChanged   = local_last_changed;
+      LastChanged        = last_changed;
     }
 
   association _Country { create; with draft; }
