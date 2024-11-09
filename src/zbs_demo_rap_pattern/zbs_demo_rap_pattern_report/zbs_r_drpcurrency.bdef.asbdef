@@ -1,0 +1,69 @@
+managed implementation in class zbp_bs_drp_currency unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZBS_R_DRPCurrency alias Currency
+with unmanaged save
+draft table zbs_drp_currd
+etag master LocalLastChanged
+lock master total etag LastChanged
+authorization master ( instance )
+{
+  internal create;
+  update;
+  internal delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  field ( readonly )
+  Currency,
+  Decimals,
+  CurrencyISOCode,
+  AlternativeCurrencyKey,
+  CurrencyName,
+  CurrencyShortName,
+  LastEditor;
+
+  mapping for zbs_drp_addcurr
+    {
+      Currency         = currency;
+      CurrencyComment  = ccomment;
+      Documentation    = documentation;
+      PictureURL       = picture_url;
+      LastEditor       = last_editor;
+      LocalLastChanged = local_last_changed;
+      LastChanged      = last_changed;
+    }
+
+  association _Country { create; with draft; }
+}
+
+define behavior for ZBS_I_DRPCurrencyCountry alias Country
+with unmanaged save
+draft table zbs_drp_cound
+lock dependent by _Currency
+authorization dependent by _Currency
+{
+  update;
+  delete;
+
+  field ( readonly )
+  Currency,
+  CountryName;
+
+  field ( readonly : update )
+  Country;
+
+  mapping for zbs_drp_country
+    {
+      Currency       = currency;
+      Country        = country;
+      CountryRanking = ranking;
+    }
+
+  association _Currency { with draft; }
+}

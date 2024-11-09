@@ -1,0 +1,114 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Currency',
+    typeNamePlural: 'Currencies',
+    title: { value: 'Currency' },
+    description: { value: 'CurrencyName' },
+    imageUrl: 'PictureURL'
+  }
+}
+annotate entity ZBS_C_DRPCurrency with
+{
+  @UI.facet      : [
+    {
+      id         : 'idTechFields',
+      label      : 'Technical Details',
+      position   : 10,
+      type       : #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'TECH'
+    },
+    {
+      id         : 'idAddFields',
+      label      : 'Additional Info',
+      position   : 20,
+      type       : #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'ADD'
+    },
+    {
+      id         : 'idDocumentation',
+      label      : 'Documentation',
+      position   : 30,
+      type       : #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'DOCU'
+    },
+    {
+      id         : 'idChanges',
+      label      : 'Changes',
+      position   : 40,
+      type       : #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'CHANGE'
+    },
+    {
+      id         : 'idCountryTable',
+      label      : 'Country Assignment',
+      position   : 50,
+      type       : #LINEITEM_REFERENCE,
+      targetElement: '_Country'
+    }
+  ]
+
+  @UI:{
+    lineItem: [{ position: 10 }],
+    selectionField: [{ position: 10 }]
+  }
+  Currency;
+
+  @UI:{
+    lineItem: [{ position: 20 }]
+  }
+  CurrencyName;
+
+  @UI:{
+    lineItem: [{ position: 30 }]
+  }
+  CurrencyShortName;
+
+  @UI:{
+    identification: [{ position: 10, qualifier: 'TECH' }]
+  }
+  CurrencyISOCode;
+
+  @UI:{
+    identification: [{ position: 20, qualifier: 'TECH' }]
+  }
+  Decimals;
+
+  @UI:{
+    identification: [{ position: 30, qualifier: 'TECH' }]
+  }
+  AlternativeCurrencyKey;
+
+  @UI:{
+    identification: [{ position: 40, qualifier: 'ADD' }]
+  }
+  @UI.multiLineText: true
+  @EndUserText.label: 'Comment'
+  CurrencyComment;
+
+  @UI:{
+    identification: [{ position: 50, qualifier: 'DOCU' }]
+  }
+  @UI.multiLineText: true
+  @EndUserText.label: 'Informations'  
+  Documentation;
+
+  @UI:{
+    identification: [{ position: 60, qualifier: 'ADD' }]
+  }
+  @EndUserText.label: 'Currency Image'  
+  PictureURL;
+
+  @UI:{
+    identification: [{ position: 70, qualifier: 'CHANGE' }]
+  }
+  @EndUserText.label: 'Last Changer (ID)'  
+  LastEditor;
+
+  @UI:{
+    lineItem: [{ position: 40 }],
+    identification: [{ position: 80, qualifier: 'CHANGE' }]
+  }
+  @EndUserText.label: 'Last Changer'
+  EditorName;
+}

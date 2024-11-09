@@ -1,0 +1,6 @@
+@EndUserText.label: 'Currency Service'
+@ObjectModel.leadingEntity.name: 'ZBS_C_DRPCurrency'
+define service ZBS_DEMO_DRP_CURRENCY {
+  expose ZBS_C_DRPCurrency        as Currency;
+  expose ZBS_C_DRPCurrencyCountry as Country;
+}

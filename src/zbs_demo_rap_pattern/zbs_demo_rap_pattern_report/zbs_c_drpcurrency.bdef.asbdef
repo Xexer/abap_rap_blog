@@ -1,0 +1,24 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZBS_C_DRPCurrency alias Currency
+{
+  use update;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _Country { create; with draft; }
+}
+
+define behavior for ZBS_C_DRPCurrencyCountry alias Country
+{
+  use update;
+  use delete;
+
+  use association _Currency { with draft; }
+}
