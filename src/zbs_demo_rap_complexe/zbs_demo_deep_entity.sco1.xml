@@ -53,6 +53,7 @@
       <TEXT>Table Access by Generic Standard Tools</TEXT>
       <AUTH_ITEM>
        <item>
+        <UUID>goYs21u8Ht+n2npjrNcJ9g==</UUID>
         <AUTH_OBJECT>S_TABU_NAM</AUTH_OBJECT>
         <AUTH_OBJECT_INSTANCE>0001</AUTH_OBJECT_INSTANCE>
         <TEXT>Table Access by Generic Standard Tools</TEXT>
@@ -63,9 +64,11 @@
           <VALUE>Display, Change</VALUE>
           <VALUES>
            <item>
+            <UUID>goYs21u8Ht+n2npjrNcp9g==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
            </item>
            <item>
+            <UUID>goYs21u8Ht+n2npjrNdJ9g==</UUID>
             <LOW_VALUE>02</LOW_VALUE>
            </item>
           </VALUES>
@@ -75,13 +78,15 @@
          </item>
          <item>
           <FIELD>TABLE</FIELD>
-          <VALUE>ZBS_DMO_POSITION, ZBS_DMO_INVOICE</VALUE>
+          <VALUE>ZBS_DMO_INVOICE, ZBS_DMO_POSITION</VALUE>
           <VALUES>
            <item>
-            <LOW_VALUE>ZBS_DMO_POSITION</LOW_VALUE>
+            <UUID>goYs21u8Ht+n2npjrNeJ9g==</UUID>
+            <LOW_VALUE>ZBS_DMO_INVOICE</LOW_VALUE>
            </item>
            <item>
-            <LOW_VALUE>ZBS_DMO_INVOICE</LOW_VALUE>
+            <UUID>goYs21u8Ht+n2npjrNdp9g==</UUID>
+            <LOW_VALUE>ZBS_DMO_POSITION</LOW_VALUE>
            </item>
           </VALUES>
           <TEXT>Table Name</TEXT>
@@ -92,7 +97,7 @@
       </AUTH_ITEM>
      </item>
     </AUTH>
-    <PUBLISH_STATUS>p</PUBLISH_STATUS>
+    <PUBLISH_STATUS>u</PUBLISH_STATUS>
     <PLUGIN_CONFIG>
      <item>
       <UI_OBJECT>cscn_type_selection</UI_OBJECT>

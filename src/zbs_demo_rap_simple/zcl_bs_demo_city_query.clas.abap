@@ -7,7 +7,10 @@ CLASS zcl_bs_demo_city_query DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_city_query IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_CITY_QUERY IMPLEMENTATION.
+
+
   METHOD if_rap_query_provider~select.
     DATA lt_values TYPE STANDARD TABLE OF ZBS_I_RAPCityVH WITH EMPTY KEY.
 

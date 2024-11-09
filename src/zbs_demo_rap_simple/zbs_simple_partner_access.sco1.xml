@@ -44,6 +44,7 @@
       <TEXT>Table Access by Generic Standard Tools</TEXT>
       <AUTH_ITEM>
        <item>
+        <UUID>goYs21u8Ht+n2npjrNep9g==</UUID>
         <AUTH_OBJECT>S_TABU_NAM</AUTH_OBJECT>
         <AUTH_OBJECT_INSTANCE>0001</AUTH_OBJECT_INSTANCE>
         <TEXT>Table Access by Generic Standard Tools</TEXT>
@@ -54,6 +55,7 @@
           <VALUE>Display</VALUE>
           <VALUES>
            <item>
+            <UUID>goYs21u8Ht+n2npjrNfJ9g==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
            </item>
           </VALUES>
@@ -66,6 +68,7 @@
           <VALUE>ZBS_DMO_PARTNER</VALUE>
           <VALUES>
            <item>
+            <UUID>goYs21u8Ht+n2npjrNfp9g==</UUID>
             <LOW_VALUE>ZBS_DMO_PARTNER</LOW_VALUE>
            </item>
           </VALUES>
@@ -77,7 +80,7 @@
       </AUTH_ITEM>
      </item>
     </AUTH>
-    <PUBLISH_STATUS>p</PUBLISH_STATUS>
+    <PUBLISH_STATUS>u</PUBLISH_STATUS>
     <PLUGIN_CONFIG>
      <item>
       <UI_OBJECT>cscn_type_selection</UI_OBJECT>

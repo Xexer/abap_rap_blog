@@ -4,18 +4,18 @@ CLASS zcl_bs_demo_google_integration DEFINITION
 
   PUBLIC SECTION.
     "! Translate a single text
-    "! @parameter id_text | Text to be translated
+    "! @parameter id_text            | Text to be translated
     "! @parameter id_target_language | Target language
-    "! @parameter rd_result | Translated text
+    "! @parameter rd_result          | Translated text
     METHODS translate_text
       IMPORTING id_text            TYPE string
                 id_target_language TYPE string DEFAULT `en`
       RETURNING VALUE(rd_result)   TYPE string.
 
     "! Translates a table of texts into the target language
-    "! @parameter it_text | Table of texts
+    "! @parameter it_text            | Table of texts
     "! @parameter id_target_language | Target language
-    "! @parameter rt_result | Table of translated texts
+    "! @parameter rt_result          | Table of translated texts
     METHODS translate_texts
       IMPORTING it_text            TYPE string_table
                 id_target_language TYPE string DEFAULT `en`
@@ -59,7 +59,10 @@ CLASS zcl_bs_demo_google_integration DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_google_integration IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_GOOGLE_INTEGRATION IMPLEMENTATION.
+
+
   METHOD translate_text.
     DATA(lt_result) = translate_texts( it_text            = VALUE #( ( id_text ) )
                                        id_target_language = id_target_language ).
@@ -67,6 +70,11 @@ CLASS zcl_bs_demo_google_integration IMPLEMENTATION.
     IF line_exists( lt_result[ 1 ] ).
       rd_result = lt_result[ 1 ].
     ENDIF.
+  ENDMETHOD.
+
+
+  METHOD create_url.
+    rd_url = |{ c_api_endpoint }?key={ c_api_key }|.
   ENDMETHOD.
 
 
@@ -89,11 +97,6 @@ CLASS zcl_bs_demo_google_integration IMPLEMENTATION.
       CATCH cx_root.
         CLEAR rt_result.
     ENDTRY.
-  ENDMETHOD.
-
-
-  METHOD create_url.
-    rd_url = |{ c_api_endpoint }?key={ c_api_key }|.
   ENDMETHOD.
 
 

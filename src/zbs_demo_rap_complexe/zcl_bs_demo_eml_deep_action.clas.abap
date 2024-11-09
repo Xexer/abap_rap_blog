@@ -9,7 +9,10 @@ CLASS zcl_bs_demo_eml_deep_action DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_eml_deep_action IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_EML_DEEP_ACTION IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     DATA lt_document TYPE tt_document.
 

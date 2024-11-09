@@ -22,7 +22,10 @@ CLASS zcl_bs_demo_adjust_data DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_adjust_data IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_ADJUST_DATA IMPLEMENTATION.
+
+
   METHOD adjust_via_request.
     DATA(lt_sort) = io_request->get_sort_elements( ).
     DATA(ld_offset) = io_request->get_paging( )->get_offset( ).
