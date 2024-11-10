@@ -2,6 +2,7 @@
 @EndUserText.label: 'Language (Projection)'
 @AccessControl.authorizationCheck: #CHECK
 @Search.searchable: true
+@ObjectModel.semanticKey: [ 'SourceLanguage', 'SourceText' ]
 define root view entity ZBS_C_DMOLanguage
   provider contract transactional_query
   as projection on ZBS_R_DMOLanguage

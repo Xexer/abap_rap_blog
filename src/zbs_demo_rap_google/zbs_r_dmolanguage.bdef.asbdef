@@ -32,6 +32,8 @@ authorization master( global )
 
   action TranslateText result [1] $self;
 
+  validation CheckSemanticKey on save { create; update; field SourceLanguage, SourceText; }
+
   mapping for ZBS_DMO_LANG
   {
     Identification = identification;

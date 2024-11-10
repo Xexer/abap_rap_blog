@@ -2,6 +2,7 @@
 @EndUserText.label: 'Consumption for Currency'
 @Metadata.allowExtensions: true
 @Search.searchable: true
+@ObjectModel.semanticKey: ['Currency']
 define root view entity ZBS_C_DRPCurrency
   provider contract transactional_query
   as projection on ZBS_R_DRPCurrency
