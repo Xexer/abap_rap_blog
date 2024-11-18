@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Messages for Pattern</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>000</MSGNR>
+     <TEXT>*** Messages for Pattern ***</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>No Excel stream found</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>No sheet found in file</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Line not found</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>No update in test run</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>There are &amp;1 lines in the excel file</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>Changed &amp;1 country/countries</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>Created &amp;1 country/countries</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

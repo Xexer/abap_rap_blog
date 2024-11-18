@@ -28,6 +28,8 @@ authorization master ( instance )
   CurrencyShortName,
   LastEditor;
 
+  action LoadExcelContent parameter ZBS_S_DRPExcelPopup;
+
   mapping for zbs_drp_addcurr
     {
       Currency           = currency;

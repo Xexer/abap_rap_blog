@@ -57,7 +57,8 @@ annotate entity ZBS_C_DRPCurrency with
 
   @UI:{
     lineItem: [{ position: 10 }],
-    selectionField: [{ position: 10 }]
+    selectionField: [{ position: 10 }],
+    identification: [{ type: #FOR_ACTION, dataAction: 'LoadExcelContent', label: 'Load Excel' }]
   }
   Currency;
 
