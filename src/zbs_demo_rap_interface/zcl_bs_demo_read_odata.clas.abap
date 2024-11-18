@@ -24,6 +24,16 @@ ENDCLASS.
 CLASS ZCL_BS_DEMO_READ_ODATA IMPLEMENTATION.
 
 
+  METHOD get_client.
+    DATA(lo_destination) = cl_http_destination_provider=>create_by_cloud_destination(
+      i_name       = c_destination
+      i_authn_mode = if_a4c_cp_service=>service_specific
+    ).
+
+    ro_result  = cl_web_http_client_manager=>create_by_http_destination( lo_destination ).
+  ENDMETHOD.
+
+
   METHOD if_oo_adt_classrun~main.
     DATA:
       lt_business_data TYPE TABLE OF zbs_rap_companynames.
@@ -47,15 +57,5 @@ CLASS ZCL_BS_DEMO_READ_ODATA IMPLEMENTATION.
       CATCH cx_root INTO DATA(lo_error).
         out->write( lo_error->get_text( ) ).
     ENDTRY.
-  ENDMETHOD.
-
-
-  METHOD get_client.
-    DATA(lo_destination) = cl_http_destination_provider=>create_by_cloud_destination(
-      i_name       = c_destination
-      i_authn_mode = if_a4c_cp_service=>service_specific
-    ).
-
-    ro_result  = cl_web_http_client_manager=>create_by_http_destination( lo_destination ).
   ENDMETHOD.
 ENDCLASS.

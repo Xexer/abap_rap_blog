@@ -43,16 +43,37 @@ ENDCLASS.
 CLASS ZCL_BS_DEMO_ODATA_ACTIONS IMPLEMENTATION.
 
 
-  METHOD if_oo_adt_classrun~main.
-    TRY.
-        read_data_with_filter( out ).
-        create_new_company( out ).
-        update_company_description( out ).
-        delete_company( out ).
+  METHOD create_new_company.
+    DATA:
+      ls_created TYPE zbs_rap_companynames.
 
-      CATCH cx_root INTO DATA(lo_error).
-        out->write( lo_error->get_text( ) ).
-    ENDTRY.
+    DATA(ls_new_company) = VALUE zbs_rap_companynames(
+      CompanyName = 'Gazprom'
+      Branch = 'Gas'
+    ).
+
+    DATA(lo_request) = get_proxy( )->create_resource_for_entity_set( c_entity )->create_request_for_create( ).
+    lo_request->set_business_data( ls_new_company ).
+
+    DATA(lo_response) = lo_request->execute( ).
+    lo_response->get_business_data( IMPORTING es_business_data = ls_created ).
+
+    io_out->write( `Created new company:` ).
+    io_out->write( ls_created ).
+  ENDMETHOD.
+
+
+  METHOD delete_company.
+    DATA(ls_key) = VALUE zbs_rap_companynames( companyname = 'Gazprom' ).
+
+    DATA(lo_request) = get_proxy( )->create_resource_for_entity_set( c_entity
+      )->navigate_with_key( ls_key
+      )->create_request_for_delete(
+    ).
+
+    lo_request->execute( ).
+
+    io_out->write( `Company deleted:` ).
   ENDMETHOD.
 
 
@@ -72,6 +93,19 @@ CLASS ZCL_BS_DEMO_ODATA_ACTIONS IMPLEMENTATION.
             iv_relative_service_root   = '/sap/opu/odata/sap/ZBS_API_COMPANY_NAMES_O2' ).
 
       CATCH cx_root.
+    ENDTRY.
+  ENDMETHOD.
+
+
+  METHOD if_oo_adt_classrun~main.
+    TRY.
+        read_data_with_filter( out ).
+        create_new_company( out ).
+        update_company_description( out ).
+        delete_company( out ).
+
+      CATCH cx_root INTO DATA(lo_error).
+        out->write( lo_error->get_text( ) ).
     ENDTRY.
   ENDMETHOD.
 
@@ -100,26 +134,6 @@ CLASS ZCL_BS_DEMO_ODATA_ACTIONS IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD create_new_company.
-    DATA:
-      ls_created TYPE zbs_rap_companynames.
-
-    DATA(ls_new_company) = VALUE zbs_rap_companynames(
-      CompanyName = 'Gazprom'
-      Branch = 'Gas'
-    ).
-
-    DATA(lo_request) = get_proxy( )->create_resource_for_entity_set( c_entity )->create_request_for_create( ).
-    lo_request->set_business_data( ls_new_company ).
-
-    DATA(lo_response) = lo_request->execute( ).
-    lo_response->get_business_data( IMPORTING es_business_data = ls_created ).
-
-    io_out->write( `Created new company:` ).
-    io_out->write( ls_created ).
-  ENDMETHOD.
-
-
   METHOD update_company_description.
     DATA:
       ls_updated TYPE zbs_rap_companynames.
@@ -143,19 +157,5 @@ CLASS ZCL_BS_DEMO_ODATA_ACTIONS IMPLEMENTATION.
 
     io_out->write( `Updated company:` ).
     io_out->write( ls_updated ).
-  ENDMETHOD.
-
-
-  METHOD delete_company.
-    DATA(ls_key) = VALUE zbs_rap_companynames( companyname = 'Gazprom' ).
-
-    DATA(lo_request) = get_proxy( )->create_resource_for_entity_set( c_entity
-      )->navigate_with_key( ls_key
-      )->create_request_for_delete(
-    ).
-
-    lo_request->execute( ).
-
-    io_out->write( `Company deleted:` ).
   ENDMETHOD.
 ENDCLASS.

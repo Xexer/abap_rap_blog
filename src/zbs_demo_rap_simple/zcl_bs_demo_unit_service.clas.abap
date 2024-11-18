@@ -70,6 +70,24 @@ CLASS ZCL_BS_DEMO_UNIT_SERVICE IMPLEMENTATION.
   ENDMETHOD.
 
 
+  METHOD delete_nevada_inc.
+    DATA(lo_cut) = create_test_client( ).
+
+    DATA(lo_request) = lo_cut->create_resource_for_entity_set( 'Partner'
+      )->navigate_with_key( VALUE ts_key( PartnerNumber = '3000000001' )
+      )->create_request_for_delete( ).
+
+    lo_request->execute( ).
+
+    SELECT SINGLE FROM zbs_dmo_partner
+      FIELDS *
+      WHERE partner = '3000000001'
+      INTO @DATA(ls_partner).
+
+    cl_abap_unit_assert=>assert_subrc( exp = 4 ).
+  ENDMETHOD.
+
+
   METHOD get_all_partners.
     DATA:
       lt_result TYPE TABLE OF ZBS_C_RAPPartner.
@@ -101,23 +119,5 @@ CLASS ZCL_BS_DEMO_UNIT_SERVICE IMPLEMENTATION.
       INTO @DATA(ls_result).
 
     cl_abap_unit_assert=>assert_equals( act = ls_result-street exp = 'Updated' ).
-  ENDMETHOD.
-
-
-  METHOD delete_nevada_inc.
-    DATA(lo_cut) = create_test_client( ).
-
-    DATA(lo_request) = lo_cut->create_resource_for_entity_set( 'Partner'
-      )->navigate_with_key( VALUE ts_key( PartnerNumber = '3000000001' )
-      )->create_request_for_delete( ).
-
-    lo_request->execute( ).
-
-    SELECT SINGLE FROM zbs_dmo_partner
-      FIELDS *
-      WHERE partner = '3000000001'
-      INTO @DATA(ls_partner).
-
-    cl_abap_unit_assert=>assert_subrc( exp = 4 ).
   ENDMETHOD.
 ENDCLASS.

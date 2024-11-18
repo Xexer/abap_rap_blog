@@ -33,6 +33,26 @@ ENDCLASS.
 CLASS ZCL_BS_DEMO_CUST_CNAME_QUERY IMPLEMENTATION.
 
 
+  METHOD get_proxy.
+    TRY.
+        DATA(lo_destination) = cl_http_destination_provider=>create_by_cloud_destination(
+          i_name       = c_destination
+          i_authn_mode = if_a4c_cp_service=>service_specific
+        ).
+
+        DATA(lo_client) = cl_web_http_client_manager=>create_by_http_destination( lo_destination ).
+
+        ro_result = cl_web_odata_client_factory=>create_v2_remote_proxy(
+          EXPORTING
+            iv_service_definition_name = 'ZBS_DEMO_RAP_ONPREM_ODATA'
+            io_http_client             = lo_client
+            iv_relative_service_root   = '/sap/opu/odata/sap/ZBS_API_COMPANY_NAMES_O2' ).
+
+      CATCH cx_root.
+    ENDTRY.
+  ENDMETHOD.
+
+
   METHOD if_rap_query_provider~select.
     " Read data from OData on-premise
     read_data_by_request(
@@ -51,26 +71,6 @@ CLASS ZCL_BS_DEMO_CUST_CNAME_QUERY IMPLEMENTATION.
     IF io_request->is_data_requested(  ).
       io_response->set_data( lt_result ).
     ENDIF.
-  ENDMETHOD.
-
-
-  METHOD get_proxy.
-    TRY.
-        DATA(lo_destination) = cl_http_destination_provider=>create_by_cloud_destination(
-          i_name       = c_destination
-          i_authn_mode = if_a4c_cp_service=>service_specific
-        ).
-
-        DATA(lo_client) = cl_web_http_client_manager=>create_by_http_destination( lo_destination ).
-
-        ro_result = cl_web_odata_client_factory=>create_v2_remote_proxy(
-          EXPORTING
-            iv_service_definition_name = 'ZBS_DEMO_RAP_ONPREM_ODATA'
-            io_http_client             = lo_client
-            iv_relative_service_root   = '/sap/opu/odata/sap/ZBS_API_COMPANY_NAMES_O2' ).
-
-      CATCH cx_root.
-    ENDTRY.
   ENDMETHOD.
 
 

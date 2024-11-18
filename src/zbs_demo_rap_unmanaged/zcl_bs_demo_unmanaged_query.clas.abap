@@ -18,22 +18,6 @@ ENDCLASS.
 CLASS ZCL_BS_DEMO_UNMANAGED_QUERY IMPLEMENTATION.
 
 
-  METHOD if_rap_query_provider~select.
-    DATA lt_output TYPE STANDARD TABLE OF ZBS_C_DMOUnmanaged.
-
-    DATA(lt_database) = get_data_from_request( io_request ).
-    lt_output = CORRESPONDING #( lt_database MAPPING TableKey = gen_key Description = text CreationDate = cdate ).
-
-    IF io_request->is_data_requested( ).
-      io_response->set_data( lt_output ).
-    ENDIF.
-
-    IF io_request->is_total_numb_of_rec_requested( ).
-      io_response->set_total_number_of_records( lines( lt_output ) ).
-    ENDIF.
-  ENDMETHOD.
-
-
   METHOD get_data_from_request.
     DATA lt_r_key  TYPE zif_bs_demo_rap_data_handler=>tt_r_key.
     DATA lt_r_text TYPE zif_bs_demo_rap_data_handler=>tt_r_text.
@@ -57,5 +41,21 @@ CLASS ZCL_BS_DEMO_UNMANAGED_QUERY IMPLEMENTATION.
     rt_result = zcl_bs_demo_rap_data_handler=>create_instance( )->query( it_r_key  = lt_r_key
                                                                          it_r_text = lt_r_text
                                                                          it_r_date = lt_r_date ).
+  ENDMETHOD.
+
+
+  METHOD if_rap_query_provider~select.
+    DATA lt_output TYPE STANDARD TABLE OF ZBS_C_DMOUnmanaged.
+
+    DATA(lt_database) = get_data_from_request( io_request ).
+    lt_output = CORRESPONDING #( lt_database MAPPING TableKey = gen_key Description = text CreationDate = cdate ).
+
+    IF io_request->is_data_requested( ).
+      io_response->set_data( lt_output ).
+    ENDIF.
+
+    IF io_request->is_total_numb_of_rec_requested( ).
+      io_response->set_total_number_of_records( lines( lt_output ) ).
+    ENDIF.
   ENDMETHOD.
 ENDCLASS.

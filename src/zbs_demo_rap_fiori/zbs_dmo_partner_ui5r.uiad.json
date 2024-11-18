@@ -1,0 +1,39 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Partner",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD"
+  },
+  "ui5AppDetails": {
+    "appId": "test.bs.zbsdemopartner"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_2257F4CA9F6554976C0F3A11BED804F4A8D941DF_TM",
+    "semanticObject": "ZBS_DEMO_PARTNER",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_2257F4CA9F6554976C0F3A11BED804F4A8D941DF_AL",
+      "tileType": "dynamic",
+      "isDefault": true,
+      "standard": {
+        "title": "Partner",
+        "subtitle": "Manage partners",
+        "icon": "sap-icon://account",
+        "dynamic": {
+          "serviceBaseUrl": "/sap/opu/odata/sap/ZBS_UI_SIMPLE_PARTNER_O2/Partner/$count",
+          "refreshInterval": 5
+        }
+      }
+    }
+  ]
+}

@@ -26,24 +26,6 @@ ENDCLASS.
 CLASS ZCL_BS_DEMO_CUSTOM_COMPANY_QRY IMPLEMENTATION.
 
 
-  METHOD if_rap_query_provider~select.
-    DATA lt_result TYPE STANDARD TABLE OF ZBS_R_RAPCustomCompanyNames.
-
-    read_data_by_request( EXPORTING io_request = io_request
-                          IMPORTING et_result  = DATA(lt_company_names)
-                                    ed_count   = DATA(ld_count) ).
-
-    IF io_request->is_total_numb_of_rec_requested( ).
-      io_response->set_total_number_of_records( ld_count ).
-    ENDIF.
-
-    IF io_request->is_data_requested( ).
-      lt_result = CORRESPONDING #( lt_company_names ).
-      io_response->set_data( lt_result ).
-    ENDIF.
-  ENDMETHOD.
-
-
   METHOD get_proxy.
     TRY.
         DATA(lo_destination) = cl_http_destination_provider=>create_by_cloud_destination(
@@ -59,6 +41,24 @@ CLASS ZCL_BS_DEMO_CUSTOM_COMPANY_QRY IMPLEMENTATION.
 
       CATCH cx_root.
     ENDTRY.
+  ENDMETHOD.
+
+
+  METHOD if_rap_query_provider~select.
+    DATA lt_result TYPE STANDARD TABLE OF ZBS_R_RAPCustomCompanyNames.
+
+    read_data_by_request( EXPORTING io_request = io_request
+                          IMPORTING et_result  = DATA(lt_company_names)
+                                    ed_count   = DATA(ld_count) ).
+
+    IF io_request->is_total_numb_of_rec_requested( ).
+      io_response->set_total_number_of_records( ld_count ).
+    ENDIF.
+
+    IF io_request->is_data_requested( ).
+      lt_result = CORRESPONDING #( lt_company_names ).
+      io_response->set_data( lt_result ).
+    ENDIF.
   ENDMETHOD.
 
 

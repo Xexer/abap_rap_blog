@@ -63,6 +63,35 @@ ENDCLASS.
 CLASS ZCL_BS_DEMO_GOOGLE_INTEGRATION IMPLEMENTATION.
 
 
+  METHOD create_payload.
+    DATA(ls_google_request) = VALUE ts_google_request( q      = it_text
+                                                       target = id_target_language ).
+
+    rd_result = /ui2/cl_json=>serialize( data          = ls_google_request
+                                         name_mappings = VALUE #( ( abap = 'Q' json = 'q' )
+                                                                  ( abap = 'TARGET' json = 'target' ) ) ).
+  ENDMETHOD.
+
+
+  METHOD create_url.
+    rd_url = |{ c_api_endpoint }?key={ c_api_key }|.
+  ENDMETHOD.
+
+
+  METHOD map_result.
+    DATA ls_google_result TYPE ts_google_result.
+
+    IF io_response->get_status( )-code = 200.
+      /ui2/cl_json=>deserialize( EXPORTING json = io_response->get_text( )
+                                 CHANGING  data = ls_google_result ).
+    ENDIF.
+
+    LOOP AT ls_google_result-data-translations INTO DATA(ls_translated).
+      INSERT ls_translated-TranslatedText INTO TABLE rt_result.
+    ENDLOOP.
+  ENDMETHOD.
+
+
   METHOD translate_text.
     DATA(lt_result) = translate_texts( it_text            = VALUE #( ( id_text ) )
                                        id_target_language = id_target_language ).
@@ -70,11 +99,6 @@ CLASS ZCL_BS_DEMO_GOOGLE_INTEGRATION IMPLEMENTATION.
     IF line_exists( lt_result[ 1 ] ).
       rd_result = lt_result[ 1 ].
     ENDIF.
-  ENDMETHOD.
-
-
-  METHOD create_url.
-    rd_url = |{ c_api_endpoint }?key={ c_api_key }|.
   ENDMETHOD.
 
 
@@ -97,29 +121,5 @@ CLASS ZCL_BS_DEMO_GOOGLE_INTEGRATION IMPLEMENTATION.
       CATCH cx_root.
         CLEAR rt_result.
     ENDTRY.
-  ENDMETHOD.
-
-
-  METHOD create_payload.
-    DATA(ls_google_request) = VALUE ts_google_request( q      = it_text
-                                                       target = id_target_language ).
-
-    rd_result = /ui2/cl_json=>serialize( data          = ls_google_request
-                                         name_mappings = VALUE #( ( abap = 'Q' json = 'q' )
-                                                                  ( abap = 'TARGET' json = 'target' ) ) ).
-  ENDMETHOD.
-
-
-  METHOD map_result.
-    DATA ls_google_result TYPE ts_google_result.
-
-    IF io_response->get_status( )-code = 200.
-      /ui2/cl_json=>deserialize( EXPORTING json = io_response->get_text( )
-                                 CHANGING  data = ls_google_result ).
-    ENDIF.
-
-    LOOP AT ls_google_result-data-translations INTO DATA(ls_translated).
-      INSERT ls_translated-TranslatedText INTO TABLE rt_result.
-    ENDLOOP.
   ENDMETHOD.
 ENDCLASS.

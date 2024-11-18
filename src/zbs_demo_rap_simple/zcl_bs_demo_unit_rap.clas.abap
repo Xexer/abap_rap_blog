@@ -53,6 +53,32 @@ CLASS ZCL_BS_DEMO_UNIT_RAP IMPLEMENTATION.
   ENDMETHOD.
 
 
+  METHOD clear_empty_streets.
+    DATA:
+      lt_clear_streets TYPE TABLE FOR ACTION IMPORT ZBS_I_RAPPartner\\Partner~clearAllEmptyStreets.
+
+    INSERT INITIAL LINE INTO TABLE lt_clear_streets.
+
+    MODIFY ENTITIES OF ZBS_I_RAPPartner
+      ENTITY Partner EXECUTE clearAllEmptyStreets FROM lt_clear_streets
+      MAPPED DATA(ls_mapped)
+      FAILED DATA(ls_failed)
+      REPORTED DATA(ls_reported).
+
+    COMMIT ENTITIES
+      RESPONSE OF ZBS_I_RAPPartner
+        REPORTED DATA(ls_commit_reported)
+        FAILED DATA(ls_commit_failed).
+
+    SELECT FROM zbs_dmo_partner
+      FIELDS partner
+      WHERE street = 'EMPTY'
+      INTO TABLE @DATA(lt_empty_streets).
+
+    cl_abap_unit_assert=>assert_subrc( exp = 4 ).
+  ENDMETHOD.
+
+
   METHOD create_new_entry.
     DATA:
       lt_new_partner TYPE TABLE FOR CREATE ZBS_I_RAPPartner.
@@ -118,31 +144,5 @@ CLASS ZCL_BS_DEMO_UNIT_RAP IMPLEMENTATION.
 
     cl_abap_unit_assert=>assert_subrc( ).
     cl_abap_unit_assert=>assert_equals( act = ls_partner_found-street exp = 'EMPTY' ).
-  ENDMETHOD.
-
-
-  METHOD clear_empty_streets.
-    DATA:
-      lt_clear_streets TYPE TABLE FOR ACTION IMPORT ZBS_I_RAPPartner\\Partner~clearAllEmptyStreets.
-
-    INSERT INITIAL LINE INTO TABLE lt_clear_streets.
-
-    MODIFY ENTITIES OF ZBS_I_RAPPartner
-      ENTITY Partner EXECUTE clearAllEmptyStreets FROM lt_clear_streets
-      MAPPED DATA(ls_mapped)
-      FAILED DATA(ls_failed)
-      REPORTED DATA(ls_reported).
-
-    COMMIT ENTITIES
-      RESPONSE OF ZBS_I_RAPPartner
-        REPORTED DATA(ls_commit_reported)
-        FAILED DATA(ls_commit_failed).
-
-    SELECT FROM zbs_dmo_partner
-      FIELDS partner
-      WHERE street = 'EMPTY'
-      INTO TABLE @DATA(lt_empty_streets).
-
-    cl_abap_unit_assert=>assert_subrc( exp = 4 ).
   ENDMETHOD.
 ENDCLASS.
