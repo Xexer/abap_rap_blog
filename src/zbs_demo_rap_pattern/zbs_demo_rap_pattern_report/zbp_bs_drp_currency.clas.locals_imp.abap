@@ -1,3 +1,11 @@
+CLASS lcl_buffer DEFINITION.
+  PUBLIC SECTION.
+    TYPES tt_keys TYPE TABLE FOR ACTION IMPORT zbs_r_drpcurrency\\currency~loadexcelcontent.
+
+    CLASS-DATA gt_event TYPE tt_keys.
+ENDCLASS.
+
+
 CLASS lhc_Currency DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
     TYPES: BEGIN OF ts_excel,
@@ -119,6 +127,8 @@ CLASS lhc_Currency IMPLEMENTATION.
                         severity = if_abap_behv_message=>severity-success
                         v1       = lines( lt_countries_modify ) )
            INTO TABLE reported-%other.
+
+    INSERT ls_key INTO TABLE lcl_buffer=>gt_event.
   ENDMETHOD.
 
 
@@ -165,21 +175,31 @@ ENDCLASS.
 CLASS lsc_ZBS_R_DRPCURRENCY IMPLEMENTATION.
   METHOD save_modified.
     LOOP AT update-currency INTO DATA(ls_new_currency).
-      DATA(ls_modify_currency) = CORRESPONDING zbs_drp_addcurr( ls_new_currency MAPPING FROM ENTITY ).
-      ls_modify_currency-last_editor = cl_abap_context_info=>get_user_technical_name( ).
-      MODIFY zbs_drp_addcurr FROM @ls_modify_currency.
+      ls_new_currency-LastEditor = cl_abap_context_info=>get_user_technical_name( ).
+
+      INSERT zbs_drp_addcurr FROM @ls_new_currency MAPPING FROM ENTITY.
+      IF sy-subrc <> 0.
+        UPDATE zbs_drp_addcurr FROM @ls_new_currency INDICATORS SET STRUCTURE %control MAPPING FROM ENTITY.
+      ENDIF.
     ENDLOOP.
 
     LOOP AT create-country INTO DATA(ls_create_country).
-      INSERT zbs_drp_country FROM @( CORRESPONDING zbs_drp_country( ls_create_country MAPPING FROM ENTITY ) ).
+      INSERT zbs_drp_country FROM @ls_create_country MAPPING FROM ENTITY.
     ENDLOOP.
 
     LOOP AT update-country INTO DATA(ls_update_country).
-      UPDATE zbs_drp_country FROM @( CORRESPONDING zbs_drp_country( ls_update_country MAPPING FROM ENTITY ) ).
+      UPDATE zbs_drp_country FROM @ls_update_country INDICATORS SET STRUCTURE %control MAPPING FROM ENTITY.
     ENDLOOP.
 
     LOOP AT delete-country INTO DATA(ls_delete_country).
       DELETE zbs_drp_country FROM @( CORRESPONDING zbs_drp_country( ls_delete_country MAPPING FROM ENTITY ) ).
+    ENDLOOP.
+
+    LOOP AT lcl_buffer=>gt_event INTO DATA(ls_event).
+      RAISE ENTITY EVENT ZBS_R_DRPCurrency~AfterExcelLoad
+            FROM VALUE #( ( %key   = ls_event-%key
+                            %param = VALUE #( EventComment = ls_event-%param-EventComment
+                                              LastEditor   = cl_abap_context_info=>get_user_technical_name( ) ) ) ).
     ENDLOOP.
   ENDMETHOD.
 
