@@ -14,6 +14,11 @@ define behavior for ZBS_C_DRPCurrency alias Currency
 
   use action LoadExcelContent;
 
+  side effects
+  {
+    action LoadExcelContent affects entity _Country, field ExcelAttachement;
+  }
+
   use association _Country { create; with draft; }
 }
 
