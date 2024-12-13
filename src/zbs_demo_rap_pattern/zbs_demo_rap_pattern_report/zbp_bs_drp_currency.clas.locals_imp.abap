@@ -57,6 +57,14 @@ CLASS lhc_Currency IMPLEMENTATION.
         RETURN.
     ENDTRY.
 
+    IF ls_key-%param-EventComment IS INITIAL.
+      INSERT new_message( id       = 'ZBS_DEMO_RAP_PATTERN'
+                          number   = '008'
+                          severity = if_abap_behv_message=>severity-error )
+             INTO TABLE reported-%other.
+      RETURN.
+    ENDIF.
+
     TRY.
         DATA(lt_excel) = convert_excel_file_to_table( ls_attachement-excelattachement ).
       CATCH zcx_drp_excel_error INTO DATA(lo_excel_error).

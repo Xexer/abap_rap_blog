@@ -1,0 +1,6 @@
+abstract;
+
+define behavior for ZBS_S_DRPExcelPopup
+{
+  field ( mandatory ) EventComment, TestRun;
+}

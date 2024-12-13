@@ -56,6 +56,12 @@
      <MSGNR>007</MSGNR>
      <TEXT>Created &amp;1 country/countries</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Please fill the mandatory field Comment</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

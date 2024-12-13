@@ -1,5 +1,5 @@
 @EndUserText.label: 'Excel Popup'
-define abstract entity ZBS_S_DRPExcelPopup
+define root abstract entity ZBS_S_DRPExcelPopup
 {
   @EndUserText.label: 'Comment'
   EventComment : abap.char(60);
