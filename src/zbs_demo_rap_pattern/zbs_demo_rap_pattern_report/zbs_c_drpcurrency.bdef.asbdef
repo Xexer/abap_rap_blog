@@ -13,6 +13,7 @@ define behavior for ZBS_C_DRPCurrency alias Currency
   use action Prepare;
 
   use action LoadExcelContent;
+  use function GetDefaultsForExcelPopup;
 
   side effects
   {

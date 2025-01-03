@@ -28,7 +28,7 @@ authorization master ( instance )
   CurrencyShortName,
   LastEditor;
 
-  action LoadExcelContent parameter ZBS_S_DRPExcelPopup;
+  action LoadExcelContent parameter ZBS_S_DRPExcelPopup { default function GetDefaultsForExcelPopup; }
 
   event AfterExcelLoad parameter ZBS_S_DRPEventData;
 
