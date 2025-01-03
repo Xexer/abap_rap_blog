@@ -15,6 +15,7 @@ authorization master ( instance )
   action sendTestMail parameter ZBS_I_RAPCMailPopup;
 
   static action CreateInvoiceDocument deep parameter ZBS_S_RAPCreateInvoice;
+  static action CreateMultipleInvoices deep table parameter ZBS_S_RAPCreateInvoice;
 
   association _Position { create; }
   mapping for zbs_dmo_invoice

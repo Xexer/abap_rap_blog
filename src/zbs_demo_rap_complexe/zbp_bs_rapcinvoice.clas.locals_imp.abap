@@ -7,6 +7,8 @@ CLASS lhc_Invoice DEFINITION INHERITING FROM cl_abap_behavior_handler.
       IMPORTING keys FOR ACTION invoice~sendtestmail.
     METHODS createinvoicedocument FOR MODIFY
       IMPORTING keys FOR ACTION invoice~createinvoicedocument.
+    METHODS createmultipleinvoices FOR MODIFY
+      IMPORTING keys FOR ACTION invoice~createmultipleinvoices.
 
     METHODS send_mail_with_attachement
       IMPORTING id_mail_content TYPE string
@@ -42,9 +44,10 @@ CLASS lhc_Invoice IMPLEMENTATION.
     lo_mail->add_recipient( id_receiver ).
 
     lo_mail->set_subject( 'Invoices' ).
-    lo_mail->set_main( cl_bcs_mail_textpart=>create_instance(
-        iv_content      = '<h1>List of invoices</h1><p>See the attachment with the selected invoices.</p>'
-        iv_content_type = 'text/html' ) ).
+    lo_mail->set_main(
+        cl_bcs_mail_textpart=>create_instance(
+            iv_content      = '<h1>List of invoices</h1><p>See the attachment with the selected invoices.</p>'
+            iv_content_type = 'text/html' ) ).
 
     lo_mail->add_attachment( cl_bcs_mail_textpart=>create_instance( iv_content      = id_mail_content
                                                                     iv_content_type = 'text/plain'
@@ -55,6 +58,12 @@ CLASS lhc_Invoice IMPLEMENTATION.
 
 
   METHOD CreateInvoiceDocument.
+    IF 0 = 0.
+    ENDIF.
+  ENDMETHOD.
+
+
+  METHOD CreateMultipleInvoices.
     IF 0 = 0.
     ENDIF.
   ENDMETHOD.

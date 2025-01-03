@@ -61,15 +61,15 @@
         <VALUES>
          <item>
           <FIELD>ACTVT</FIELD>
-          <VALUE>Change, Display</VALUE>
+          <VALUE>Display, Change</VALUE>
           <VALUES>
-           <item>
-            <UUID>goYs21u8Ht+n2npjrNdJ9g==</UUID>
-            <LOW_VALUE>02</LOW_VALUE>
-           </item>
            <item>
             <UUID>goYs21u8Ht+n2npjrNcp9g==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
+           </item>
+           <item>
+            <UUID>goYs21u8Ht+n2npjrNdJ9g==</UUID>
+            <LOW_VALUE>02</LOW_VALUE>
            </item>
           </VALUES>
           <TEXT>Activity</TEXT>
@@ -78,15 +78,15 @@
          </item>
          <item>
           <FIELD>TABLE</FIELD>
-          <VALUE>ZBS_DMO_POSITION, ZBS_DMO_INVOICE</VALUE>
+          <VALUE>ZBS_DMO_INVOICE, ZBS_DMO_POSITION</VALUE>
           <VALUES>
-           <item>
-            <UUID>goYs21u8Ht+n2npjrNdp9g==</UUID>
-            <LOW_VALUE>ZBS_DMO_POSITION</LOW_VALUE>
-           </item>
            <item>
             <UUID>goYs21u8Ht+n2npjrNeJ9g==</UUID>
             <LOW_VALUE>ZBS_DMO_INVOICE</LOW_VALUE>
+           </item>
+           <item>
+            <UUID>goYs21u8Ht+n2npjrNdp9g==</UUID>
+            <LOW_VALUE>ZBS_DMO_POSITION</LOW_VALUE>
            </item>
           </VALUES>
           <TEXT>Table Name</TEXT>

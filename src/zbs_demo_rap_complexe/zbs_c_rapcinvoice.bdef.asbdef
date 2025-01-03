@@ -9,6 +9,8 @@ define behavior for ZBS_C_RAPCInvoice alias Invoice
 
   use action sendTestMail;
   use action CreateInvoiceDocument;
+// Actual DEEP TABLE PARAMETER not supported in SADL
+//  use action CreateMultipleInvoices;
 
   use association _Position { create; }
 }
