@@ -1,0 +1,157 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'UserId'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'UserId'
+annotate view ZBS_C_DMOTreeTeam with
+{
+  @EndUserText.label: 'UserId'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'UserId'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'UserId',
+    cssDefault.width: '150px'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  UserId;
+  
+  @EndUserText.label: 'PlayerName'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'PlayerName'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'PlayerName'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  PlayerName;
+  
+  @EndUserText.label: 'PlayerEmail'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'PlayerEmail'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'PlayerEmail'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  PlayerEmail;
+  
+  @EndUserText.label: 'PlayerPosition'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'PlayerPosition'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'PlayerPosition'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  PlayerPosition;
+  
+  @EndUserText.label: 'Score'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Score'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Score'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Score;
+  
+  @EndUserText.label: 'Team'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Team'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'Team'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  Team;
+  
+  @EndUserText.label: 'TeamLeader'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'TeamLeader'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'TeamLeader'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  TeamLeader;
+  
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  @UI.lineItem: [ {
+    position: 80 
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  LocalCreatedBy;
+  
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  @UI.lineItem: [ {
+    position: 90 
+  } ]
+  @UI.selectionField: [ {
+    position: 90 
+  } ]
+  LocalLastChangedBy;
+  
+  @UI.identification: [ {
+    position: 100 
+  } ]
+  @UI.lineItem: [ {
+    position: 100 
+  } ]
+  @UI.selectionField: [ {
+    position: 100 
+  } ]
+  LocalLastChanged;
+  
+  @UI.identification: [ {
+    position: 110 
+  } ]
+  @UI.lineItem: [ {
+    position: 110 
+  } ]
+  @UI.selectionField: [ {
+    position: 110 
+  } ]
+  LastChanged;
+}

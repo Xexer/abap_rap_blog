@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZBS_C_DMOTreeTeam'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZBS_C_DMOTreeTeam'
+  }
+}
+define service ZBS_DEMO_TREE_TEAM provider contracts odata_v4_ui {
+  expose ZBS_C_DMOTREETEAM as Team;
+}

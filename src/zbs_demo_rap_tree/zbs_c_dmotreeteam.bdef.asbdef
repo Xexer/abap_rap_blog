@@ -1,0 +1,17 @@
+projection implementation in class ZBP_BS_DEMO_TREE_TEAMC unique;
+strict ( 2 );
+use draft;
+define behavior for ZBS_C_DMOTreeTeam alias Team
+use etag
+
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+}

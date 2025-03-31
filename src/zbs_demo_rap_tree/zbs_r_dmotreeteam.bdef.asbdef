@@ -1,0 +1,49 @@
+managed implementation in class ZBP_BS_DEMO_TREE_TEAM unique;
+strict ( 2 );
+with draft;
+define behavior for ZBS_R_DMOTreeTeam alias Team
+persistent table ZBS_DMO_TEAM
+draft table ZBS_DMO_TEAM_D
+etag master LocalLastChanged
+lock master total etag LastChanged
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   UserId;
+
+  field ( readonly )
+   LocalCreatedBy,
+   LocalLastChangedBy,
+   LocalLastChanged,
+   LastChanged;
+
+  field ( readonly : update )
+   UserId;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZBS_DMO_TEAM
+  {
+    UserId = user_id;
+    PlayerName = player_name;
+    PlayerEmail = player_email;
+    PlayerPosition = player_position;
+    Score = score;
+    Team = team;
+    TeamLeader = team_leader;
+    LocalCreatedBy = local_created_by;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChanged = local_last_changed;
+    LastChanged = last_changed;
+  }
+}
