@@ -53,12 +53,6 @@ CLASS zcl_bs_demo_service_prov DEFINITION
     METHODS set_query_options_for_request
       IMPORTING odata_request TYPE REF TO /iwbep/if_cp_request_read_list
       RAISING   /iwbep/cx_gateway.
-
-    METHODS execute_request
-      IMPORTING setting       TYPE zif_bs_demo_service_prov=>setting_by_value
-      CHANGING  business_data TYPE ANY TABLE
-                !count        TYPE int8
-      RAISING   zcx_bs_demo_provider_error.
 ENDCLASS.
 
 
@@ -161,33 +155,6 @@ CLASS zcl_bs_demo_service_prov IMPLEMENTATION.
     IF setting-request->is_data_requested( ).
       setting-response->set_data( business_data ).
     ENDIF.
-  ENDMETHOD.
-
-
-  METHOD execute_request.
-    TRY.
-        DATA(odata_client) = create_client( ).
-        DATA(odata_request) = odata_client->create_resource_for_entity_set( setting-entity_name )->create_request_for_read( ).
-
-        set_filter_for_request( odata_request = odata_request
-                                setting       = setting ).
-        set_elements_for_request( odata_request = odata_request
-                                  setting       = setting ).
-        set_options_for_request( odata_request = odata_request
-                                 setting       = setting ).
-        set_query_options_for_request( odata_request ).
-
-        DATA(odata_response) = odata_request->execute( ).
-        IF setting-is_data_requested = abap_true.
-          odata_response->get_business_data( IMPORTING et_business_data = business_data ).
-        ENDIF.
-        IF setting-is_count_requested = abap_true.
-          count = odata_response->get_count( ).
-        ENDIF.
-
-      CATCH cx_root INTO DATA(error).
-        RAISE EXCEPTION NEW zcx_bs_demo_provider_error( previous = error ).
-    ENDTRY.
   ENDMETHOD.
 
 
@@ -322,16 +289,16 @@ CLASS zcl_bs_demo_service_prov IMPLEMENTATION.
       RETURN configuration-arrangement-comm_system_id.
     ENDIF.
 
-    DATA(ls_query) = VALUE if_com_arrangement_factory=>ty_query(
+    DATA(query) = VALUE if_com_arrangement_factory=>ty_query(
         cscn_id_range = VALUE #( ( sign = 'I' option = 'EQ' low = configuration-arrangement-comm_scenario ) )
         ca_property   = configuration-arrangement-property ).
 
-    DATA(lo_factory) = cl_com_arrangement_factory=>create_instance( ).
-    lo_factory->query_ca( EXPORTING is_query           = ls_query
-                          IMPORTING et_com_arrangement = DATA(lt_systems) ).
+    DATA(arrangement_factory) = cl_com_arrangement_factory=>create_instance( ).
+    arrangement_factory->query_ca( EXPORTING is_query           = query
+                                   IMPORTING et_com_arrangement = DATA(systems) ).
 
-    IF line_exists( lt_systems[ 1 ] ).
-      RETURN lt_systems[ 1 ]->get_comm_system_id( ).
+    IF line_exists( systems[ 1 ] ).
+      RETURN systems[ 1 ]->get_comm_system_id( ).
     ELSE.
       RAISE EXCEPTION NEW zcx_bs_demo_provider_error( ).
     ENDIF.
