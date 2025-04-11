@@ -1,13 +1,14 @@
 managed implementation in class ZBP_BS_DEMO_TREE_TEAM unique;
 strict ( 2 );
 with draft;
+
 define behavior for ZBS_R_DMOTreeTeam alias Team
 persistent table ZBS_DMO_TEAM
 draft table ZBS_DMO_TEAM_D
 etag master LocalLastChanged
 lock master total etag LastChanged
 authorization master( global )
-
+with additional save
 {
   field ( mandatory : create )
    UserId;
@@ -20,7 +21,6 @@ authorization master( global )
 
   field ( readonly : update )
    UserId;
-
 
   create;
   update;
