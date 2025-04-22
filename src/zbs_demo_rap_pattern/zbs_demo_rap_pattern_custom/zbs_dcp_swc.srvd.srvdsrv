@@ -1,0 +1,4 @@
+@EndUserText.label: 'Software Component'
+define service ZBS_DCP_SWC {
+  expose ZBS_R_DCPSoftwareComponent as SoftwareComponent;
+}
