@@ -1,0 +1,26 @@
+unmanaged implementation in class zbp_bs_dcp_softwarecomponent unique;
+strict ( 2 );
+
+define behavior for ZBS_R_DCPSoftwareComponent alias SWC
+lock master
+authorization master ( instance )
+{
+  update;
+
+  field ( readonly )
+  staging,
+  sc_name,
+  active_branch,
+  avail_on_inst,
+  descr,
+  sc_type_descr;
+
+  mapping for zbs_dcp
+    {
+      staging     = staging;
+      sc_name     = sc_name;
+      application = application;
+      information = information;
+      team        = team;
+    }
+}
