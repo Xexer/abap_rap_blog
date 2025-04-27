@@ -10,6 +10,8 @@
 define root custom entity ZBS_R_DCPSoftwareComponent
 
 {
+      @Consumption.filter: { defaultValue: 'TEST', mandatory: true, selectionType: #SINGLE }
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZBS_I_CPStagingVH', element: 'Staging' } } ]
       @UI.facet: [ { id: 'idRepositoryFields',
                      label: 'Technical Details',
                      position: 10,
@@ -21,7 +23,6 @@ define root custom entity ZBS_R_DCPSoftwareComponent
                      type: #IDENTIFICATION_REFERENCE,
                      targetQualifier: 'TEAM' } ]
       @UI.identification: [ { position: 10, qualifier: 'REPO' } ]
-      @UI.lineItem: [ { position: 10 } ]
       @UI.selectionField: [ { position: 10 } ]
   key staging          : zbs_demo_dcp_staging;
 

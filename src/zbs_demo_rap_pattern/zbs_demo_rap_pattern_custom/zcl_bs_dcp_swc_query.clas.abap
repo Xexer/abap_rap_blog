@@ -39,7 +39,14 @@ CLASS zcl_bs_dcp_swc_query IMPLEMENTATION.
 
 
   METHOD get_remote_data.
-    DATA test_stage TYPE zbs_dcp-staging VALUE 'TEST'.
+    DATA test_stage TYPE zbs_dcp-staging.
+
+    TRY.
+        DATA(filters) = request->get_filter( )->get_as_ranges( ).
+        test_stage = filters[ name = `STAGING` ]-range[ 1 ]-low.
+      CATCH cx_rap_query_filter_no_range.
+        test_stage = 'TEST'.
+    ENDTRY.
 
     NEW zcl_bs_demo_custom_git( )->get_software_component(
       EXPORTING setting       = VALUE #( entity_name   = 'REPOSITORIES'
