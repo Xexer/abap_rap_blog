@@ -1,4 +1,6 @@
 @EndUserText.label: 'Software Component'
 define service ZBS_DCP_SWC {
   expose ZBS_R_DCPSoftwareComponent as SoftwareComponent;
+  expose ZBS_I_DCPTeamVH;
+  expose ZBS_I_DCPApplicationVH;
 }

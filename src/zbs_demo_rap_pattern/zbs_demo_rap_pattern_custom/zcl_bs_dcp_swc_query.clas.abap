@@ -53,6 +53,8 @@ CLASS zcl_bs_dcp_swc_query IMPLEMENTATION.
                                          request       = request
                                          delete_fields = VALUE #( ( `STAGING` )
                                                                   ( `INFORMATION` )
+                                                                  ( `APPLDESCRIPTION` )
+                                                                  ( `TEAMDESCRIPTION` )
                                                                   ( `APPLICATION` )
                                                                   ( `TEAM` ) ) )
       IMPORTING business_data = DATA(remote_data)
@@ -66,6 +68,16 @@ CLASS zcl_bs_dcp_swc_query IMPLEMENTATION.
         WHERE     staging = @test_stage
               AND sc_name = @line->sc_name
         INTO CORRESPONDING FIELDS OF @line->*.
+
+      SELECT SINGLE FROM ZBS_I_DCPTeamVH
+        FIELDS Description
+        WHERE Team = @line->team
+        INTO @line->TeamDescription.
+
+      SELECT SINGLE FROM ZBS_I_DCPApplicationVH
+        FIELDS Description
+        WHERE Application = @line->application
+        INTO @line->ApplDescription.
 
       line->staging = test_stage.
     ENDLOOP.
