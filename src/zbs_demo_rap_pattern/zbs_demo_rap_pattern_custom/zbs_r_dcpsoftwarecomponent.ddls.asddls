@@ -24,6 +24,7 @@ define root custom entity ZBS_R_DCPSoftwareComponent
                      targetQualifier: 'TEAM' } ]
       @UI.identification: [ { position: 10, qualifier: 'REPO' } ]
       @UI.selectionField: [ { position: 10 } ]
+      @UI.lineItem: [{ position: 10, type: #FOR_ACTION, dataAction: 'CreateOutputMessage', label: 'Create message' }]
   key staging         : zbs_demo_dcp_staging;
 
       @EndUserText.label: 'SWC'
@@ -33,9 +34,6 @@ define root custom entity ZBS_R_DCPSoftwareComponent
       @ObjectModel.text.element: [ 'descr' ] 
   key sc_name         : abap.char(18);
 
-//      @EndUserText.label: 'Description'
-//      @UI.identification: [ { position: 20, qualifier: 'REPO' } ]
-//      @UI.lineItem: [ { position: 30 } ]
       @UI.hidden: true
       descr           : abap.char(60);
 

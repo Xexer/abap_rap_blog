@@ -20,6 +20,9 @@ CLASS lhc_swc DEFINITION INHERITING FROM cl_abap_behavior_handler.
     METHODS lock FOR LOCK
       IMPORTING keys FOR LOCK swc.
 
+    METHODS createoutputmessage FOR MODIFY
+      IMPORTING keys FOR ACTION swc~createoutputmessage.
+
 ENDCLASS.
 
 
@@ -38,6 +41,28 @@ CLASS lhc_swc IMPLEMENTATION.
 
 
   METHOD lock.
+  ENDMETHOD.
+
+
+  METHOD CreateOutputMessage.
+    INSERT new_message_with_text( text = 'This is a message with the method NEW_MESSAGE_WITH_TEXT!' ) INTO TABLE reported-%other.
+
+    INSERT new_message( id       = 'ZBS_DEMO_RAP_PATTERN'
+                        number   = '009'
+                        severity = if_abap_behv_message=>severity-error
+                        v1       = 'NEW_MESSAGE' )
+           INTO TABLE reported-%other.
+
+    DATA(placeholder) = '01234567890123456789012345678901234567890123456789'.
+
+    INSERT new_message( id       = 'ZBS_DEMO_RAP_PATTERN'
+                        number   = '010'
+                        severity = if_abap_behv_message=>severity-error
+                        v1       = placeholder
+                        v2       = placeholder
+                        v3       = placeholder
+                        v4       = placeholder )
+           INTO TABLE reported-%other.
   ENDMETHOD.
 ENDCLASS.
 

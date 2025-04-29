@@ -62,6 +62,18 @@
      <MSGNR>008</MSGNR>
      <TEXT>Please fill the mandatory field Comment</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>This is a message with the method &amp;1! We can include more content.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>This &amp;1 is my &amp;2 with all &amp;3 in one place! The maximum &amp;4 is reached here</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>
