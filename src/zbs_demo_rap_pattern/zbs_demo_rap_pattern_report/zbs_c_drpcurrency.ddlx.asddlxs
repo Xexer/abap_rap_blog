@@ -8,6 +8,23 @@
     imageUrl: 'PictureAttachement'
   }
 }
+
+@UI.presentationVariant: [ {
+  qualifier: 'pVariant',
+  sortOrder: [{ by: 'Currency', direction: #DESC }],
+  groupBy: [ 'EditorName' ],
+  visualizations: [{ type: #AS_LINEITEM }]    
+} ] 
+
+@UI.selectionVariant: [{  
+  qualifier: 'sVariant',
+  filter: '( Currency EQ AED OR Currency EQ AFN OR Currency EQ EUR OR Currency EQ USD ) AND Decimals EQ 2'
+}]   
+
+@UI.selectionPresentationVariant: [ { 
+  presentationVariantQualifier: 'pVariant',
+  selectionVariantQualifier: 'sVariant'
+} ]  
 annotate entity ZBS_C_DRPCurrency with
 {
   @UI.facet      : [
@@ -80,6 +97,7 @@ annotate entity ZBS_C_DRPCurrency with
   @UI:{
     identification: [{ position: 20, qualifier: 'TECH' }]
   }
+  @UI.selectionField: [{ position: 20 }]
   Decimals;
 
   @UI:{

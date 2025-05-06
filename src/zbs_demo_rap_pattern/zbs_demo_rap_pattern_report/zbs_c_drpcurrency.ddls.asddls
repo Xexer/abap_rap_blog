@@ -47,5 +47,6 @@ define root view entity ZBS_C_DRPCurrency
       PictureFilename,
       LastEditor,
       _User.PersonFullName as EditorName,
+      
       _Country : redirected to composition child ZBS_C_DRPCurrencyCountry
 }
