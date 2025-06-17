@@ -1,0 +1,4 @@
+@EndUserText.label: 'Location API'
+define service ZBS_API_LOCATION_ENDPOINT {
+  expose ZBS_R_APILocation as Location;
+}

@@ -74,6 +74,24 @@
      <MSGNR>010</MSGNR>
      <TEXT>This &amp;1 is my &amp;2 with all &amp;3 in one place! The maximum &amp;4 is reached here</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>011</MSGNR>
+     <TEXT>LocationId &amp;1 has the wrong format</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>012</MSGNR>
+     <TEXT>People must be greater than zero.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP_PATTERN</ARBGB>
+     <MSGNR>013</MSGNR>
+     <TEXT>LocationId &amp;1 saved successful</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

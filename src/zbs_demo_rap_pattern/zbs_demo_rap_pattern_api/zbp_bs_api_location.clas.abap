@@ -1,0 +1,5 @@
+CLASS zbp_bs_api_location DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zbs_r_apilocation.
+ENDCLASS.
+
+CLASS zbp_bs_api_location IMPLEMENTATION.
+ENDCLASS.

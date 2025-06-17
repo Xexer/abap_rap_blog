@@ -1,0 +1,18 @@
+unmanaged implementation in class zbp_bs_api_location unique;
+strict ( 2 );
+
+define behavior for ZBS_R_APILocation alias Location
+lock master
+authorization master ( instance )
+{
+  create ( authorization : global );
+
+  field ( readonly : update ) LocationId;
+
+  mapping for zbs_api_target {
+    LocationId = location_id;
+    LocationName = location_name;
+    LocationCoordinates = location_coordinates;
+    LocalPeople = local_people;
+  }
+}
