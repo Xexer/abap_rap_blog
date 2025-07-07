@@ -7,12 +7,10 @@ CLASS zcl_bs_demo_city_query DEFINITION
 ENDCLASS.
 
 
-
-CLASS ZCL_BS_DEMO_CITY_QUERY IMPLEMENTATION.
-
-
+CLASS zcl_bs_demo_city_query IMPLEMENTATION.
   METHOD if_rap_query_provider~select.
     DATA lt_values TYPE STANDARD TABLE OF ZBS_I_RAPCityVH WITH EMPTY KEY.
+    DATA ld_count  TYPE int8.
 
     lt_values = VALUE #( ( City = 'Walldorf' CityShort = 'DE' )
                          ( City = 'Redmond' CityShort = 'US' )
@@ -27,7 +25,8 @@ CLASS ZCL_BS_DEMO_CITY_QUERY IMPLEMENTATION.
 
     DATA(ld_all_entries) = lines( lt_values ).
     NEW zcl_bs_demo_adjust_data( )->adjust_via_request( EXPORTING io_request = io_request
-                                                        CHANGING  ct_data    = lt_values ).
+                                                        CHANGING  ct_data    = lt_values
+                                                                  cd_count   = ld_count ).
 
     IF io_request->is_data_requested( ).
       io_response->set_data( lt_values ).

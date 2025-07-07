@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Simple Partner Quick"
+  },
+  "ui5AppDetails": {
+    "appId": "swh.demo.zsimplepartner"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_5825F5EBA296A8528627446E9E5296434B90D3D4_TM",
+    "semanticObject": "ZBS_DEMO_SIMPLEQ",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_5825F5EBA296A8528627446E9E5296434B90D3D4_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Simple Partner Quick"
+      }
+    }
+  ]
+}
