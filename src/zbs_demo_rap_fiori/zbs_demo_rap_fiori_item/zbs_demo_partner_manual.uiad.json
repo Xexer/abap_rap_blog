@@ -1,0 +1,96 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Partner App (Manual)",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_ALV5_DEFAULT"
+  },
+  "ui5AppDetails": {
+    "appId": "test.bs.zbsdemopartner"
+  },
+  "navigation": {
+    "targetMappingId": "ZBS_DEMO_PARTNER_MANUAL_TM",
+    "semanticObject": "ZBS_DEMO_PMANUAL",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZBS_DEMO_PARTNER_STATIC",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Partner (Static)",
+        "subtitle": "Manage partners",
+        "information": "My Info for the tile",
+        "keywords": "Test, Keyword, More",
+        "icon": "sap-icon://accidental-leave"
+      }
+    },
+    {
+      "id": "ZBS_DEMO_PARTNER_DYNAMIC",
+      "tileType": "dynamic",
+      "standard": {
+        "title": "Partner (Dynamic)",
+        "subtitle": "Manage partners",
+        "information": "Downest and more Text",
+        "keywords": "Test, Keyword, Less",
+        "icon": "sap-icon://windows-doors",
+        "dynamic": {
+          "serviceBaseUrl": "/sap/opu/odata/sap/ZBS_UI_SIMPLE_PARTNER_O2/Partner/$count",
+          "refreshInterval": 20,
+          "numberUnit": "Customers"
+        }
+      }
+    },
+    {
+      "id": "ZBS_DEMO_PARTNER_PARAKEY",
+      "tileType": "dynamic",
+      "standard": {
+        "title": "Partner (Param - Key)",
+        "subtitle": "Manage partners",
+        "icon": "sap-icon://task",
+        "dynamic": {
+          "serviceBaseUrl": "/sap/opu/odata/sap/ZBS_UI_SIMPLE_PARTNER_O2/Partner/$count",
+          "refreshInterval": 20,
+          "numberUnit": "Customers"
+        },
+        "tileNavigationParameters": [
+          {
+            "name": "PartnerNumber",
+            "value": "1000000000"
+          },
+          {
+            "name": "DraftUUID",
+            "value": "00000000-0000-0000-0000-000000000000"
+          },
+          {
+            "name": "IsActiveEntity",
+            "value": "true"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ZBS_DEMO_PARTNER_PARAFILT",
+      "tileType": "static",
+      "standard": {
+        "title": "Partner (Param - Filter)",
+        "subtitle": "Manage partners",
+        "icon": "sap-icon://notes",
+        "tileNavigationParameters": [
+          {
+            "name": "Country",
+            "value": "US"
+          }
+        ]
+      }
+    }
+  ]
+}
