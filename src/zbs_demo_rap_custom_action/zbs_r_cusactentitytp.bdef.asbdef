@@ -1,0 +1,14 @@
+unmanaged implementation in class zbp_bs_demo_custom_action unique;
+strict ( 2 );
+
+define behavior for ZBS_R_CusActEntityTP alias CustomAction
+lock master
+authorization master ( instance )
+{
+  internal update;
+
+  field ( readonly ) my_key;
+
+  action myCustomAction result [1] $self;
+  static action resetAllIcons;
+}

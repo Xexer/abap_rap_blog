@@ -1,0 +1,4 @@
+@EndUserText.label: 'Custom Action'
+define service ZBS_CUSTOM_ACTION {
+  expose ZBS_R_CusActEntityTP as CustomAction;
+}
