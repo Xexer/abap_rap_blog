@@ -1,0 +1,70 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'Uuid'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'Uuid'
+annotate view ZBS_C_G3NOTE with
+{
+  @EndUserText.label: 'Uuid'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Uuid'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'Uuid'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  Uuid;
+  
+  @EndUserText.label: 'ParentUuid'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'ParentUuid'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'ParentUuid'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  ParentUuid;
+  
+  @EndUserText.label: 'RootUuid'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'RootUuid'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'RootUuid'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  RootUuid;
+  
+  @EndUserText.label: 'AdditionalNote'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'AdditionalNote'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'AdditionalNote'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  AdditionalNote;
+}

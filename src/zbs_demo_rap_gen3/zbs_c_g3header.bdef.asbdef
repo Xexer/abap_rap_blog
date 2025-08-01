@@ -1,0 +1,49 @@
+projection implementation in class ZBS_BP_C_G3HEADER unique;
+strict ( 2 );
+extensible;
+use draft;
+use side effects;
+define behavior for ZBS_C_G3HEADER alias G3Header
+extensible
+use etag
+
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _G3Position { create; with draft; }
+
+}
+
+define behavior for ZBS_C_G3POSITION alias G3Position
+extensible
+use etag
+
+{
+  use update;
+  use delete;
+
+  use association _G3Header { with draft; }
+  use association _G3Note { create; with draft; }
+
+}
+
+define behavior for ZBS_C_G3NOTE alias G3Note
+extensible
+use etag
+
+{
+  use update;
+  use delete;
+
+  use association _G3Header { with draft; }
+  use association _G3Position { with draft; }
+
+}

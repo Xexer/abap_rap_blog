@@ -1,0 +1,13 @@
+@EndUserText: {
+  label: 'Service Definition for ZBS_C_G3HEADER'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZBS_C_G3HEADER'
+  }
+}
+define service ZBS_UI_G3INVOICE_O4 provider contracts odata_v4_ui {
+  expose ZBS_C_G3HEADER as G3Header;
+  expose ZBS_C_G3POSITION as G3Position;
+  expose ZBS_C_G3NOTE as G3Note;
+}

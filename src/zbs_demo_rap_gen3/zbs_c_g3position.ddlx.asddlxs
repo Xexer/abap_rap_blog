@@ -1,0 +1,92 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'Uuid'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'Uuid'
+annotate view ZBS_C_G3POSITION with
+{
+  @EndUserText.label: 'Uuid'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  }, 
+  {
+    label: 'G3Note Items', 
+    id: 'G3NoteItems', 
+    purpose: #STANDARD, 
+    position: 11 , 
+    type: #LINEITEM_REFERENCE, 
+    targetElement: '_G3Note'
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Uuid'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'Uuid'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  Uuid;
+  
+  @EndUserText.label: 'ParentUuid'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'ParentUuid'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'ParentUuid'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  ParentUuid;
+  
+  @EndUserText.label: 'PositionNumber'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'PositionNumber'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'PositionNumber'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  PositionNumber;
+  
+  @EndUserText.label: 'PositionText'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'PositionText'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'PositionText'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  PositionText;
+  
+  @EndUserText.label: 'Amount'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Amount'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Amount'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Amount;
+}

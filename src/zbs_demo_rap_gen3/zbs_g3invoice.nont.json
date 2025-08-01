@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "SAP Object Node Type ZBS_G3INVOICE",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "name": "ZBS_G3Invoice",
+  "sapObjectType": "ZBS_G3Invoice",
+  "rootNode": true
+}
