@@ -1,0 +1,48 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Page via ADT",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "title": "Partner Apps (ADT)"
+  },
+  "sections": [
+    {
+      "id": "SECTION_1",
+      "title": "Upper Area",
+      "visualizations": [
+        {
+          "id": "PARTNER_MANUAL_WIDE",
+          "displayFormat": "wide",
+          "ladiAssignment": {
+            "ladiId": "ZBS_DEMO_PARTNER_MANUAL",
+            "tileId": "ZBS_DEMO_PARTNER_DYNAMIC"
+          }
+        },
+        {
+          "id": "PARTNER_MANUAL_NORMAL",
+          "ladiAssignment": {
+            "ladiId": "ZBS_DEMO_PARTNER_MANUAL",
+            "tileId": "ZBS_DEMO_PARTNER_STATIC"
+          }
+        }
+      ]
+    },
+    {
+      "id": "SECTION_2",
+      "title": "Lower Area",
+      "visualizations": [
+        {
+          "id": "PARTNER_LINK",
+          "displayFormat": "link",
+          "ladiAssignment": {
+            "ladiId": "ZBS_DEMO_PARTNER_MANUAL",
+            "tileId": "ZBS_DEMO_PARTNER_PARAKEY"
+          }
+        }
+      ]
+    }
+  ]
+}
