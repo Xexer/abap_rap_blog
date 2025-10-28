@@ -91,6 +91,20 @@
           }
         ]
       }
+    },
+    {
+      "id": "ZBS_DEMO_PARTNER_CONFIG",
+      "tileType": "dynamic",
+      "standard": {
+        "title": "Partner (TileConfig)",
+        "subtitle": "Dynamic informations",
+        "icon": "sap-icon://visits",
+        "dynamic": {
+          "serviceBaseUrl": "/sap/bc/http/sap/ZBS_DEMO_TILE_ENDPOINT/PartnerApp",
+          "refreshInterval": 20,
+          "numberUnit": "Partner(s)"
+        }
+      }
     }
   ]
 }
