@@ -1,0 +1,26 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZBS_C_CDSPatternInvoice alias Invoice
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _Position { create; with draft; }
+}
+
+define behavior for ZBS_C_CDSPatternPosition alias Position
+{
+  use update;
+  use delete;
+
+  use association _Document { with draft; }
+}

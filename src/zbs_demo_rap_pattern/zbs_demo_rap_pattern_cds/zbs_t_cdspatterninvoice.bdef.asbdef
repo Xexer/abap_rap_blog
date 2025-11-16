@@ -1,0 +1,39 @@
+managed implementation in class zbp_bs_cdspattern_invoice unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZBS_T_CDSPatternInvoice alias Invoice
+draft table zbs_cp_invoice_d
+lock master total etag LastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+late numbering
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  field ( readonly ) DocumentNumber;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  association _Position { create; with draft; }
+}
+
+define behavior for ZBS_T_CDSPatternPosition alias Position
+draft table zbs_cp_pos_d
+lock dependent by _Document
+authorization dependent by _Document
+late numbering
+{
+  update;
+  delete;
+
+  field ( readonly ) DocumentNumber, PositionNumber;
+
+  association _Document { with draft; }
+}

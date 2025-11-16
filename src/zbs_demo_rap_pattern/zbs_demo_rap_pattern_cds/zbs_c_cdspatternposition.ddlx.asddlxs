@@ -1,0 +1,45 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZBS_C_CDSPatternPosition with
+{
+  @UI.facet: [
+    {  
+      id: 'id_PositionDetails',
+      position: 10,
+      label: 'General Informations',
+      type: #IDENTIFICATION_REFERENCE
+    }    
+  ]
+
+  @UI.hidden: true
+  DocumentNumber;
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @EndUserText.label: 'Position'
+  PositionNumber;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  @EndUserText.label: 'Material'
+  MaterialNumber;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  @EndUserText.label: 'Quantity'
+  PositionQuantity;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  @EndUserText.label: 'Unit'
+  PositionUnit;
+
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+  @EndUserText.label: 'Price'
+  PositionPrice;
+
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+  @EndUserText.label: 'Currency'
+  PositionCurrency;
+}

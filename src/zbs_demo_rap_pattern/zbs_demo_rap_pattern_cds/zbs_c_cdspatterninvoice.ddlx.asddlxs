@@ -1,0 +1,41 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZBS_C_CDSPatternInvoice with
+{
+  @UI.facet: [
+    {  
+      id: 'idGeneral',
+      position: 10,
+      label: 'General Informations',
+      type: #IDENTIFICATION_REFERENCE
+    },
+    {  
+      id: 'id_Position',
+      position: 20,
+      label: 'Positions',
+      type: #LINEITEM_REFERENCE,
+      targetElement: '_Position'
+    }    
+  ]
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @EndUserText.label: 'Document Number'
+  DocumentNumber;
+  
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  @EndUserText.label: 'Date'
+  DocumentDate;
+  
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  @EndUserText.label: 'Time'
+  DocumentTime;
+  
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  @EndUserText.label: 'Partner'
+  PartnerNumber;
+
+}

@@ -4,6 +4,8 @@
   <asx:values>
    <DEVC>
     <CTEXT>Custom Entity with Action</CTEXT>
+    <LANGUAGE>E</LANGUAGE>
+    <MASTERLANG>E</MASTERLANG>
    </DEVC>
   </asx:values>
  </asx:abap>
