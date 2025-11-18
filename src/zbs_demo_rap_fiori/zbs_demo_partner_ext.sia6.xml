@@ -46,15 +46,15 @@
         <VALUES>
          <item>
           <FIELD>ACTVT</FIELD>
-          <VALUE>Change,Display</VALUE>
+          <VALUE>Display,Change</VALUE>
           <VALUES>
-           <item>
-            <UUID>AkR5LDVCHu2iwKgUqJvrOw==</UUID>
-            <LOW_VALUE>02</LOW_VALUE>
-           </item>
            <item>
             <UUID>AkR5LDVCHu2iwKgUqJwLOw==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
+           </item>
+           <item>
+            <UUID>AkR5LDVCHu2iwKgUqJvrOw==</UUID>
+            <LOW_VALUE>02</LOW_VALUE>
            </item>
           </VALUES>
           <TEXT>Activity</TEXT>

@@ -105,6 +105,17 @@
           "numberUnit": "Partner(s)"
         }
       }
+    },
+    {
+      "id": "ZBS_DEMO_PARTNER_CONFIG2",
+      "tileType": "dynamic",
+      "standard": {
+        "title": "Partner (TileConfig2)",
+        "dynamic": {
+          "serviceBaseUrl": "/sap/opu/odata/sap/ZBS_UI_SIMPLE_PARTNER_O2/Tile('PARTNER')",
+          "refreshInterval": 20
+        }
+      }
     }
   ]
 }
