@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DOMA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD01V>
+    <DOMNAME>ZBS_DEMO_SA_COMMENT</DOMNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DATATYPE>STRG</DATATYPE>
+    <LENG>032000</LENG>
+    <DDTEXT>Domain: ZBS_DEMO_SA_COMMENT</DDTEXT>
+   </DD01V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZBS_C_SAINFO'
+@MappingRole: true
+define role ZBS_C_SAINFO {
+  grant select on ZBS_C_SAINFO
+  where INHERITING CONDITIONS FROM ENTITY ZBS_R_SAINFO REPLACING { ROOT WITH _BaseEntity };
+}

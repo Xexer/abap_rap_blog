@@ -1,0 +1,57 @@
+projection implementation in class ZBS_BP_C_SASALE unique;
+strict ( 2 );
+extensible;
+use draft;
+use side effects;
+define behavior for ZBS_C_SASALE alias SASale
+extensible
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _SAInfo { create; with draft; }
+  use association _SASold { create; with draft; }
+  use association _SASeller { create; with draft; }
+
+}
+
+define behavior for ZBS_C_SAINFO alias SAInfo
+extensible
+use etag
+{
+  use update;
+  use delete;
+
+  use association _SASale { with draft; }
+
+}
+
+define behavior for ZBS_C_SASOLD alias SASold
+extensible
+use etag
+{
+  use update;
+  use delete;
+
+  use association _SASale { with draft; }
+
+}
+
+define behavior for ZBS_C_SASELLER alias SASeller
+extensible
+use etag
+{
+  use update;
+  use delete;
+
+  use association _SASale { with draft; }
+
+}

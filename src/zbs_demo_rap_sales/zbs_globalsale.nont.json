@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "SAP Object Node Type ZBS_GLOBALSALE",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "name": "ZBS_GlobalSale",
+  "sapObjectType": "ZBS_GlobalSale",
+  "rootNode": true
+}
