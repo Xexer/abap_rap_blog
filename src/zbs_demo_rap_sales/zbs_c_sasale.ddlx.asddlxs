@@ -1,220 +1,126 @@
 @Metadata.layer: #CORE
 @UI.headerInfo.title.type: #STANDARD
-@UI.headerInfo.title.value: 'UUID'
+@UI.headerInfo.title.value: 'PartnerNumber'
 @UI.headerInfo.description.type: #STANDARD
-@UI.headerInfo.description.value: 'UUID'
+@UI.headerInfo.description.value: 'SalesDate'
 annotate view ZBS_C_SASALE with
 {
-  @EndUserText.label: 'UUID'
-  @UI.facet: [ {
-    label: 'General Information',
-    id: 'GeneralInfo',
-    purpose: #STANDARD,
-    position: 10 ,
-    type: #IDENTIFICATION_REFERENCE
-  },
-  {
-    label: 'SAInfo Items',
-    id: 'SAInfoItems',
-    purpose: #STANDARD,
-    position: 11 ,
-    type: #LINEITEM_REFERENCE,
-    targetElement: '_SAInfo'
-  },
-  {
-    label: 'SASold Items',
-    id: 'SASoldItems',
-    purpose: #STANDARD,
-    position: 12 ,
-    type: #LINEITEM_REFERENCE,
-    targetElement: '_SASold'
-  },
-  {
-    label: 'SASeller Items',
-    id: 'SASellerItems',
-    purpose: #STANDARD,
-    position: 13 ,
-    type: #LINEITEM_REFERENCE,
-    targetElement: '_SASeller'
-  } ]
-  @UI.identification: [ {
-    position: 10 ,
-    label: 'UUID'
-  } ]
-  @UI.lineItem: [ {
-    position: 10 ,
-    label: 'UUID'
-  } ]
-  @UI.selectionField: [ {
-    position: 10
-  } ]
+  @UI.facet: [
+    {
+      id: 'idGeneral',
+      label: 'General Information',
+      position: 10 ,
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'GENERAL'
+    },
+    {
+      id: 'idDifference',
+      label: 'Difference',
+      position: 20,
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'DIFF'
+    },
+    {
+      id: 'idInformation',
+      label: 'Information',
+      position: 30,
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'INFO'
+    },
+    {
+      id: 'idAdmin',
+      label: 'Admin Fields',
+      position: 40,
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'ADMIN'
+    },
+    {
+      id: 'idSASeller',
+      label: 'Seller',
+      position: 50,
+      type: #LINEITEM_REFERENCE,
+      targetElement: '_SASeller'
+    },
+    {
+      id: 'idSASold',
+      label: 'Sold',
+      position: 60,
+      type: #LINEITEM_REFERENCE,
+      targetElement: '_SASold'
+    },
+    {
+      id: 'idSAInfo',
+      label: 'Info',
+      position: 70,
+      type: #LINEITEM_REFERENCE,
+      targetElement: '_SAInfo'
+    }
+  ]
+
+  @UI.hidden: true
   UUID;
 
-  @UI.identification: [ {
-    position: 20
-  } ]
-  @UI.lineItem: [ {
-    position: 20
-  } ]
-  @UI.selectionField: [ {
-    position: 20
-  } ]
+  @UI.selectionField: [ { position: 10 } ]
+  @UI.lineItem: [ { position: 20  } ]
+  @UI.identification: [ { position: 20 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Partner'
   PartnerNumber;
 
-  @UI.identification: [ {
-    position: 30
-  } ]
-  @UI.lineItem: [ {
-    position: 30
-  } ]
-  @UI.selectionField: [ {
-    position: 30
-  } ]
+  @UI.selectionField: [ { position: 20 } ]
+  @UI.lineItem: [ { position: 30  } ]
+  @UI.identification: [ { position: 30 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Sales Date'
   SalesDate;
 
-  @UI.identification: [ {
-    position: 40
-  } ]
-  @UI.lineItem: [ {
-    position: 40
-  } ]
-  @UI.selectionField: [ {
-    position: 40
-  } ]
+  @UI.lineItem: [ { position: 40  } ]
+  @UI.identification: [ { position: 40 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Sales Volume'
   SalesVolume;
 
-  @UI.identification: [ {
-    position: 50
-  } ]
-  @UI.lineItem: [ {
-    position: 50
-  } ]
-  @UI.selectionField: [ {
-    position: 50
-  } ]
+  @UI.selectionField: [ { position: 30 } ]
+  @UI.lineItem: [ { position: 50  } ]
+  @UI.identification: [ { position: 50 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Sales Currency'
   SalesCurrency;
 
-  @UI.identification: [ {
-    position: 60
-  } ]
-  @UI.lineItem: [ {
-    position: 60
-  } ]
-  @UI.selectionField: [ {
-    position: 60
-  } ]
+  @UI.identification: [ { position: 60 , qualifier: 'DIFF' } ]
+  @EndUserText.label: 'Difference Amount'
   DifferenceAmount;
 
-  @UI.identification: [ {
-    position: 70
-  } ]
-  @UI.lineItem: [ {
-    position: 70
-  } ]
-  @UI.selectionField: [ {
-    position: 70
-  } ]
+  @UI.identification: [ { position: 70 , qualifier: 'DIFF' } ]
+  @EndUserText.label: 'Currency'
   DifferenceCurrency;
 
-  @UI.identification: [ {
-    position: 80
-  } ]
-  @UI.lineItem: [ {
-    position: 80
-  } ]
-  @UI.selectionField: [ {
-    position: 80
-  } ]
+  @UI.identification: [ { position: 80 , qualifier: 'DIFF' } ]
+  @EndUserText.label: 'Difference Quantity'
   DifferenceQuantity;
 
-  @UI.identification: [ {
-    position: 90
-  } ]
-  @UI.lineItem: [ {
-    position: 90
-  } ]
-  @UI.selectionField: [ {
-    position: 90
-  } ]
+  @UI.identification: [ { position: 90 , qualifier: 'DIFF' } ]
+  @EndUserText.label: 'Unit'
   DifferenceUnit;
 
-  @UI.identification: [ {
-    position: 100
-  } ]
-  @UI.lineItem: [ {
-    position: 100
-  } ]
-  @UI.selectionField: [ {
-    position: 100
-  } ]
+  @UI.identification: [ { position: 100 , qualifier: 'INFO' } ]
+  @EndUserText.label: 'Comment'
   SaleComment;
 
-  @UI.identification: [ {
-    position: 110
-  } ]
-  @UI.lineItem: [ {
-    position: 110
-  } ]
-  @UI.selectionField: [ {
-    position: 110
-  } ]
+  @UI.identification: [ { position: 110 , qualifier: 'ADMIN' } ]
+  @EndUserText.label: 'Created By'
   LocalCreatedBy;
 
-  @UI.identification: [ {
-    position: 120
-  } ]
-  @UI.lineItem: [ {
-    position: 120
-  } ]
-  @UI.selectionField: [ {
-    position: 120
-  } ]
+  @UI.identification: [ { position: 120 , qualifier: 'ADMIN' } ]
+  @EndUserText.label: 'Created At'
   LocalCreatedAt;
 
-  @UI.identification: [ {
-    position: 130
-  } ]
-  @UI.lineItem: [ {
-    position: 130
-  } ]
-  @UI.selectionField: [ {
-    position: 130
-  } ]
+  @UI.identification: [ { position: 130 , qualifier: 'ADMIN' } ]
+  @EndUserText.label: 'Local Changed By'
   LocalLastChangedBy;
 
-  @UI.identification: [ {
-    position: 140
-  } ]
-  @UI.lineItem: [ {
-    position: 140
-  } ]
-  @UI.selectionField: [ {
-    position: 140
-  } ]
+  @UI.identification: [ { position: 140 , qualifier: 'ADMIN' } ]
+  @EndUserText.label: 'Local Changed At'
   LocalLastChangedAt;
 
-  @UI.identification: [ {
-    position: 150
-  } ]
-  @UI.lineItem: [ {
-    position: 150
-  } ]
-  @UI.selectionField: [ {
-    position: 150
-  } ]
+  @UI.identification: [ { position: 150 , qualifier: 'ADMIN' } ]
+  @EndUserText.label: 'Last Changed At'
   LastChangedAt;
 
-  @EndUserText.label: '_BaseEntity'
-  @UI.identification: [ {
-    position: 190 ,
-    label: '_BaseEntity'
-  } ]
-  @UI.lineItem: [ {
-    position: 190 ,
-    label: '_BaseEntity'
-  } ]
-  @UI.selectionField: [ {
-    position: 190
-  } ]
-  _BaseEntity;
 }

@@ -1,7 +1,7 @@
 @Metadata.allowExtensions: true
 @Metadata.ignorePropagatedAnnotations: true
 @EndUserText: {
-  label: '###GENERATED Core Data Service Entity'
+  label: 'Generated'
 }
 @AccessControl.authorizationCheck: #MANDATORY
 define view entity ZBS_C_SAINFO

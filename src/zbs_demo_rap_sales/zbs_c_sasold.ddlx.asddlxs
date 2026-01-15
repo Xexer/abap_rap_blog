@@ -5,63 +5,25 @@
 @UI.headerInfo.description.value: 'UUID'
 annotate view ZBS_C_SASOLD with
 {
-  @EndUserText.label: 'UUID'
-  @UI.facet: [ {
-    label: 'General Information',
-    id: 'GeneralInfo',
-    purpose: #STANDARD,
-    position: 10 ,
-    type: #IDENTIFICATION_REFERENCE
-  } ]
-  @UI.identification: [ {
-    position: 10 ,
-    label: 'UUID'
-  } ]
-  @UI.lineItem: [ {
-    position: 10 ,
-    label: 'UUID'
-  } ]
-  @UI.selectionField: [ {
-    position: 10
-  } ]
+  @UI.facet: [
+    {
+      id: 'idGeneral',
+      label: 'General Information',
+      position: 10 ,
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'GENERAL'
+    }
+  ]
+
+  @UI.hidden: true
   UUID;
 
-  @EndUserText.label: 'ParentUUID'
-  @UI.identification: [ {
-    position: 20 ,
-    label: 'ParentUUID'
-  } ]
-  @UI.lineItem: [ {
-    position: 20 ,
-    label: 'ParentUUID'
-  } ]
-  @UI.selectionField: [ {
-    position: 20
-  } ]
+  @UI.hidden: true
   ParentUUID;
 
-  @UI.identification: [ {
-    position: 30
-  } ]
-  @UI.lineItem: [ {
-    position: 30
-  } ]
-  @UI.selectionField: [ {
-    position: 30
-  } ]
+  @UI.lineItem: [ { position: 30  } ]
+  @UI.identification: [ { position: 30 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Material'
   MaterialId;
 
-  @EndUserText.label: '_BaseEntity'
-  @UI.identification: [ {
-    position: 50 ,
-    label: '_BaseEntity'
-  } ]
-  @UI.lineItem: [ {
-    position: 50 ,
-    label: '_BaseEntity'
-  } ]
-  @UI.selectionField: [ {
-    position: 50
-  } ]
-  _BaseEntity;
 }
