@@ -10,7 +10,12 @@ define view entity ZBS_C_SASOLD
 {
   key UUID,
       ParentUUID,
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'ZBS_I_SAMaterialVH', element : 'MaterialId' } }]
+      @ObjectModel.text.element: [ 'MaterialName' ]
+      @UI.textArrangement: #TEXT_ONLY
       MaterialId,
+      _Material.MaterialName,
       _SASale : redirected to parent ZBS_C_SASALE,
-      _BaseEntity
+      _BaseEntity,
+      _Material
 }
