@@ -66,7 +66,62 @@ CLASS zcl_bs_demo_rap_sales_data IMPLEMENTATION.
                        SalesDate     = '20260105'
                        SalesVolume   = '99999'
                        SalesCurrency = 'CHF'
-                       SaleComment   = `Activation of more Cloud volume` ) ).
+                       SaleComment   = `Activation of more Cloud volume` )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000000'
+                       SalesDate     = '20251217'
+                       SalesVolume   = '26000'
+                       SalesCurrency = 'EUR' )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000005'
+                       SalesDate     = '20251218'
+                       SalesVolume   = '2000'
+                       SalesCurrency = 'USD' )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000005'
+                       SalesDate     = '20251110'
+                       SalesVolume   = '63000'
+                       SalesCurrency = 'USD' )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000002'
+                       SalesDate     = '20251111'
+                       SalesVolume   = '66000'
+                       SalesCurrency = 'EUR' )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000000'
+                       SalesDate     = '20251026'
+                       SalesVolume   = '9900'
+                       SalesCurrency = 'CHF' )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000005'
+                       SalesDate     = '20260213'
+                       SalesVolume   = '6800'
+                       SalesCurrency = 'CHF' )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000002'
+                       SalesDate     = '20241231'
+                       SalesVolume   = '9500'
+                       SalesCurrency = 'EUR' )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000000'
+                       SalesDate     = '20250606'
+                       SalesVolume   = '71500'
+                       SalesCurrency = 'USD' )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000005'
+                       SalesDate     = '20260219'
+                       SalesVolume   = '58000'
+                       SalesCurrency = 'USD' )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000000'
+                       SalesDate     = '20260319'
+                       SalesVolume   = '17000'
+                       SalesCurrency = 'EUR' )
+                     ( %cid          = xco_cp=>uuid( )->value
+                       PartnerNumber = '1000000002'
+                       SalesDate     = '20251201'
+                       SalesVolume   = '95000'
+                       SalesCurrency = 'CHF' ) ).
 
     infos = VALUE #(
 

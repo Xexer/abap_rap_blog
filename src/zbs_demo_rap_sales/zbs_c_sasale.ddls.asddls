@@ -31,6 +31,15 @@ define root view entity ZBS_C_SASALE
       DifferenceQuantity,
       DifferenceUnit,
       SaleComment,
+      
+      @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+      @ObjectModel.sort.transformedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+      virtual SalesYear : abap.char(4),
+      
+      @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+      @ObjectModel.sort.transformedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+      virtual SalesMonth : abap.char(2),
+      
       @Semantics: {
         user.createdBy: true
       }

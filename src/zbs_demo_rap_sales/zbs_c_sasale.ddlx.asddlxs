@@ -72,6 +72,16 @@ annotate view ZBS_C_SASALE with
   @EndUserText.label: 'Sales Date'
   SalesDate;
 
+  @UI.lineItem: [ { position: 32  } ]
+  @UI.identification: [ { position: 32 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Sales Year'
+  SalesYear;
+  
+  @UI.lineItem: [ { position: 33  } ]
+  @UI.identification: [ { position: 33 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Sales Month'
+  SalesMonth;
+  
   @UI.lineItem: [ { position: 40  } ]
   @UI.identification: [ { position: 40 , qualifier: 'GENERAL' } ]
   @EndUserText.label: 'Sales Volume'
