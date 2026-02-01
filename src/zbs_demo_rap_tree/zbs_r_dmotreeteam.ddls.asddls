@@ -4,6 +4,7 @@
 define root view entity ZBS_R_DMOTreeTeam
   as select from zbs_dmo_team as Team
   association of many to one ZBS_R_DMOTreeTeam as _TeamLeader on $projection.TeamLeader = _TeamLeader.UserId
+  association of many to many ZBS_R_DMOTreeTeam as _Member on $projection.UserId = _Member.TeamLeader
 {
   key user_id               as UserId,
       player_name           as PlayerName,
@@ -20,6 +21,6 @@ define root view entity ZBS_R_DMOTreeTeam
       local_last_changed    as LocalLastChanged,
       @Semantics.systemDateTime.lastChangedAt: true
       last_changed          as LastChanged,
-      _TeamLeader
-
+      _TeamLeader,
+      _Member
 }

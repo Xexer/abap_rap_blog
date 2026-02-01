@@ -5,7 +5,8 @@ CLASS zcl_bs_demo_adjust_data DEFINITION
   PUBLIC SECTION.
     METHODS adjust_via_request
       IMPORTING io_request TYPE REF TO if_rap_query_request
-      CHANGING  ct_data    TYPE STANDARD TABLE.
+      CHANGING  ct_data    TYPE STANDARD TABLE
+                cd_count   TYPE int8.
 
     METHODS filter_data
       IMPORTING it_filter TYPE if_rap_query_filter=>tt_name_range_pairs
@@ -38,6 +39,8 @@ CLASS ZCL_BS_DEMO_ADJUST_DATA IMPLEMENTATION.
 
     filter_data( EXPORTING it_filter = lt_filter
                  CHANGING  ct_data   = ct_data ).
+
+    cd_count = lines( ct_data ).
 
     order_data( EXPORTING it_sort = lt_sort
                 CHANGING  ct_data = ct_data ).
@@ -86,7 +89,7 @@ CLASS ZCL_BS_DEMO_ADJUST_DATA IMPLEMENTATION.
       ld_from = 1.
     ENDIF.
 
-    IF id_page_size IS NOT INITIAL.
+    IF id_page_size IS NOT INITIAL AND id_page_size <> -1.
       ld_to = ld_from + id_page_size - 1.
     ELSE.
       ld_to = lines( ct_data ).

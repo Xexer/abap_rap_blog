@@ -18,7 +18,10 @@ CLASS zcl_bs_demo_scope_launchpad DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_scope_launchpad IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_SCOPE_LAUNCHPAD IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     scope_content( pages  = VALUE #( ( 'ZBS_DEMO_ADT_PAGE' ) )
                    spaces = VALUE #( ( 'ZBS_DEMO_ADT_SPACE' ) )

@@ -20,7 +20,17 @@ CLASS zcl_bs_demo_custom_action_qry DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_custom_action_qry IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_CUSTOM_ACTION_QRY IMPLEMENTATION.
+
+
+  METHOD get_dummy_data.
+    RETURN VALUE #( ( my_key = 'TEST' description = 'First One' )
+                    ( my_key = 'NOTHING' description = 'Second One' )
+                    ( my_key = 'MORE' description = 'Third One' ) ).
+  ENDMETHOD.
+
+
   METHOD if_rap_query_provider~select.
     DATA result TYPE STANDARD TABLE OF ZBS_R_CusActEntityTP.
     DATA count  TYPE int8.
@@ -61,12 +71,5 @@ CLASS zcl_bs_demo_custom_action_qry IMPLEMENTATION.
     IF io_request->is_data_requested( ).
       io_response->set_data( result ).
     ENDIF.
-  ENDMETHOD.
-
-
-  METHOD get_dummy_data.
-    RETURN VALUE #( ( my_key = 'TEST' description = 'First One' )
-                    ( my_key = 'NOTHING' description = 'Second One' )
-                    ( my_key = 'MORE' description = 'Third One' ) ).
   ENDMETHOD.
 ENDCLASS.

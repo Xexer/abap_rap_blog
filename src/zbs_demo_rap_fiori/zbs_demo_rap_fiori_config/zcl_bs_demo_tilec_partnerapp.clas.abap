@@ -7,7 +7,10 @@ CLASS zcl_bs_demo_tilec_partnerapp DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_tilec_partnerapp IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_TILEC_PARTNERAPP IMPLEMENTATION.
+
+
   METHOD zif_bs_demo_tilec~get_configuration.
     SELECT FROM ZBS_C_RAPPartner
       FIELDS COUNT( * ) AS number

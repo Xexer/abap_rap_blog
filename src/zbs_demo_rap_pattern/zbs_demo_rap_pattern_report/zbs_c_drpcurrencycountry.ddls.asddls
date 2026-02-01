@@ -9,5 +9,6 @@ define view entity ZBS_C_DRPCurrencyCountry
   key Country,
       CountryName,
       CountryRanking,
+
       _Currency : redirected to parent ZBS_C_DRPCurrency
 }

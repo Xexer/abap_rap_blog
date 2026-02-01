@@ -9,7 +9,10 @@ CLASS zcl_bs_demo_service_prov_fact DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_service_prov_fact IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_SERVICE_PROV_FACT IMPLEMENTATION.
+
+
   METHOD create_service_provider.
     RETURN NEW zcl_bs_demo_service_prov( configuration ).
   ENDMETHOD.

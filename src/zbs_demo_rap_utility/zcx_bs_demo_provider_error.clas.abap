@@ -17,7 +17,10 @@ CLASS zcx_bs_demo_provider_error DEFINITION
 ENDCLASS.
 
 
-CLASS zcx_bs_demo_provider_error IMPLEMENTATION.
+
+CLASS ZCX_BS_DEMO_PROVIDER_ERROR IMPLEMENTATION.
+
+
   METHOD constructor ##ADT_SUPPRESS_GENERATION.
     super->constructor( previous = previous ).
     CLEAR me->textid.

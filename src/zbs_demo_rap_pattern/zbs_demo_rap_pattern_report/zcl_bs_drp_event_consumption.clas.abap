@@ -6,5 +6,6 @@ CLASS zcl_bs_drp_event_consumption DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_drp_event_consumption IMPLEMENTATION.
+
+CLASS ZCL_BS_DRP_EVENT_CONSUMPTION IMPLEMENTATION.
 ENDCLASS.

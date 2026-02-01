@@ -56,104 +56,78 @@ CLASS zcl_bs_demo_service_prov DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_service_prov IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_SERVICE_PROV IMPLEMENTATION.
+
+
   METHOD constructor.
     me->configuration = configuration.
   ENDMETHOD.
 
 
-  METHOD zif_bs_demo_service_prov~read_odata_by_request.
-    TRY.
-        DATA(local_setting) = CORRESPONDING zif_bs_demo_service_prov=>setting_by_value( setting ).
-        local_setting-filter_condition   = setting-request->get_filter( )->get_as_ranges( ).
-        local_setting-requested_elements = setting-request->get_requested_elements( ).
-        local_setting-sort_order         = setting-request->get_sort_elements( ).
-        local_setting-is_data_requested  = setting-request->is_data_requested( ).
-        local_setting-is_count_requested = setting-request->is_total_numb_of_rec_requested( ).
+  METHOD create_client.
+    DATA(destination) = get_destination( ).
+    DATA(http_client) = cl_web_http_client_manager=>create_by_http_destination( destination ).
 
-        LOOP AT setting-delete_fields REFERENCE INTO DATA(field_for_deletion).
-          DELETE local_setting-filter_condition WHERE name = field_for_deletion->*.
-          DELETE local_setting-requested_elements WHERE table_line = field_for_deletion->*.
-          DELETE local_setting-sort_order WHERE element_name = field_for_deletion->*.
-        ENDLOOP.
+    CASE configuration-protocol.
+      WHEN zif_bs_demo_service_prov=>protocol-odata_v2.
+        result = /iwbep/cl_cp_factory_remote=>create_v2_remote_proxy(
+            is_proxy_model_key       = VALUE #( repository_id       = 'DEFAULT'
+                                                proxy_model_id      = configuration-consumption_model
+                                                proxy_model_version = '0001' )
+            io_http_client           = http_client
+            iv_relative_service_root = configuration-service_root ).
 
-        LOOP AT setting-read_fields REFERENCE INTO DATA(field_to_read).
-          INSERT field_to_read->* INTO TABLE local_setting-requested_elements.
-        ENDLOOP.
+      WHEN zif_bs_demo_service_prov=>protocol-odata_v4.
+        result = /iwbep/cl_cp_factory_remote=>create_v4_remote_proxy(
+            is_proxy_model_key       = VALUE #( repository_id       = 'DEFAULT'
+                                                proxy_model_id      = configuration-consumption_model
+                                                proxy_model_version = '0001' )
+            io_http_client           = http_client
+            iv_relative_service_root = configuration-service_root ).
 
-        IF setting-skip = zif_bs_demo_service_prov=>ignore_skip_settings.
-          CLEAR local_setting-skip.
-        ELSEIF setting-skip IS NOT INITIAL.
-          local_setting-skip = setting-skip.
-        ELSE.
-          local_setting-skip = setting-request->get_paging( )->get_offset( ).
-        ENDIF.
-
-        IF setting-top IS NOT INITIAL.
-          local_setting-top = setting-top.
-        ELSE.
-          local_setting-top = setting-request->get_paging( )->get_page_size( ).
-        ENDIF.
-
-        IF setting-request_no_count = abap_true.
-          CLEAR local_setting-is_count_requested.
-        ENDIF.
-
-        zif_bs_demo_service_prov~read_odata_by_values( EXPORTING setting       = local_setting
-                                                       CHANGING  business_data = business_data
-                                                                 count         = count ).
-
-      CATCH cx_rap_query_filter_no_range INTO DATA(error).
-        RAISE EXCEPTION NEW zcx_bs_demo_provider_error( previous = error ).
-    ENDTRY.
+    ENDCASE.
   ENDMETHOD.
 
 
-  METHOD zif_bs_demo_service_prov~read_odata_by_values.
-    TRY.
-        DATA(odata_client) = create_client( ).
-        DATA(odata_request) = odata_client->create_resource_for_entity_set( setting-entity_name )->create_request_for_read( ).
-
-        set_filter_for_request( odata_request = odata_request
-                                setting       = setting ).
-        set_elements_for_request( odata_request = odata_request
-                                  setting       = setting ).
-        set_options_for_request( odata_request = odata_request
-                                 setting       = setting ).
-        set_query_options_for_request( odata_request ).
-
-        DATA(odata_response) = odata_request->execute( ).
-        IF setting-is_data_requested = abap_true.
-          odata_response->get_business_data( IMPORTING et_business_data = business_data ).
-        ENDIF.
-        IF setting-is_count_requested = abap_true.
-          count = odata_response->get_count( ).
-        ENDIF.
-
-      CATCH cx_root INTO DATA(error).
-        RAISE EXCEPTION NEW zcx_bs_demo_provider_error( previous = error ).
-    ENDTRY.
-  ENDMETHOD.
-
-
-  METHOD zif_bs_demo_service_prov~read_odata_with_response.
-    DATA local_count TYPE int8.
-
-    TRY.
-        zif_bs_demo_service_prov~read_odata_by_request( EXPORTING setting       = CORRESPONDING #( setting )
-                                                        CHANGING  business_data = business_data
-                                                                  count         = local_count ).
-
-      CATCH cx_rap_query_response_set_twic INTO DATA(error).
-        RAISE EXCEPTION NEW zcx_bs_demo_provider_error( previous = error ).
-    ENDTRY.
-
-    IF setting-request->is_total_numb_of_rec_requested( ).
-      setting-response->set_total_number_of_records( local_count ).
+  METHOD determine_communication_system.
+    IF configuration-arrangement-comm_system_id IS INITIAL AND configuration-arrangement-property IS INITIAL.
+      RETURN ''.
     ENDIF.
 
-    IF setting-request->is_data_requested( ).
-      setting-response->set_data( business_data ).
+    IF configuration-arrangement-comm_system_id IS NOT INITIAL.
+      RETURN configuration-arrangement-comm_system_id.
+    ENDIF.
+
+    DATA(query) = VALUE if_com_arrangement_factory=>ty_query(
+        cscn_id_range = VALUE #( ( sign = 'I' option = 'EQ' low = configuration-arrangement-comm_scenario ) )
+        ca_property   = configuration-arrangement-property ).
+
+    DATA(arrangement_factory) = cl_com_arrangement_factory=>create_instance( ).
+    arrangement_factory->query_ca( EXPORTING is_query           = query
+                                   IMPORTING et_com_arrangement = DATA(systems) ).
+
+    IF line_exists( systems[ 1 ] ).
+      RETURN systems[ 1 ]->get_comm_system_id( ).
+    ELSE.
+      RAISE EXCEPTION NEW zcx_bs_demo_provider_error( ).
+    ENDIF.
+  ENDMETHOD.
+
+
+  METHOD get_destination.
+    IF configuration-arrangement IS NOT INITIAL.
+      result = cl_http_destination_provider=>create_by_comm_arrangement(
+          comm_scenario  = configuration-arrangement-comm_scenario
+          service_id     = configuration-arrangement-service_id
+          comm_system_id = determine_communication_system( ) ).
+
+    ELSEIF configuration-cloud_destination IS NOT INITIAL.
+      result = cl_http_destination_provider=>create_by_cloud_destination(
+          i_name       = configuration-cloud_destination
+          i_authn_mode = if_a4c_cp_service=>service_specific ).
+    ELSE.
+      ##TODO
     ENDIF.
   ENDMETHOD.
 
@@ -255,69 +229,98 @@ CLASS zcl_bs_demo_service_prov IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD create_client.
-    DATA(destination) = get_destination( ).
-    DATA(http_client) = cl_web_http_client_manager=>create_by_http_destination( destination ).
+  METHOD zif_bs_demo_service_prov~read_odata_by_request.
+    TRY.
+        DATA(local_setting) = CORRESPONDING zif_bs_demo_service_prov=>setting_by_value( setting ).
+        local_setting-filter_condition   = setting-request->get_filter( )->get_as_ranges( ).
+        local_setting-requested_elements = setting-request->get_requested_elements( ).
+        local_setting-sort_order         = setting-request->get_sort_elements( ).
+        local_setting-is_data_requested  = setting-request->is_data_requested( ).
+        local_setting-is_count_requested = setting-request->is_total_numb_of_rec_requested( ).
 
-    CASE configuration-protocol.
-      WHEN zif_bs_demo_service_prov=>protocol-odata_v2.
-        result = /iwbep/cl_cp_factory_remote=>create_v2_remote_proxy(
-            is_proxy_model_key       = VALUE #( repository_id       = 'DEFAULT'
-                                                proxy_model_id      = configuration-consumption_model
-                                                proxy_model_version = '0001' )
-            io_http_client           = http_client
-            iv_relative_service_root = configuration-service_root ).
+        LOOP AT setting-delete_fields REFERENCE INTO DATA(field_for_deletion).
+          DELETE local_setting-filter_condition WHERE name = field_for_deletion->*.
+          DELETE local_setting-requested_elements WHERE table_line = field_for_deletion->*.
+          DELETE local_setting-sort_order WHERE element_name = field_for_deletion->*.
+        ENDLOOP.
 
-      WHEN zif_bs_demo_service_prov=>protocol-odata_v4.
-        result = /iwbep/cl_cp_factory_remote=>create_v4_remote_proxy(
-            is_proxy_model_key       = VALUE #( repository_id       = 'DEFAULT'
-                                                proxy_model_id      = configuration-consumption_model
-                                                proxy_model_version = '0001' )
-            io_http_client           = http_client
-            iv_relative_service_root = configuration-service_root ).
+        LOOP AT setting-read_fields REFERENCE INTO DATA(field_to_read).
+          INSERT field_to_read->* INTO TABLE local_setting-requested_elements.
+        ENDLOOP.
 
-    ENDCASE.
+        IF setting-skip = zif_bs_demo_service_prov=>ignore_skip_settings.
+          CLEAR local_setting-skip.
+        ELSEIF setting-skip IS NOT INITIAL.
+          local_setting-skip = setting-skip.
+        ELSE.
+          local_setting-skip = setting-request->get_paging( )->get_offset( ).
+        ENDIF.
+
+        IF setting-top IS NOT INITIAL.
+          local_setting-top = setting-top.
+        ELSE.
+          local_setting-top = setting-request->get_paging( )->get_page_size( ).
+        ENDIF.
+
+        IF setting-request_no_count = abap_true.
+          CLEAR local_setting-is_count_requested.
+        ENDIF.
+
+        zif_bs_demo_service_prov~read_odata_by_values( EXPORTING setting       = local_setting
+                                                       CHANGING  business_data = business_data
+                                                                 count         = count ).
+
+      CATCH cx_rap_query_filter_no_range INTO DATA(error).
+        RAISE EXCEPTION NEW zcx_bs_demo_provider_error( previous = error ).
+    ENDTRY.
   ENDMETHOD.
 
 
-  METHOD determine_communication_system.
-    IF configuration-arrangement-comm_system_id IS INITIAL AND configuration-arrangement-property IS INITIAL.
-      RETURN ''.
-    ENDIF.
+  METHOD zif_bs_demo_service_prov~read_odata_by_values.
+    TRY.
+        DATA(odata_client) = create_client( ).
+        DATA(odata_request) = odata_client->create_resource_for_entity_set( setting-entity_name )->create_request_for_read( ).
 
-    IF configuration-arrangement-comm_system_id IS NOT INITIAL.
-      RETURN configuration-arrangement-comm_system_id.
-    ENDIF.
+        set_filter_for_request( odata_request = odata_request
+                                setting       = setting ).
+        set_elements_for_request( odata_request = odata_request
+                                  setting       = setting ).
+        set_options_for_request( odata_request = odata_request
+                                 setting       = setting ).
+        set_query_options_for_request( odata_request ).
 
-    DATA(query) = VALUE if_com_arrangement_factory=>ty_query(
-        cscn_id_range = VALUE #( ( sign = 'I' option = 'EQ' low = configuration-arrangement-comm_scenario ) )
-        ca_property   = configuration-arrangement-property ).
+        DATA(odata_response) = odata_request->execute( ).
+        IF setting-is_data_requested = abap_true.
+          odata_response->get_business_data( IMPORTING et_business_data = business_data ).
+        ENDIF.
+        IF setting-is_count_requested = abap_true.
+          count = odata_response->get_count( ).
+        ENDIF.
 
-    DATA(arrangement_factory) = cl_com_arrangement_factory=>create_instance( ).
-    arrangement_factory->query_ca( EXPORTING is_query           = query
-                                   IMPORTING et_com_arrangement = DATA(systems) ).
-
-    IF line_exists( systems[ 1 ] ).
-      RETURN systems[ 1 ]->get_comm_system_id( ).
-    ELSE.
-      RAISE EXCEPTION NEW zcx_bs_demo_provider_error( ).
-    ENDIF.
+      CATCH cx_root INTO DATA(error).
+        RAISE EXCEPTION NEW zcx_bs_demo_provider_error( previous = error ).
+    ENDTRY.
   ENDMETHOD.
 
 
-  METHOD get_destination.
-    IF configuration-arrangement IS NOT INITIAL.
-      result = cl_http_destination_provider=>create_by_comm_arrangement(
-          comm_scenario  = configuration-arrangement-comm_scenario
-          service_id     = configuration-arrangement-service_id
-          comm_system_id = determine_communication_system( ) ).
+  METHOD zif_bs_demo_service_prov~read_odata_with_response.
+    DATA local_count TYPE int8.
 
-    ELSEIF configuration-cloud_destination IS NOT INITIAL.
-      result = cl_http_destination_provider=>create_by_cloud_destination(
-          i_name       = configuration-cloud_destination
-          i_authn_mode = if_a4c_cp_service=>service_specific ).
-    ELSE.
-      ##TODO
+    TRY.
+        zif_bs_demo_service_prov~read_odata_by_request( EXPORTING setting       = CORRESPONDING #( setting )
+                                                        CHANGING  business_data = business_data
+                                                                  count         = local_count ).
+
+      CATCH cx_rap_query_response_set_twic INTO DATA(error).
+        RAISE EXCEPTION NEW zcx_bs_demo_provider_error( previous = error ).
+    ENDTRY.
+
+    IF setting-request->is_total_numb_of_rec_requested( ).
+      setting-response->set_total_number_of_records( local_count ).
+    ENDIF.
+
+    IF setting-request->is_data_requested( ).
+      setting-response->set_data( business_data ).
     ENDIF.
   ENDMETHOD.
 ENDCLASS.

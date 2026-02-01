@@ -19,22 +19,24 @@ CLASS zcl_bs_dcp_swc_query DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_dcp_swc_query IMPLEMENTATION.
-  METHOD if_rap_query_provider~select.
-    get_remote_data( EXPORTING request       = io_request
-                     IMPORTING business_data = DATA(software_components)
-                               count         = DATA(count) ).
 
-    adjust_data( EXPORTING request             = io_request
-                 CHANGING  software_components = software_components ).
+CLASS ZCL_BS_DCP_SWC_QUERY IMPLEMENTATION.
 
-    IF io_request->is_data_requested( ).
-      io_response->set_data( software_components ).
-    ENDIF.
 
-    IF io_request->is_total_numb_of_rec_requested( ).
-      io_response->set_total_number_of_records( count ).
-    ENDIF.
+  METHOD adjust_data.
+    DATA(adjust_custom) = NEW zcl_bs_demo_adjust_data( ).
+
+    TRY.
+        DATA(filter) = request->get_filter( )->get_as_ranges( ).
+      CATCH cx_rap_query_filter_no_range.
+        CLEAR filter.
+    ENDTRY.
+
+    adjust_custom->filter_data( EXPORTING it_filter = filter
+                                CHANGING  ct_data   = software_components ).
+
+    adjust_custom->order_data( EXPORTING it_sort = request->get_sort_elements( )
+                               CHANGING  ct_data = software_components ).
   ENDMETHOD.
 
 
@@ -84,19 +86,20 @@ CLASS zcl_bs_dcp_swc_query IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD adjust_data.
-    DATA(adjust_custom) = NEW zcl_bs_demo_adjust_data( ).
+  METHOD if_rap_query_provider~select.
+    get_remote_data( EXPORTING request       = io_request
+                     IMPORTING business_data = DATA(software_components)
+                               count         = DATA(count) ).
 
-    TRY.
-        DATA(filter) = request->get_filter( )->get_as_ranges( ).
-      CATCH cx_rap_query_filter_no_range.
-        CLEAR filter.
-    ENDTRY.
+    adjust_data( EXPORTING request             = io_request
+                 CHANGING  software_components = software_components ).
 
-    adjust_custom->filter_data( EXPORTING it_filter = filter
-                                CHANGING  ct_data   = software_components ).
+    IF io_request->is_data_requested( ).
+      io_response->set_data( software_components ).
+    ENDIF.
 
-    adjust_custom->order_data( EXPORTING it_sort = request->get_sort_elements( )
-                               CHANGING  ct_data = software_components ).
+    IF io_request->is_total_numb_of_rec_requested( ).
+      io_response->set_total_number_of_records( count ).
+    ENDIF.
   ENDMETHOD.
 ENDCLASS.

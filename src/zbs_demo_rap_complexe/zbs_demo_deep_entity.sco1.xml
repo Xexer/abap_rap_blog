@@ -61,15 +61,15 @@
         <VALUES>
          <item>
           <FIELD>ACTVT</FIELD>
-          <VALUE>Display, Change</VALUE>
+          <VALUE>Change, Display</VALUE>
           <VALUES>
-           <item>
-            <UUID>goYs21u8Ht+n2npjrNcp9g==</UUID>
-            <LOW_VALUE>03</LOW_VALUE>
-           </item>
            <item>
             <UUID>goYs21u8Ht+n2npjrNdJ9g==</UUID>
             <LOW_VALUE>02</LOW_VALUE>
+           </item>
+           <item>
+            <UUID>goYs21u8Ht+n2npjrNcp9g==</UUID>
+            <LOW_VALUE>03</LOW_VALUE>
            </item>
           </VALUES>
           <TEXT>Activity</TEXT>
@@ -78,15 +78,15 @@
          </item>
          <item>
           <FIELD>TABLE</FIELD>
-          <VALUE>ZBS_DMO_INVOICE, ZBS_DMO_POSITION</VALUE>
+          <VALUE>ZBS_DMO_POSITION, ZBS_DMO_INVOICE</VALUE>
           <VALUES>
-           <item>
-            <UUID>goYs21u8Ht+n2npjrNeJ9g==</UUID>
-            <LOW_VALUE>ZBS_DMO_INVOICE</LOW_VALUE>
-           </item>
            <item>
             <UUID>goYs21u8Ht+n2npjrNdp9g==</UUID>
             <LOW_VALUE>ZBS_DMO_POSITION</LOW_VALUE>
+           </item>
+           <item>
+            <UUID>goYs21u8Ht+n2npjrNeJ9g==</UUID>
+            <LOW_VALUE>ZBS_DMO_INVOICE</LOW_VALUE>
            </item>
           </VALUES>
           <TEXT>Table Name</TEXT>
@@ -103,6 +103,14 @@
       <UI_OBJECT>cscn_type_selection</UI_OBJECT>
       <IS_VISIBLE>X</IS_VISIBLE>
       <IS_ENABLED>X</IS_ENABLED>
+     </item>
+     <item>
+      <UI_OBJECT>cscn_obs_ping_supported</UI_OBJECT>
+      <IS_VISIBLE>X</IS_VISIBLE>
+      <IS_ENABLED>X</IS_ENABLED>
+     </item>
+     <item>
+      <UI_OBJECT>auth_edit_logic</UI_OBJECT>
      </item>
      <item>
       <UI_OBJECT>cscn_allow_create_by_key_checkbox</UI_OBJECT>

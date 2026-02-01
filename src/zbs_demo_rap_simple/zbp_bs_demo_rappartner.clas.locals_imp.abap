@@ -56,7 +56,9 @@ CLASS lhc_Partner IMPLEMENTATION.
          FIELDS ( Country PaymentCurrency )
          WITH CORRESPONDING #( keys )
          RESULT DATA(lt_partner_data)
+         " TODO: variable is assigned but never used (ABAP cleaner)
          FAILED DATA(ls_failed)
+         " TODO: variable is assigned but never used (ABAP cleaner)
          REPORTED DATA(ls_reported).
 
     LOOP AT lt_partner_data INTO DATA(ls_partner).

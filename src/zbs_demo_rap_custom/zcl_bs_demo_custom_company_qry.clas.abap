@@ -1,16 +1,19 @@
 CLASS zcl_bs_demo_custom_company_qry DEFINITION
-  PUBLIC
-  FINAL
+  PUBLIC FINAL
   CREATE PUBLIC.
 
   PUBLIC SECTION.
     INTERFACES if_rap_query_provider.
 
-    CONSTANTS c_destination TYPE string                                         VALUE `<destination-service-id>`.
+    CONSTANTS c_destination TYPE string                                         VALUE `d60-http-pp`. "<destination-service-id>
     CONSTANTS c_entity      TYPE /iwbep/if_cp_runtime_types=>ty_entity_set_name VALUE 'COMPANYNAMES'.
 
     CLASS-METHODS get_proxy
       RETURNING VALUE(ro_result) TYPE REF TO /iwbep/if_cp_client_proxy.
+
+    METHODS read_by_key
+      IMPORTING id_companyname   TYPE zbs_rap_companynames-CompanyName
+      RETURNING VALUE(rs_result) TYPE ZBS_R_RAPCustomCompanyNames.
 
   PRIVATE SECTION.
     TYPES tt_result TYPE STANDARD TABLE OF ZBS_I_RAPCustomEntityCNames WITH EMPTY KEY.
@@ -59,6 +62,18 @@ CLASS ZCL_BS_DEMO_CUSTOM_COMPANY_QRY IMPLEMENTATION.
       lt_result = CORRESPONDING #( lt_company_names ).
       io_response->set_data( lt_result ).
     ENDIF.
+  ENDMETHOD.
+
+
+  METHOD read_by_key.
+    DATA lt_result TYPE tt_result.
+
+    lt_result = VALUE #(
+        ( CompanyName = 'SAP' Branch = 'IT' CompanyDescription = 'SAP likes ABAP' )
+        ( CompanyName = 'Microsoft' Branch = 'IT' CompanyDescription = 'Office is a solution for companies' )
+        ( CompanyName = 'REWE' Branch = 'Retail' CompanyDescription = 'REWE sells tomatoes' ) ).
+
+    RETURN lt_result[ CompanyName = id_companyname ].
   ENDMETHOD.
 
 
@@ -114,9 +129,19 @@ CLASS ZCL_BS_DEMO_CUSTOM_COMPANY_QRY IMPLEMENTATION.
           lo_request->request_count( ).
         ENDIF.
 
-        DATA(lo_response) = lo_request->execute( ).
-        lo_response->get_business_data( IMPORTING et_business_data = et_result ).
-        ed_count = lo_response->get_count( ).
+        et_result = VALUE #(
+            ( CompanyName = 'SAP' Branch = 'IT' CompanyDescription = 'SAP likes ABAP' )
+            ( CompanyName = 'Microsoft' Branch = 'IT' CompanyDescription = 'Office is a solution for companies' )
+            ( CompanyName = 'REWE' Branch = 'Retail' CompanyDescription = 'REWE sells tomatoes' ) ).
+        ed_count = 3.
+
+        NEW zcl_bs_demo_adjust_data( )->adjust_via_request( EXPORTING io_request = io_request
+                                                            CHANGING  ct_data    = et_result
+                                                                      cd_count   = ed_count ).
+
+*        DATA(lo_response) = lo_request->execute( ).
+*        lo_response->get_business_data( IMPORTING et_business_data = et_result ).
+*        ed_count = lo_response->get_count( ).
 
       CATCH cx_root.
     ENDTRY.

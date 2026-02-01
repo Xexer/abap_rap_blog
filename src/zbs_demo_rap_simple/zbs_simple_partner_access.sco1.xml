@@ -88,6 +88,14 @@
       <IS_ENABLED>X</IS_ENABLED>
      </item>
      <item>
+      <UI_OBJECT>cscn_obs_ping_supported</UI_OBJECT>
+      <IS_VISIBLE>X</IS_VISIBLE>
+      <IS_ENABLED>X</IS_ENABLED>
+     </item>
+     <item>
+      <UI_OBJECT>auth_edit_logic</UI_OBJECT>
+     </item>
+     <item>
       <UI_OBJECT>cscn_allow_create_by_key_checkbox</UI_OBJECT>
      </item>
      <item>

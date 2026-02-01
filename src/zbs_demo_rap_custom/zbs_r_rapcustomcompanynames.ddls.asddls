@@ -19,7 +19,7 @@ define root custom entity ZBS_R_RAPCustomCompanyNames
       ]
 
       @UI                : {
-        lineItem         : [{ position: 10 }],
+        lineItem         : [{ position: 10 }, { type: #FOR_ACTION, dataAction: 'doSomethingWithUpdate', label: 'Custom Action' }],
         selectionField   : [ { position: 10 } ],
         identification   : [{ position: 10, qualifier: 'DETAIL' }]
       }

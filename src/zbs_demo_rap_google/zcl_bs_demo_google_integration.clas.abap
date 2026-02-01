@@ -4,18 +4,18 @@ CLASS zcl_bs_demo_google_integration DEFINITION
 
   PUBLIC SECTION.
     "! Translate a single text
-    "! @parameter id_text            | Text to be translated
+    "! @parameter id_text | Text to be translated
     "! @parameter id_target_language | Target language
-    "! @parameter rd_result          | Translated text
+    "! @parameter rd_result | Translated text
     METHODS translate_text
       IMPORTING id_text            TYPE string
                 id_target_language TYPE string DEFAULT `en`
       RETURNING VALUE(rd_result)   TYPE string.
 
     "! Translates a table of texts into the target language
-    "! @parameter it_text            | Table of texts
+    "! @parameter it_text | Table of texts
     "! @parameter id_target_language | Target language
-    "! @parameter rt_result          | Table of translated texts
+    "! @parameter rt_result | Table of translated texts
     METHODS translate_texts
       IMPORTING it_text            TYPE string_table
                 id_target_language TYPE string DEFAULT `en`

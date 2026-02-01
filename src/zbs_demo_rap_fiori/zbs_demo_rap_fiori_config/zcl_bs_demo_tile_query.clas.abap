@@ -79,10 +79,10 @@ CLASS zcl_bs_demo_tile_query IMPLEMENTATION.
                     infoState    = zif_bs_demo_tilec=>info_state-negative
                     numberOutput = total_partner_number
                     numberDigits = ''
-                    numberFactor = ''
+                    numberFactor = 'k'
                     numberState  = ''
                     numberUnit   = 'Error'
-                    stateArrow   = ''
+                    stateArrow   = zif_bs_demo_tilec=>arrow_state-up
                     subtitle     = 'Custom Partner Tile'
                     title        = 'New Title' ).
   ENDMETHOD.

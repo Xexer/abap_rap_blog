@@ -27,6 +27,8 @@ CLASS lhc_CompanyNames DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS lock FOR LOCK
       IMPORTING keys FOR LOCK CompanyNames.
+    METHODS doSomethingWithUpdate FOR MODIFY
+      IMPORTING keys FOR ACTION CompanyNames~doSomethingWithUpdate RESULT result.
 
     METHODS read_remote
       IMPORTING id_companyname   TYPE zbs_rap_companynames-CompanyName
@@ -67,6 +69,10 @@ CLASS lhc_CompanyNames IMPLEMENTATION.
 
 
   METHOD read.
+    LOOP AT keys INTO DATA(key).
+      DATA(found_company) = read_remote( key-CompanyName ).
+      INSERT CORRESPONDING #( found_company ) INTO TABLE result.
+    ENDLOOP.
   ENDMETHOD.
 
 
@@ -75,21 +81,38 @@ CLASS lhc_CompanyNames IMPLEMENTATION.
 
 
   METHOD read_remote.
-    DATA lt_r_name TYPE RANGE OF zbs_rap_companynames-CompanyName.
-    DATA lt_found  TYPE STANDARD TABLE OF zbs_rap_companynames.
+*    DATA lt_r_name TYPE RANGE OF zbs_rap_companynames-CompanyName.
+*    DATA lt_found  TYPE STANDARD TABLE OF zbs_rap_companynames.
+*
+*    lt_r_name = VALUE #( ( sign = 'I' option = 'EQ' low = id_companyname ) ).
+*
+*    DATA(lo_request) = zcl_bs_demo_custom_company_qry=>get_proxy( )->create_resource_for_entity_set(
+*        zcl_bs_demo_custom_company_qry=>c_entity )->create_request_for_read( ).
+*
+*    DATA(lo_filter_factory) = lo_request->create_filter_factory( ).
+*    DATA(lo_filter) = lo_filter_factory->create_by_range( iv_property_path = 'COMPANYNAME'
+*                                                          it_range         = lt_r_name ).
+*    lo_request->set_filter( lo_filter ).
+*
+*    DATA(lo_response) = lo_request->execute( ).
+*    lo_response->get_business_data( IMPORTING et_business_data = lt_found ).
+*    rs_result = lt_found[ 1 ].
 
-    lt_r_name = VALUE #( ( sign = 'I' option = 'EQ' low = id_companyname ) ).
+    RETURN NEW zcl_bs_demo_custom_company_qry( )->read_by_key( id_companyname ).
+  ENDMETHOD.
 
-    DATA(lo_request) = zcl_bs_demo_custom_company_qry=>get_proxy( )->create_resource_for_entity_set(
-        zcl_bs_demo_custom_company_qry=>c_entity )->create_request_for_read( ).
 
-    DATA(lo_filter_factory) = lo_request->create_filter_factory( ).
-    DATA(lo_filter) = lo_filter_factory->create_by_range( iv_property_path = 'COMPANYNAME' it_range = lt_r_name ).
-    lo_request->set_filter( lo_filter ).
+  METHOD doSomethingWithUpdate.
+    READ ENTITIES OF ZBS_R_RAPCustomCompanyNames IN LOCAL MODE
+         ENTITY CompanyNames
+         FROM CORRESPONDING #( keys )
+         RESULT DATA(found_companies).
 
-    DATA(lo_response) = lo_request->execute( ).
-    lo_response->get_business_data( IMPORTING et_business_data = lt_found ).
-    rs_result = lt_found[ 1 ].
+    LOOP AT found_companies INTO DATA(found_company).
+      found_company-Branch = 'CHANGED'.
+      INSERT VALUE #( CompanyName = found_company-CompanyName
+                      %param      = found_company ) INTO TABLE result.
+    ENDLOOP.
   ENDMETHOD.
 ENDCLASS.
 
@@ -138,7 +161,7 @@ CLASS lsc_ZBS_R_RAPCUSTOMCOMPANYNAME IMPLEMENTATION.
 
     LOOP AT lcl_data_buffer=>gt_update INTO DATA(ls_update).
       ls_remote_update = CORRESPONDING #( ls_update ).
-      DATA(ls_key) = VALUE zbs_rap_companynames( companyname = ls_remote_update-CompanyName ).
+      DATA(ls_key) = VALUE zbs_rap_companynames( CompanyName = ls_remote_update-CompanyName ).
 
       DATA(lo_request_update) = zcl_bs_demo_custom_company_qry=>get_proxy( )->create_resource_for_entity_set(
           zcl_bs_demo_custom_company_qry=>c_entity
@@ -149,7 +172,7 @@ CLASS lsc_ZBS_R_RAPCUSTOMCOMPANYNAME IMPLEMENTATION.
     ENDLOOP.
 
     LOOP AT lcl_data_buffer=>gt_delete INTO DATA(ls_delete).
-      DATA(ls_key_delete) = VALUE zbs_rap_companynames( companyname = ls_delete-CompanyName ).
+      DATA(ls_key_delete) = VALUE zbs_rap_companynames( CompanyName = ls_delete-CompanyName ).
 
       DATA(lo_request_delete) = zcl_bs_demo_custom_company_qry=>get_proxy( )->create_resource_for_entity_set(
           zcl_bs_demo_custom_company_qry=>c_entity

@@ -7,7 +7,10 @@ CLASS zcl_bs_dcp_data_init DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_dcp_data_init IMPLEMENTATION.
+
+CLASS ZCL_BS_DCP_DATA_INIT IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     DATA teams        TYPE SORTED TABLE OF zbs_dcp_team WITH UNIQUE KEY team.
     DATA applications TYPE SORTED TABLE OF zbs_dcp_appl WITH UNIQUE KEY application.

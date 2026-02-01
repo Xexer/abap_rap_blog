@@ -3,24 +3,24 @@ strict ( 2 );
 with draft;
 
 define behavior for ZBS_R_DMOTreeTeam alias Team
-persistent table ZBS_DMO_TEAM
-draft table ZBS_DMO_TEAM_D
+persistent table zbs_dmo_team
+draft table zbs_dmo_team_d
 etag master LocalLastChanged
 lock master total etag LastChanged
-authorization master( global )
+authorization master ( global )
 with additional save
 {
   field ( mandatory : create )
-   UserId;
+  UserId;
 
   field ( readonly )
-   LocalCreatedBy,
-   LocalLastChangedBy,
-   LocalLastChanged,
-   LastChanged;
+  LocalCreatedBy,
+  LocalLastChangedBy,
+  LocalLastChanged,
+  LastChanged;
 
   field ( readonly : update )
-   UserId;
+  UserId;
 
   create;
   update;
@@ -32,18 +32,29 @@ with additional save
   draft action Resume;
   draft determine action Prepare;
 
-  mapping for ZBS_DMO_TEAM
+  association _TeamLeader { with draft; }
+  association _Member { with draft; }
+
+  instance hierarchy ZBS_I_DMOTreeTeamHR
   {
-    UserId = user_id;
-    PlayerName = player_name;
-    PlayerEmail = player_email;
-    PlayerPosition = player_position;
-    Score = score;
-    Team = team;
-    TeamLeader = team_leader;
-    LocalCreatedBy = local_created_by;
-    LocalLastChangedBy = local_last_changed_by;
-    LocalLastChanged = local_last_changed;
-    LastChanged = last_changed;
+//    managed reorder action changeNextSibling;
+//    field ( hierarchy-index ) SiblingOrderNumber;
+    ascending association _TeamLeader;
+    descending association _Member { with cascading delete; }
   }
+
+  mapping for zbs_dmo_team
+    {
+      UserId             = user_id;
+      PlayerName         = player_name;
+      PlayerEmail        = player_email;
+      PlayerPosition     = player_position;
+      Score              = score;
+      Team               = team;
+      TeamLeader         = team_leader;
+      LocalCreatedBy     = local_created_by;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChanged   = local_last_changed;
+      LastChanged        = last_changed;
+    }
 }

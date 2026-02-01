@@ -19,10 +19,23 @@ CLASS zcl_bs_api_target DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_api_target IMPLEMENTATION.
+
+CLASS ZCL_BS_API_TARGET IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     DELETE FROM zbs_api_target.
     COMMIT WORK.
+  ENDMETHOD.
+
+
+  METHOD is_availabe.
+    SELECT SINGLE FROM zbs_api_target
+      FIELDS location_id
+      WHERE location_id = @location_id
+      INTO @DATA(found_id).
+
+    RETURN xsdbool( zcl_syst=>create( )->return_code( ) = 0 AND found_id IS NOT INITIAL ).
   ENDMETHOD.
 
 
@@ -46,15 +59,5 @@ CLASS zcl_bs_api_target IMPLEMENTATION.
         CLEAR result.
       ENDIF.
     ENDLOOP.
-  ENDMETHOD.
-
-
-  METHOD is_availabe.
-    SELECT SINGLE FROM zbs_api_target
-      FIELDS location_id
-      WHERE location_id = @location_id
-      INTO @DATA(found_id).
-
-    RETURN xsdbool( zcl_syst=>create( )->return_code( ) = 0 AND found_id IS NOT INITIAL ).
   ENDMETHOD.
 ENDCLASS.

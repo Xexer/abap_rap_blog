@@ -41,7 +41,41 @@ CLASS zcl_bs_demo_crap_eml DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_crap_eml IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_CRAP_EML IMPLEMENTATION.
+
+
+  METHOD create_generic.
+    DATA new_invoices  TYPE TABLE FOR CREATE ZBS_R_RAPCInvoice.
+    DATA new_positions TYPE TABLE FOR CREATE ZBS_R_RAPCInvoice\_Position.
+
+    INSERT VALUE #( %cid              = xco_cp=>uuid( )->value
+                    Document          = data-header-document
+                    Partner           = data-header-partner
+                    %control-Document = if_abap_behv=>mk-on
+                    %control-Partner  = if_abap_behv=>mk-on ) INTO TABLE new_invoices REFERENCE INTO DATA(actual_invoice).
+
+    INSERT VALUE #( %cid_ref = actual_invoice->%cid ) INTO TABLE new_positions REFERENCE INTO DATA(actual_position).
+
+    LOOP AT data-positions INTO DATA(position).
+      INSERT VALUE #( %cid                    = xco_cp=>uuid( )->value
+                      PositionNumber          = position-pos
+                      Price                   = position-price
+                      Currency                = position-currency
+                      %control-PositionNumber = if_abap_behv=>mk-on
+                      %control-Material       = if_abap_behv=>mk-on
+                      %control-Price          = if_abap_behv=>mk-on
+                      %control-Currency       = if_abap_behv=>mk-on ) INTO TABLE actual_position->%target.
+    ENDLOOP.
+
+    MODIFY ENTITIES OF ZBS_R_RAPCInvoice
+           ENTITY Invoice
+           CREATE FROM new_invoices
+           ENTITY Invoice
+           CREATE BY \_Position FROM new_positions.
+  ENDMETHOD.
+
+
   METHOD delete_data.
     DATA lt_filter TYPE STANDARD TABLE OF ZBS_R_RAPCInvoice WITH EMPTY KEY.
 
@@ -134,36 +168,5 @@ CLASS zcl_bs_demo_crap_eml IMPLEMENTATION.
     io_out->write( lt_invoice ).
     io_out->write( `Positions:` ).
     io_out->write( lt_position ).
-  ENDMETHOD.
-
-
-  METHOD create_generic.
-    DATA new_invoices  TYPE TABLE FOR CREATE ZBS_R_RAPCInvoice.
-    DATA new_positions TYPE TABLE FOR CREATE ZBS_R_RAPCInvoice\_Position.
-
-    INSERT VALUE #( %cid              = xco_cp=>uuid( )->value
-                    Document          = data-header-document
-                    Partner           = data-header-partner
-                    %control-Document = if_abap_behv=>mk-on
-                    %control-Partner  = if_abap_behv=>mk-on ) INTO TABLE new_invoices REFERENCE INTO DATA(actual_invoice).
-
-    INSERT VALUE #( %cid_ref = actual_invoice->%cid ) INTO TABLE new_positions REFERENCE INTO DATA(actual_position).
-
-    LOOP AT data-positions INTO DATA(position).
-      INSERT VALUE #( %cid                    = xco_cp=>uuid( )->value
-                      PositionNumber          = position-pos
-                      Price                   = position-price
-                      Currency                = position-currency
-                      %control-PositionNumber = if_abap_behv=>mk-on
-                      %control-Material       = if_abap_behv=>mk-on
-                      %control-Price          = if_abap_behv=>mk-on
-                      %control-Currency       = if_abap_behv=>mk-on ) INTO TABLE actual_position->%target.
-    ENDLOOP.
-
-    MODIFY ENTITIES OF ZBS_R_RAPCInvoice
-           ENTITY Invoice
-           CREATE FROM new_invoices
-           ENTITY Invoice
-           CREATE BY \_Position FROM new_positions.
   ENDMETHOD.
 ENDCLASS.

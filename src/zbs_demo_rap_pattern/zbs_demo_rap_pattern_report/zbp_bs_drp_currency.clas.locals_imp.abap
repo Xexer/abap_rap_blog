@@ -144,6 +144,8 @@ CLASS lhc_Currency IMPLEMENTATION.
 
 
   METHOD convert_excel_file_to_table.
+    " TODO: parameter RT_RESULT is never assigned (ABAP cleaner)
+
     IF id_stream IS INITIAL.
       RAISE EXCEPTION NEW zcx_drp_excel_error( textid = VALUE #( msgid = 'ZBS_DEMO_RAP_PATTERN'
                                                                  msgno = '001' ) ).
