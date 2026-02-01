@@ -7,9 +7,11 @@ define behavior for ZBS_C_SASALE alias SASale
 extensible
 use etag
 {
-  use create;
-  use update;
+  use create (augment);
+  use update (augment);
   use delete;
+
+  field (modify) TextInformation;
 
   use action Edit;
   use action Activate;

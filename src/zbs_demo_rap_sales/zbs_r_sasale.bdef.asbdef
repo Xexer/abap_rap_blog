@@ -66,19 +66,15 @@ lock dependent by _SASale
 authorization dependent by _SASale
 {
   field ( readonly )
-  UUID,
   ParentUUID;
 
-  field ( numbering : managed )
-  UUID;
-
+  field ( readonly : update ) Language;
 
   update;
   delete;
 
   mapping for zbs_sainfo corresponding extensible
     {
-      UUID            = uuid;
       ParentUUID      = parent_uuid;
       Language        = language;
       TextInformation = text000;

@@ -133,6 +133,10 @@ annotate view ZBS_C_SASALE with
   @EndUserText.label: 'Last Changed At'
   LastChangedAt;
 
+  @UI.identification: [ { position: 160 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Text Information'
+  TextInformation;
+
   @UI.identification: [{ position: 160 , qualifier: 'GENERAL', value: '_SASold.MaterialId' }]
   @UI.lineItem: [ { position: 160, value: '_SASold.MaterialId'  } ]
   _SASold;

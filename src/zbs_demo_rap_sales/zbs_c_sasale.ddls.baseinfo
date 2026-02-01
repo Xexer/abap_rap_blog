@@ -3,6 +3,7 @@
 {
 "FROM":
 [
+"ZBS_R_SAINFO",
 "ZBS_R_SASALE"
 ],
 "ASSOCIATED":
