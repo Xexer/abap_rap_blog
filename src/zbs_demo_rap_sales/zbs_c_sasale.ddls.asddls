@@ -29,6 +29,8 @@ define root view entity ZBS_C_SASALE
         quantity.unitOfMeasure: 'Differenceunit'
       }
       DifferenceQuantity,
+      
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'I_UnitOfMeasureStdVH', element : 'UnitOfMeasure' } }]
       DifferenceUnit,
       SaleComment,
       
