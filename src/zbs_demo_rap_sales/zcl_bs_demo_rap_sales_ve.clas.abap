@@ -26,6 +26,10 @@ CLASS zcl_bs_demo_rap_sales_ve IMPLEMENTATION.
             original->SalesMonth = substring( val = original->SalesDate
                                               off = 4
                                               len = 2 ).
+          WHEN 'ISAMOUNTHIDDEN'.
+            original->isAmountHidden = xsdbool( original->DifferenceAmount IS INITIAL ).
+          WHEN 'ISQUANTITYHIDDEN'.
+            original->isQuantityHidden = xsdbool( original->DifferenceQuantity IS INITIAL ).
         ENDCASE.
       ENDLOOP.
     ENDLOOP.
@@ -35,7 +39,7 @@ CLASS zcl_bs_demo_rap_sales_ve IMPLEMENTATION.
 
 
   METHOD if_sadl_exit_calc_element_read~get_calculation_info.
-    et_requested_orig_elements = VALUE #( ( `SALESDATE` ) ).
+    et_requested_orig_elements = VALUE #( ( `SALESDATE` ) ( `DIFFERENCEAMOUNT` ) ( `DIFFERENCEQUANTITY` ) ).
   ENDMETHOD.
 
 

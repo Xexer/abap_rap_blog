@@ -61,22 +61,30 @@ CLASS zcl_bs_demo_rap_sales_data IMPLEMENTATION.
                        SaleComment        = `VR stuff and More`
                        DifferenceAmount   = '1000'
                        DifferenceCurrency = 'USD' )
-                     ( %cid          = id_nestle_sale
-                       PartnerNumber = '1000000005'
-                       SalesDate     = '20260105'
-                       SalesVolume   = '99999'
-                       SalesCurrency = 'CHF'
-                       SaleComment   = `Activation of more Cloud volume` )
-                     ( %cid          = xco_cp=>uuid( )->value
-                       PartnerNumber = '1000000000'
-                       SalesDate     = '20251217'
-                       SalesVolume   = '26000'
-                       SalesCurrency = 'EUR' )
-                     ( %cid          = xco_cp=>uuid( )->value
-                       PartnerNumber = '1000000005'
-                       SalesDate     = '20251218'
-                       SalesVolume   = '2000'
-                       SalesCurrency = 'USD' )
+                     ( %cid               = id_nestle_sale
+                       PartnerNumber      = '1000000005'
+                       SalesDate          = '20260105'
+                       SalesVolume        = '99999'
+                       SalesCurrency      = 'CHF'
+                       SaleComment        = `Activation of more Cloud volume`
+                       DifferenceAmount   = '500'
+                       DifferenceCurrency = 'CHF'
+                       DifferenceQuantity = '13.5'
+                       DifferenceUnit     = '%' )
+                     ( %cid               = xco_cp=>uuid( )->value
+                       PartnerNumber      = '1000000000'
+                       SalesDate          = '20251217'
+                       SalesVolume        = '26000'
+                       SalesCurrency      = 'EUR'
+                       DifferenceQuantity = '13.5'
+                       DifferenceUnit     = '%' )
+                     ( %cid               = xco_cp=>uuid( )->value
+                       PartnerNumber      = '1000000005'
+                       SalesDate          = '20251218'
+                       SalesVolume        = '2000'
+                       SalesCurrency      = 'USD'
+                       DifferenceAmount   = '500'
+                       DifferenceCurrency = 'USD' )
                      ( %cid          = xco_cp=>uuid( )->value
                        PartnerNumber = '1000000005'
                        SalesDate     = '20251110'
@@ -152,7 +160,11 @@ CLASS zcl_bs_demo_rap_sales_data IMPLEMENTATION.
 
     MODIFY ENTITIES OF zbs_r_sasale
            ENTITY SASale
-           CREATE FIELDS ( PartnerNumber SalesDate SalesVolume SalesCurrency SaleComment DifferenceAmount DifferenceCurrency )
+           CREATE FIELDS ( PartnerNumber SalesDate
+            SalesVolume SalesCurrency
+            SaleComment DifferenceAmount
+            DifferenceCurrency DifferenceQuantity
+            DifferenceUnit )
            WITH sales
 
            ENTITY SASale
