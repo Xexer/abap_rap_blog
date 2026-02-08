@@ -7,6 +7,7 @@
   sapObjectNodeType.name: 'ZBS_GlobalSale'
 }
 @AccessControl.authorizationCheck: #MANDATORY
+@OData.applySupportedForAggregation: #FULL
 define root view entity ZBS_C_SASALE
   provider contract transactional_query
   as projection on ZBS_R_SASALE
@@ -18,16 +19,19 @@ define root view entity ZBS_C_SASALE
           @Semantics: {
             amount.currencyCode: 'Salescurrency'
           }
+          @Aggregation.default: #SUM
           SalesVolume,
           SalesCurrency,
           @Semantics: {
             amount.currencyCode: 'Differencecurrency'
           }
+          @Aggregation.default: #AVG
           DifferenceAmount,
           DifferenceCurrency,
           @Semantics: {
             quantity.unitOfMeasure: 'Differenceunit'
           }
+          @Aggregation.default: #AVG
           DifferenceQuantity,
 
           @Consumption.valueHelpDefinition: [{ entity: { name: 'I_UnitOfMeasureStdVH', element : 'UnitOfMeasure' } }]
@@ -36,19 +40,19 @@ define root view entity ZBS_C_SASALE
 
           _SAInfo.TextInformation : localized,
 
-          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-          @ObjectModel.sort.transformedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-  virtual SalesYear        : abap.char(4),
+//          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+//          @ObjectModel.sort.transformedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+//  virtual SalesYear        : abap.char(4),
 
-          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-          @ObjectModel.sort.transformedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-  virtual SalesMonth       : abap.char(2),
+//          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+//          @ObjectModel.sort.transformedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+//  virtual SalesMonth       : abap.char(2),
 
-          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-  virtual isAmountHidden   : abap_boolean,
+//          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+//  virtual isAmountHidden   : abap_boolean,
 
-          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-  virtual isQuantityHidden : abap_boolean,
+//          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+//  virtual isQuantityHidden : abap_boolean,
 
           @Semantics: {
             user.createdBy: true
