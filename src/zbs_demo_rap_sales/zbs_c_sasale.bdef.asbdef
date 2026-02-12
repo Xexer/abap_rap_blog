@@ -19,6 +19,11 @@ use etag
   use action Resume;
   use action Prepare;
 
+  use action createFixValue;
+  use action createPercent;
+  use action ConsistencyCheck;
+  use action ClearDifferences;
+
   use association _SAInfo { create; with draft; }
   use association _SASold { create; with draft; }
   use association _SASeller { create; with draft; }
@@ -42,6 +47,8 @@ use etag
 {
   use update;
   use delete;
+
+  use action ReleaseItems;
 
   use association _SASale { with draft; }
 

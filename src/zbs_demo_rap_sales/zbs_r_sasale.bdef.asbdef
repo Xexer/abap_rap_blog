@@ -21,6 +21,10 @@ authorization master ( global )
   field ( numbering : managed )
   UUID;
 
+  static factory action ( authorization : global ) createFixValue parameter ZBS_S_SAPopupFixValue [1];
+  static factory action ( authorization : global ) createPercent parameter ZBS_S_SAPopupPercent [1];
+  action ConsistencyCheck;
+  action ClearDifferences;
 
   create;
   update;
@@ -99,6 +103,7 @@ authorization dependent by _SASale
   field ( numbering : managed )
   UUID;
 
+  action ReleaseItems;
 
   update;
   delete;

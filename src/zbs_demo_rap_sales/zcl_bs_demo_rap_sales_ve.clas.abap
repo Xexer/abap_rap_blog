@@ -30,6 +30,8 @@ CLASS zcl_bs_demo_rap_sales_ve IMPLEMENTATION.
             original->isAmountHidden = xsdbool( original->DifferenceAmount IS INITIAL ).
           WHEN 'ISQUANTITYHIDDEN'.
             original->isQuantityHidden = xsdbool( original->DifferenceQuantity IS INITIAL ).
+          when 'BUTTONCRITICALITY'.
+          original->ButtonCriticality = 1.
         ENDCASE.
       ENDLOOP.
     ENDLOOP.

@@ -15,6 +15,9 @@ annotate view ZBS_C_SASOLD with
     }
   ]
 
+  @UI.lineItem: [
+    { position: 10, type: #FOR_ACTION, dataAction: 'ReleaseItems', label: 'Release' }
+  ]
   @UI.hidden: true
   UUID;
 
