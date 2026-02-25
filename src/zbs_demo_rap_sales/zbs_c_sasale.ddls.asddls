@@ -37,6 +37,7 @@ define root view entity ZBS_C_SASALE
           @Consumption.valueHelpDefinition: [{ entity: { name: 'I_UnitOfMeasureStdVH', element : 'UnitOfMeasure' } }]
           DifferenceUnit,
           SaleComment,
+          LoggingId,
 
           _SAInfo.TextInformation : localized,
 

@@ -127,6 +127,10 @@ annotate view ZBS_C_SASALE with
   @EndUserText.label: 'Comment'
   SaleComment;
 
+  @UI.identification: [ { position: 105, qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Log ID'
+  LoggingId;
+
   @UI.identification: [ { position: 110 , qualifier: 'ADMIN' } ]
   @EndUserText.label: 'Created By'
   LocalCreatedBy;

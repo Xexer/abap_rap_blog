@@ -21,6 +21,7 @@ define root view entity ZBS_R_SASALE
       differencequantity    as DifferenceQuantity,
       differenceunit        as DifferenceUnit,
       salecomment           as SaleComment,
+      logging_id            as LoggingId,
       @Semantics.user.createdBy: true
       local_created_by      as LocalCreatedBy,
       @Semantics.systemDateTime.createdAt: true

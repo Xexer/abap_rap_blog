@@ -53,6 +53,7 @@ authorization master ( global )
       LocalLastChangedBy = local_last_changed_by;
       LocalLastChangedAt = local_last_changed_at;
       LastChangedAt      = last_changed_at;
+      LoggingId          = logging_id;
     }
 
   association _SAInfo { create; with draft; }
