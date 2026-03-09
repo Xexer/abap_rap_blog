@@ -3,6 +3,7 @@
 @UI.headerInfo.title.value: 'PartnerNumber'
 @UI.headerInfo.description.type: #STANDARD
 @UI.headerInfo.description.value: 'SalesDate'
+@UI.createHidden: true
 annotate view ZBS_C_SASALE with
 {
   @UI.facet: [
@@ -58,8 +59,9 @@ annotate view ZBS_C_SASALE with
   ]
 
   @UI.lineItem: [
-    { position: 10, type: #FOR_ACTION, dataAction: 'createFixValue', label: 'Create Fix Value' },
-    { position: 20, type: #FOR_ACTION, dataAction: 'createPercent', label: 'Create Percent' }
+    { position: 5, type: #FOR_ACTION_GROUP, label: 'Create', actionGroupId: 'idCreateGroup' },
+    { position: 10, type: #FOR_ACTION, dataAction: 'createFixValue', label: 'Create Fix Value', actionGroupId: 'idCreateGroup' },
+    { position: 20, type: #FOR_ACTION, dataAction: 'createPercent', label: 'Create Percent', actionGroupId: 'idCreateGroup' }
   ]
   @UI.identification: [
     { position: 10, type: #FOR_ACTION, dataAction: 'ConsistencyCheck', label: 'Check consistency', criticality: 'ButtonCriticality' },
