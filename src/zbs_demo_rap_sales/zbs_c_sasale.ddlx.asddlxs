@@ -3,6 +3,7 @@
 @UI.headerInfo.title.value: 'PartnerNumber'
 @UI.headerInfo.description.type: #STANDARD
 @UI.headerInfo.description.value: 'SalesDate'
+@UI.headerInfo.imageUrl: 'LineIcon'
 @UI.createHidden: true
 annotate view ZBS_C_SASALE with
 {
@@ -157,11 +158,14 @@ annotate view ZBS_C_SASALE with
   @EndUserText.label: 'Text Information'
   TextInformation;
 
-  //  @UI.hidden: true
-  //  isAmountHidden;
-  //
-  //  @UI.hidden: true
-  //  isQuantityHidden;
+  @UI.hidden: true
+  isAmountHidden;
+
+  @UI.hidden: true
+  isQuantityHidden;
+  
+  @UI.lineItem: [ { position: 1, label: 'Icon', cssDefault.width: '7em'  } ]
+  LineIcon;
 
   @UI.identification: [{ position: 160 , qualifier: 'GENERAL', value: '_SASold.MaterialId' }]
   @UI.lineItem: [ { position: 160, value: '_SASold.MaterialId'  } ]

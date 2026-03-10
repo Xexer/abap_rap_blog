@@ -58,6 +58,10 @@ define root view entity ZBS_C_SASALE
           @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
   virtual ButtonCriticality : abap.int1,
 
+          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+          @Semantics.imageUrl: true
+  virtual LineIcon          : abap.char(50),
+
           @Semantics: {
             user.createdBy: true
           }

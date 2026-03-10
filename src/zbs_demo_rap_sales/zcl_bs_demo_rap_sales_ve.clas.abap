@@ -30,8 +30,17 @@ CLASS zcl_bs_demo_rap_sales_ve IMPLEMENTATION.
             original->isAmountHidden = xsdbool( original->DifferenceAmount IS INITIAL ).
           WHEN 'ISQUANTITYHIDDEN'.
             original->isQuantityHidden = xsdbool( original->DifferenceQuantity IS INITIAL ).
-          when 'BUTTONCRITICALITY'.
-          original->ButtonCriticality = 1.
+          WHEN 'BUTTONCRITICALITY'.
+            original->ButtonCriticality = 1.
+          WHEN 'LINEICON'.
+            original->LineIcon = COND #( WHEN original->DifferenceAmount > 0 AND original->DifferenceQuantity > 0 THEN
+                                           'sap-icon://alert'
+                                         WHEN original->DifferenceAmount > 0 THEN
+                                           'sap-icon://money-bills'
+                                         WHEN original->DifferenceQuantity > 0 THEN
+                                           'sap-icon://commission-check'
+                                         ELSE
+                                           'sap-icon://sys-help' ).
         ENDCASE.
       ENDLOOP.
     ENDLOOP.
