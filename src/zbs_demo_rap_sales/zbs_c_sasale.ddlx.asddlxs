@@ -5,6 +5,7 @@
 @UI.headerInfo.description.value: 'SalesDate'
 @UI.headerInfo.imageUrl: 'LineIcon'
 @UI.createHidden: true
+@UI.lineItem: [{criticality: 'DataCriticality'}]
 annotate view ZBS_C_SASALE with
 {
   @UI.facet: [
@@ -88,8 +89,8 @@ annotate view ZBS_C_SASALE with
   @EndUserText.label: 'Sales Year'
   SalesYear;
 
-  @UI.lineItem: [ { position: 33  } ]
-  @UI.identification: [ { position: 33 , qualifier: 'GENERAL' } ]
+  @UI.lineItem: [ { position: 33, criticality: 'DataCriticality', criticalityRepresentation: #WITH_ICON  } ]
+  @UI.identification: [ { position: 33 , qualifier: 'GENERAL', criticality: 'DataCriticality', criticalityRepresentation: #WITH_ICON } ]
   @EndUserText.label: 'Sales Month'
   SalesMonth;
 

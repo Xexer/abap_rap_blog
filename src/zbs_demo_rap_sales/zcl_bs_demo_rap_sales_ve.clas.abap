@@ -23,9 +23,17 @@ CLASS zcl_bs_demo_rap_sales_ve IMPLEMENTATION.
                                              off = 0
                                              len = 4 ).
           WHEN `SALESMONTH`.
-            original->SalesMonth = substring( val = original->SalesDate
-                                              off = 4
-                                              len = 2 ).
+            original->SalesMonth      = substring( val = original->SalesDate
+                                                   off = 4
+                                                   len = 2 ).
+            original->DataCriticality = SWITCH #( original->SalesMonth
+                                                  WHEN '01' THEN 0
+                                                  WHEN '02' THEN 1
+                                                  WHEN '03' THEN 2
+                                                  WHEN '10' THEN 3
+                                                  WHEN '11' THEN 4
+                                                  WHEN '12' THEN 5
+                                                  ELSE           6 ).
           WHEN 'ISAMOUNTHIDDEN'.
             original->isAmountHidden = xsdbool( original->DifferenceAmount IS INITIAL ).
           WHEN 'ISQUANTITYHIDDEN'.

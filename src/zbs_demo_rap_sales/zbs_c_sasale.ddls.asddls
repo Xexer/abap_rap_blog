@@ -43,24 +43,27 @@ define root view entity ZBS_C_SASALE
 
           @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
           @ObjectModel.sort.transformedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-  virtual SalesYear         : abap.char(4),
+  virtual SalesYear          : abap.char(4),
 
           @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
           @ObjectModel.sort.transformedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-  virtual SalesMonth        : abap.char(2),
+  virtual SalesMonth         : abap.char(2),
 
           @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-  virtual isAmountHidden    : abap_boolean,
+  virtual isAmountHidden     : abap_boolean,
 
           @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-  virtual isQuantityHidden  : abap_boolean,
+  virtual isQuantityHidden   : abap_boolean,
 
           @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
-  virtual ButtonCriticality : abap.int1,
+  virtual ButtonCriticality  : abap.int1,
 
           @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
           @Semantics.imageUrl: true
-  virtual LineIcon          : abap.char(50),
+  virtual LineIcon           : abap.char(50),
+
+          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+  virtual DataCriticality : abap.int1,
 
           @Semantics: {
             user.createdBy: true
