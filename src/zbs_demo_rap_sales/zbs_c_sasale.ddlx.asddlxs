@@ -35,7 +35,8 @@ annotate view ZBS_C_SASALE with
       label: 'Admin Fields',
       position: 40,
       type: #IDENTIFICATION_REFERENCE,
-      targetQualifier: 'ADMIN'
+      targetQualifier: 'ADMIN',
+      importance: #LOW
     },
     {
       id: 'idSASeller',
@@ -49,7 +50,8 @@ annotate view ZBS_C_SASALE with
       label: 'Sold',
       position: 60,
       type: #LINEITEM_REFERENCE,
-      targetElement: '_SASold'
+      targetElement: '_SASold',
+      importance: #HIGH
     },
     {
       id: 'idSAInfo',
@@ -61,6 +63,7 @@ annotate view ZBS_C_SASALE with
   ]
 
   @UI.lineItem: [
+    { position: 300 },
     { position: 5, type: #FOR_ACTION_GROUP, label: 'Create', actionGroupId: 'idCreateGroup' },
     { position: 10, type: #FOR_ACTION, dataAction: 'createFixValue', label: 'Create Fix Value', actionGroupId: 'idCreateGroup' },
     { position: 20, type: #FOR_ACTION, dataAction: 'createPercent', label: 'Create Percent', actionGroupId: 'idCreateGroup' }
@@ -69,7 +72,6 @@ annotate view ZBS_C_SASALE with
     { position: 10, type: #FOR_ACTION, dataAction: 'ConsistencyCheck', label: 'Check consistency', criticality: 'ButtonCriticality' },
     { position: 20, type: #FOR_ACTION, dataAction: 'ClearDifferences', label: 'Clear', qualifier: 'DIFF', inline: true }
   ]
-  @UI.hidden: true
   UUID;
 
   @UI.selectionField: [ { position: 10 } ]
@@ -84,12 +86,12 @@ annotate view ZBS_C_SASALE with
   @EndUserText.label: 'Sales Date'
   SalesDate;
 
-  @UI.lineItem: [ { position: 32  } ]
+  @UI.lineItem: [ { position: 32, importance: #LOW  } ]
   @UI.identification: [ { position: 32 , qualifier: 'GENERAL' } ]
   @EndUserText.label: 'Sales Year'
   SalesYear;
 
-  @UI.lineItem: [ { position: 33, criticality: 'DataCriticality', criticalityRepresentation: #WITH_ICON  } ]
+  @UI.lineItem: [ { position: 33, criticality: 'DataCriticality', criticalityRepresentation: #WITH_ICON, importance: #LOW  } ]
   @UI.identification: [ { position: 33 , qualifier: 'GENERAL', criticality: 'DataCriticality', criticalityRepresentation: #WITH_ICON } ]
   @EndUserText.label: 'Sales Month'
   SalesMonth;
@@ -169,6 +171,6 @@ annotate view ZBS_C_SASALE with
   LineIcon;
 
   @UI.identification: [{ position: 160 , qualifier: 'GENERAL', value: '_SASold.MaterialId' }]
-  @UI.lineItem: [ { position: 160, value: '_SASold.MaterialId'  } ]
+  @UI.lineItem: [ { position: 160, value: '_SASold.MaterialId', importance: #HIGH } ]
   _SASold;
 }

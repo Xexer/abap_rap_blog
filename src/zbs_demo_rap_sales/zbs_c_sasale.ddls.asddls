@@ -7,6 +7,7 @@
   sapObjectNodeType.name: 'ZBS_GlobalSale'
 }
 @AccessControl.authorizationCheck: #MANDATORY
+@ObjectModel.semanticKey: [ 'PartnerNumber', 'SalesDate' ]
 //@OData.applySupportedForAggregation: #FULL
 define root view entity ZBS_C_SASALE
   provider contract transactional_query
