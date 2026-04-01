@@ -104,8 +104,6 @@ authorization dependent by _SASale
   field ( numbering : managed )
   UUID;
 
-  action ReleaseItems;
-
   update;
   delete;
 
@@ -135,6 +133,7 @@ authorization dependent by _SASale
   field ( numbering : managed )
   UUID;
 
+  action ReleaseItems;
 
   update;
   delete;

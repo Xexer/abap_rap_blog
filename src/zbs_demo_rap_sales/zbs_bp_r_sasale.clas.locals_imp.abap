@@ -2,10 +2,10 @@ CLASS lhc_sasold DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
   PRIVATE SECTION.
     METHODS get_global_authorizations FOR GLOBAL AUTHORIZATION
-      IMPORTING REQUEST requested_authorizations FOR SASold RESULT result.
+      IMPORTING REQUEST requested_authorizations FOR SASeller RESULT result.
 
     METHODS ReleaseItems FOR MODIFY
-      IMPORTING keys FOR ACTION SASold~ReleaseItems.
+      IMPORTING keys FOR ACTION SASeller~ReleaseItems.
 
 ENDCLASS.
 

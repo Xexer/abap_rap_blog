@@ -48,8 +48,6 @@ use etag
   use update;
   use delete;
 
-  use action ReleaseItems;
-
   use association _SASale { with draft; }
 
 }
@@ -60,6 +58,8 @@ use etag
 {
   use update;
   use delete;
+
+  use action ReleaseItems;
 
   use association _SASale { with draft; }
 
