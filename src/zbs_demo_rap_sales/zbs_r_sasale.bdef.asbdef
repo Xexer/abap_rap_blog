@@ -121,7 +121,7 @@ authorization dependent by _SASale
 define behavior for ZBS_R_SASELLER alias SASeller
 persistent table zbs_saseller
 extensible
-draft table zbs_saseller_d
+draft table zbs_saseller_d query ZBS_I_SASellerDraft
 etag dependent by _SASale
 lock dependent by _SASale
 authorization dependent by _SASale
@@ -133,7 +133,7 @@ authorization dependent by _SASale
   field ( numbering : managed )
   UUID;
 
-  action ReleaseItems;
+  action ReleaseItems result [1] $self;
 
   update;
   delete;

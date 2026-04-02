@@ -3,9 +3,8 @@ CLASS lhc_sasold DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
     METHODS get_global_authorizations FOR GLOBAL AUTHORIZATION
       IMPORTING REQUEST requested_authorizations FOR SASeller RESULT result.
-
     METHODS ReleaseItems FOR MODIFY
-      IMPORTING keys FOR ACTION SASeller~ReleaseItems.
+      IMPORTING keys FOR ACTION SASeller~ReleaseItems RESULT result.
 
 ENDCLASS.
 
@@ -16,6 +15,24 @@ CLASS lhc_sasold IMPLEMENTATION.
 
 
   METHOD ReleaseItems.
+    MODIFY ENTITIES OF zbs_r_sasale IN LOCAL MODE
+           ENTITY SASeller
+           UPDATE FIELDS ( Confirmed )
+           WITH VALUE #( FOR key IN keys
+                         ( %tky = key-%tky Confirmed = abap_true ) )
+           MAPPED mapped.
+
+    READ ENTITIES OF zbs_r_sasale IN LOCAL MODE
+         ENTITY SASeller
+         ALL FIELDS
+         WITH VALUE #( FOR key IN keys
+                       ( %tky = key-%tky ) )
+         RESULT DATA(result_set).
+
+    LOOP AT result_set INTO DATA(result_record).
+      INSERT VALUE #( %tky   = result_record-%tky
+                      %param = CORRESPONDING #( result_record ) ) INTO TABLE result.
+    ENDLOOP.
   ENDMETHOD.
 ENDCLASS.
 

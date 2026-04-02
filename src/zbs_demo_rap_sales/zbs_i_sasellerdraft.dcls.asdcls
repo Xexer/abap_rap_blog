@@ -1,0 +1,11 @@
+@EndUserText.label: 'Draft Scope'
+@MappingRole: true
+define role ZBS_I_SASELLERDRAFT {
+  grant
+    select
+      on
+        ZBS_I_SASELLERDRAFT
+          where
+            Confirmed is initial;
+            
+}
