@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_ZBS_CO_SALES_CHDO</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Generated class for object:ZBS_CO_SALES</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_ZBS_CO_SALES_CHDO</CLSNAME>
+     <CMPNAME>OBJECTCLASS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Object Class</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_ZBS_CO_SALES_CHDO</CLSNAME>
+     <CMPNAME>WRITE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Write method for object:ZBS_CO_SALES</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>CHANGENUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Change Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>CX_CHDO_WRITE_ERROR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Exception Class for WRITE Method</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>NO_CHANGE_POINTERS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Flag: No documents written</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>N_ZBS_SASALE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Work area with changed contents</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>N_ZBS_SASELLER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Work area with changed contents</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>OBJECTID</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Object value ID</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>OBJECT_CHANGE_INDICATOR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Flag: Object inserted, changed or deleted</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>O_ZBS_SASALE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Work area with original contents</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>O_ZBS_SASELLER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Work area with original contents</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>PLANNED_CHANGE_NUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Plan Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>PLANNED_OR_REAL_CHANGES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Flag whether changes are actual or planned</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>UDATE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Changed On</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>UPD_ZBS_SASALE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Type of Change</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>UPD_ZBS_SASELLER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Type of Change</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>USERNAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Changed By</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE</CMPNAME>
+     <SCONAME>UTIME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Changed At</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CHDO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <CHDO>
+    <REPORTS_GENERATED>
+     <TCDRPS>
+      <OBJECT>ZBS_CO_SALES</OBJECT>
+      <REPORTNAME>*CLASS_GEN*</REPORTNAME>
+      <ARBGEB>CD</ARBGEB>
+      <FEHLERNR>600</FEHLERNR>
+     </TCDRPS>
+    </REPORTS_GENERATED>
+    <OBJECTS>
+     <TCDOBS>
+      <OBJECT>ZBS_CO_SALES</OBJECT>
+      <TABNAME>ZBS_SASALE</TABNAME>
+      <DOCUDEL>X</DOCUDEL>
+      <DOCUINS>X</DOCUINS>
+      <DOCUD_NOIF>X</DOCUD_NOIF>
+     </TCDOBS>
+     <TCDOBS>
+      <OBJECT>ZBS_CO_SALES</OBJECT>
+      <TABNAME>ZBS_SASELLER</TABNAME>
+      <DOCUDEL>X</DOCUDEL>
+      <DOCUINS>X</DOCUINS>
+      <DOCUD_NOIF>X</DOCUD_NOIF>
+     </TCDOBS>
+    </OBJECTS>
+    <OBJECTS_TEXT>
+     <item>
+      <SPRAS>E</SPRAS>
+      <OBJECT>ZBS_CO_SALES</OBJECT>
+      <OBTEXT>Changes to Sales</OBTEXT>
+     </item>
+    </OBJECTS_TEXT>
+   </CHDO>
+  </asx:values>
+ </asx:abap>
+</abapGit>
