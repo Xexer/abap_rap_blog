@@ -13,14 +13,18 @@ CLASS zcl_bs_demo_rap_sales_change DEFINITION
     METHODS read_changes
       IMPORTING object_id TYPE if_chdo_object_tools_rel=>ty_cdobjectv
                 !out      TYPE REF TO if_oo_adt_classrun_out.
+
+    METHODS read_changes_by_date
+      IMPORTING !out TYPE REF TO if_oo_adt_classrun_out.
 ENDCLASS.
 
 
 CLASS zcl_bs_demo_rap_sales_change IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
 *    log_changes( out ).
-    read_changes( object_id = '1000AC4D0CC190F1FD18CEDD74021687162'
-                  out       = out ).
+*    read_changes( object_id = '1000AC4D0CC190F1FD18CEDD74021687162'
+*                  out       = out ).
+    read_changes_by_date( out ).
   ENDMETHOD.
 
 
@@ -73,6 +77,22 @@ CLASS zcl_bs_demo_rap_sales_change IMPLEMENTATION.
           EXPORTING i_objectclass   = zcl_zbs_co_sales_chdo=>objectclass
                     it_objectid     = VALUE #( ( sign = 'I' option = 'EQ' low = object_id ) )
           IMPORTING et_cdredadd_tab = DATA(db_changes) ).
+
+        out->write( db_changes ).
+
+      CATCH cx_chdo_read_error INTO DATA(error).
+        out->write( error->get_text( ) ).
+    ENDTRY.
+
+
+  ENDMETHOD.
+
+
+  METHOD read_changes_by_date.
+    TRY.
+        cl_chdo_read_tools=>changedocument_read( EXPORTING i_objectclass    = zcl_zbs_co_sales_chdo=>objectclass
+                                                           i_date_of_change = cl_abap_context_info=>get_system_date( )
+                                                 IMPORTING et_cdredadd_tab  = DATA(db_changes) ).
 
         out->write( db_changes ).
 
