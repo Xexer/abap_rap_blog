@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZBS_DEMO_RAP</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Demo RAP</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>000</MSGNR>
+     <TEXT>*** Demo Messages for RAP ***</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Only one of the two difference values ​​may be filled.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>The Quota sum have to be 100% for all sellers.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>You have to provide sellers for the sale.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Seller &amp;1 is not confirmed for the sale.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Language &amp;1 is missing in the info texts.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>You need materials in the sale.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>No errors found, the sale is now completed.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Log has been created and LoggingID is updated</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>Error while updating the log</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -27,7 +27,6 @@ use etag
   use association _SAInfo { create; with draft; }
   use association _SASold { create; with draft; }
   use association _SASeller { create; with draft; }
-
 }
 
 define behavior for ZBS_C_SAINFO alias SAInfo

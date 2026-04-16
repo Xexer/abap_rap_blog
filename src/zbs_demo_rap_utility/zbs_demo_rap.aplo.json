@@ -1,0 +1,14 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Application Log for RAP",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "subobjects": [
+    {
+      "name": "SALES",
+      "description": "Sales Demo"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ managed implementation in class ZBS_BP_R_SASALE unique;
 strict ( 2 );
 with draft;
 extensible;
+auxiliary class zcl_bs_demo_rap_auxiliary;
 
 define behavior for ZBS_R_SASALE alias SASale
 persistent table zbs_sasale
@@ -31,6 +32,10 @@ with additional save
   create;
   update;
   delete;
+
+  side effects {
+    action ConsistencyCheck affects field LoggingId;
+  }
 
   draft action Activate optimized;
   draft action Discard;
