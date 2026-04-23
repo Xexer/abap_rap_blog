@@ -12,6 +12,7 @@ etag master LocalLastChangedAt
 lock master total etag LastChangedAt
 authorization master ( global )
 with additional save
+changedocuments master utc ( ZBS_CO_SALES )
 {
   field ( readonly )
   UUID,
@@ -36,6 +37,8 @@ with additional save
   side effects {
     action ConsistencyCheck affects field LoggingId;
   }
+
+  changedocuments ( create : data, update : data, delete : key );
 
   draft action Activate optimized;
   draft action Discard;
@@ -133,6 +136,7 @@ etag dependent by _SASale
 lock dependent by _SASale
 authorization dependent by _SASale
 with additional save
+changedocuments dependent by _SASale
 {
   field ( readonly )
   UUID,
@@ -145,6 +149,8 @@ with additional save
 
   update;
   delete;
+
+  changedocuments ( create : key, update : data, delete : key );
 
   mapping for zbs_saseller corresponding extensible
     {

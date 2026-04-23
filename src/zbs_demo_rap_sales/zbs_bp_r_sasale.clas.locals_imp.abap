@@ -11,9 +11,9 @@ CLASS lsc_zbs_r_sasale IMPLEMENTATION.
   METHOD save_modified.
     TRY.
         DATA(helper) = NEW zcl_bs_demo_rap_auxiliary( ).
-        helper->change_document_for_create( create ).
-        helper->change_document_for_update( update ).
-        helper->change_document_for_delete( delete ).
+*        helper->change_document_for_create( create ).
+*        helper->change_document_for_update( update ).
+*        helper->change_document_for_delete( delete ).
 
       CATCH cx_chdo_write_error INTO DATA(error).
         RAISE SHORTDUMP error.
