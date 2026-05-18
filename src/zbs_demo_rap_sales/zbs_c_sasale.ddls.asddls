@@ -1,12 +1,6 @@
-@Metadata.allowExtensions: true
-@Metadata.ignorePropagatedAnnotations: true
-@EndUserText: {
-  label: 'Sales'
-}
-@ObjectModel: {
-  sapObjectNodeType.name: 'ZBS_GlobalSale'
-}
 @AccessControl.authorizationCheck: #MANDATORY
+@Metadata.allowExtensions: true
+@EndUserText.label: 'Sales'
 @ObjectModel.semanticKey: [ 'PartnerNumber', 'SalesDate' ]
 //@OData.applySupportedForAggregation: #FULL
 define root view entity ZBS_C_SASALE

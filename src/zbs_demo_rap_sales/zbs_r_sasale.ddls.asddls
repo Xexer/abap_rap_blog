@@ -4,9 +4,9 @@
 @EndUserText.label: '###GENERATED Core Data Service Entity'
 define root view entity ZBS_R_SASALE
   as select from zbs_sasale as SASale
-  composition of exact one to many ZBS_R_SAINFO   as _SAInfo
-  composition of exact one to many ZBS_R_SASOLD   as _SASold
-  composition of exact one to many ZBS_R_SASELLER as _SASeller
+  composition of exact one to many ZBS_R_SAINFO       as _SAInfo
+  composition of exact one to many ZBS_R_SASOLD       as _SASold
+  composition of exact one to many ZBS_R_SASELLER     as _SASeller
 {
   key uuid                  as UUID,
       partnernumber         as PartnerNumber,
