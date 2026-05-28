@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SCO1" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SCO1>
+    <COMMUNICATION_SCENARIO_ID>ZBS_DEMO_PERFORMANCE_EXT</COMMUNICATION_SCENARIO_ID>
+    <COMMUNICATION_SCENARIO_TYPE>1</COMMUNICATION_SCENARIO_TYPE>
+    <ALLOWED_CA_INSTANCES>2</ALLOWED_CA_INSTANCES>
+    <IB_TRUST_PSE_ID>SSLC_CUSTOMER_DEFAULT</IB_TRUST_PSE_ID>
+    <IB_BASIC_AUTH>X</IB_BASIC_AUTH>
+    <IB_X509_AUTH>X</IB_X509_AUTH>
+    <INBOUND_ROLE_ID>ZCR_DY4EJDEAREP6DFV6D7A3BYMAOI</INBOUND_ROLE_ID>
+    <CONTAINS_OUTBOUND>X</CONTAINS_OUTBOUND>
+    <OB_AUTH_PSE_ID>SSLC_CUSTOMER_DEFAULT</OB_AUTH_PSE_ID>
+    <OB_TRUST_PSE_ID>SSLC_CUSTOMER_DEFAULT</OB_TRUST_PSE_ID>
+    <OB_BASIC_AUTH>X</OB_BASIC_AUTH>
+    <OB_X509_AUTH>X</OB_X509_AUTH>
+    <OB_OAUTH2_CLIENT_PROFILE>SAP_APS_COM_A4C_CSCN_SCP</OB_OAUTH2_CLIENT_PROFILE>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
+    <MAIN_OBJECT>
+     <NAME>ZBS_DEMO_PERFORMANCE_EXT</NAME>
+     <TYPE>SCO1</TYPE>
+     <DESCRIPTION>External Entity Performance</DESCRIPTION>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </MAIN_OBJECT>
+    <SCOPE_STATUS>3</SCOPE_STATUS>
+    <SCOPE_STATUS_TEXT>On</SCOPE_STATUS_TEXT>
+    <OUTBOUND>
+     <item>
+      <COMMUNICATION_SCENARIO_ID>ZBS_DEMO_PERFORMANCE_EXT</COMMUNICATION_SCENARIO_ID>
+      <OUTBOUND_ID>0001</OUTBOUND_ID>
+      <OBS_ID>ZBS_DEMO_PERFORMANCE_HANA_DESD</OBS_ID>
+      <SUPPORTS_PING>true</SUPPORTS_PING>
+      <IS_VIRTUAL>X</IS_VIRTUAL>
+      <RELEASE_STATUS>1</RELEASE_STATUS>
+      <OBS_TYPE>DESD</OBS_TYPE>
+      <OBS_TYPE_TEXT>Outbound SQL Access</OBS_TYPE_TEXT>
+      <TEXT>HANA Access for Performance</TEXT>
+     </item>
+    </OUTBOUND>
+    <PUBLISH_STATUS>p</PUBLISH_STATUS>
+    <PLUGIN_CONFIG>
+     <item>
+      <UI_OBJECT>cscn_type_selection</UI_OBJECT>
+      <IS_VISIBLE>X</IS_VISIBLE>
+      <IS_ENABLED>X</IS_ENABLED>
+     </item>
+     <item>
+      <UI_OBJECT>cscn_obs_ping_supported</UI_OBJECT>
+      <IS_VISIBLE>X</IS_VISIBLE>
+      <IS_ENABLED>X</IS_ENABLED>
+     </item>
+     <item>
+      <UI_OBJECT>auth_edit_logic</UI_OBJECT>
+     </item>
+     <item>
+      <UI_OBJECT>cscn_allow_create_by_key_checkbox</UI_OBJECT>
+     </item>
+     <item>
+      <UI_OBJECT>cscn_badi_impl_class_input</UI_OBJECT>
+     </item>
+     <item>
+      <UI_OBJECT>cscn_scope_status</UI_OBJECT>
+     </item>
+    </PLUGIN_CONFIG>
+   </SCO1>
+  </asx:values>
+ </asx:abap>
+</abapGit>
