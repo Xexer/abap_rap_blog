@@ -60,6 +60,9 @@ define root view entity ZBS_C_SASALE
           @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
   virtual DataCriticality : abap.int1,
 
+          @ObjectModel.virtualElementCalculatedBy: 'ABAP:ZCL_BS_DEMO_RAP_SALES_VE'
+  virtual RawChangeID : abap.char(32),
+  
           @Semantics: {
             user.createdBy: true
           }

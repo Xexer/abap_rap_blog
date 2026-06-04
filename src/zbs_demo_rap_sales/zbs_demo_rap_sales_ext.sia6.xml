@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SIA6" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SIA6>
+    <MAIN_OBJECT>
+     <NAME>ZBS_DEMO_RAP_SALES_EXT</NAME>
+     <TYPE>SIA6</TYPE>
+     <DESCRIPTION>IAM App for Sales App</DESCRIPTION>
+     <RESPONSIBLE>CB9980000024</RESPONSIBLE>
+     <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
+     <MASTER_SYSTEM>AED</MASTER_SYSTEM>
+     <PACKAGE_REF>
+      <PACKAGE_NAME>ZBS_DEMO_RAP_SALES</PACKAGE_NAME>
+     </PACKAGE_REF>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </MAIN_OBJECT>
+    <APP_ID>ZBS_DEMO_RAP_SALES_EXT</APP_ID>
+    <APP_TYPE>EXT</APP_TYPE>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
+    <UI_APP_ID>ZBS_DMO_GLOBAL_SALES</UI_APP_ID>
+    <SERVICE>
+     <item>
+      <REL_NAME>ZBS_UI_GLOBALSALE_O4</REL_NAME>
+      <REL_TYPE>G4BA</REL_TYPE>
+      <APP_ID>ZBS_DEMO_RAP_SALES_EXT</APP_ID>
+      <SRVC_NAME>14C2E56E17578018B454ADCFF890E0</SRVC_NAME>
+      <SRVC_TYPE>HT</SRVC_TYPE>
+      <UIAD_SRC>ZBS_DMO_GLOBAL_SALES</UIAD_SRC>
+      <TEXT>Service Binding for ZBS_UI_GLOBALSALE_O4</TEXT>
+      <TYPE_TEXT>OData V4</TYPE_TEXT>
+     </item>
+     <item>
+      <REL_NAME>APL_LOG_MANAGEMENT_SRV             0001</REL_NAME>
+      <REL_TYPE>IWSV</REL_TYPE>
+      <APP_ID>ZBS_DEMO_RAP_SALES_EXT</APP_ID>
+      <SRVC_NAME>4D3E2AE48E848273DC2DCCF6892091</SRVC_NAME>
+      <SRVC_TYPE>HT</SRVC_TYPE>
+      <TEXT>Application Log management</TEXT>
+      <TYPE_TEXT>OData V2</TYPE_TEXT>
+     </item>
+     <item>
+      <REL_NAME>APS_CHANGE_DOCUMENTS_SRV           0001</REL_NAME>
+      <REL_TYPE>IWSV</REL_TYPE>
+      <APP_ID>ZBS_DEMO_RAP_SALES_EXT</APP_ID>
+      <SRVC_NAME>12ADBF06CEDC65C8F8F3B08AC17C3F</SRVC_NAME>
+      <SRVC_TYPE>HT</SRVC_TYPE>
+      <TEXT>OData Service for Change Documents</TEXT>
+      <TYPE_TEXT>OData V2</TYPE_TEXT>
+     </item>
+    </SERVICE>
+    <AUTH>
+     <item>
+      <AUTH_OBJECT>S_APPL_LOG</AUTH_OBJECT>
+      <STATUS>S</STATUS>
+      <TEXT>Application Log</TEXT>
+      <AUTH_ITEM>
+       <item>
+        <UUID>VkB5lWVLH+GVj4Io/BerAg==</UUID>
+        <AUTH_OBJECT>S_APPL_LOG</AUTH_OBJECT>
+        <AUTH_OBJECT_INSTANCE>0001</AUTH_OBJECT_INSTANCE>
+        <TEXT>Application Log</TEXT>
+        <STATUS>U</STATUS>
+        <VALUES>
+         <item>
+          <FIELD>ALG_OBJECT</FIELD>
+          <VALUE>Z_AML_LOG</VALUE>
+          <VALUES>
+           <item>
+            <UUID>UhHNJzoDH9GYgduTCNx86Q==</UUID>
+            <LOW_VALUE>Z_AML_LOG</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Application Log: Object</TEXT>
+          <STATUS>U</STATUS>
+         </item>
+         <item>
+          <FIELD>ALG_SUBOBJ</FIELD>
+          <VALUE>TEST</VALUE>
+          <VALUES>
+           <item>
+            <UUID>UhHNJzoDH9GYgduTCNy86Q==</UUID>
+            <LOW_VALUE>TEST</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Application Log: Subobject</TEXT>
+          <STATUS>U</STATUS>
+         </item>
+         <item>
+          <FIELD>ACTVT</FIELD>
+          <VALUE>Display</VALUE>
+          <VALUES>
+           <item>
+            <UUID>UhHNJzoDH9GYgduTCNyc6Q==</UUID>
+            <LOW_VALUE>03</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Activity</TEXT>
+          <STATUS>U</STATUS>
+          <IS_ACTVT>X</IS_ACTVT>
+         </item>
+        </VALUES>
+       </item>
+       <item>
+        <UUID>Mi+EGLiWH+GXuKF8yc3CSA==</UUID>
+        <AUTH_OBJECT>S_APPL_LOG</AUTH_OBJECT>
+        <AUTH_OBJECT_INSTANCE>0003</AUTH_OBJECT_INSTANCE>
+        <IBS_SOURCE>4D3E2AE48E848273DC2DCCF6892091</IBS_SOURCE>
+        <IBS_SOURCE_TYPE>HT</IBS_SOURCE_TYPE>
+        <TEXT>Application Log</TEXT>
+        <STATUS>S</STATUS>
+        <INACTIVE>X</INACTIVE>
+        <VALUES>
+         <item>
+          <FIELD>ALG_OBJECT</FIELD>
+          <VALUES>
+           <item>
+            <UUID>UhHNJzoDH9GYgduTCNzc6Q==</UUID>
+           </item>
+          </VALUES>
+          <TEXT>Application Log: Object</TEXT>
+          <STATUS>S</STATUS>
+         </item>
+         <item>
+          <FIELD>ACTVT</FIELD>
+          <VALUES>
+           <item>
+            <UUID>UhHNJzoDH9GYgduTCN0c6Q==</UUID>
+           </item>
+          </VALUES>
+          <TEXT>Activity</TEXT>
+          <STATUS>S</STATUS>
+          <IS_ACTVT>X</IS_ACTVT>
+         </item>
+         <item>
+          <FIELD>ALG_SUBOBJ</FIELD>
+          <VALUES>
+           <item>
+            <UUID>UhHNJzoDH9GYgduTCNz86Q==</UUID>
+           </item>
+          </VALUES>
+          <TEXT>Application Log: Subobject</TEXT>
+          <STATUS>S</STATUS>
+         </item>
+        </VALUES>
+       </item>
+      </AUTH_ITEM>
+     </item>
+    </AUTH>
+    <PUBLISH_STATUS>p</PUBLISH_STATUS>
+   </SIA6>
+  </asx:values>
+ </asx:abap>
+</abapGit>

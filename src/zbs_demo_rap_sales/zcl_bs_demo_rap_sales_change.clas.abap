@@ -19,7 +19,10 @@ CLASS zcl_bs_demo_rap_sales_change DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_rap_sales_change IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_RAP_SALES_CHANGE IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
 *    log_changes( out ).
 *    read_changes( object_id = '1000AC4D0CC190F1FD18CEDD74021687162'

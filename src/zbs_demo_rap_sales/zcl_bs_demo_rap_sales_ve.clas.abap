@@ -49,6 +49,8 @@ CLASS zcl_bs_demo_rap_sales_ve IMPLEMENTATION.
                                            'sap-icon://commission-check'
                                          ELSE
                                            'sap-icon://sys-help' ).
+          WHEN 'RAWCHANGEID'.
+            original->RawChangeID = original->uuid.
         ENDCASE.
       ENDLOOP.
     ENDLOOP.
@@ -58,7 +60,7 @@ CLASS zcl_bs_demo_rap_sales_ve IMPLEMENTATION.
 
 
   METHOD if_sadl_exit_calc_element_read~get_calculation_info.
-    et_requested_orig_elements = VALUE #( ( `SALESDATE` ) ( `DIFFERENCEAMOUNT` ) ( `DIFFERENCEQUANTITY` ) ).
+    et_requested_orig_elements = VALUE #( ( `SALESDATE` ) ( `DIFFERENCEAMOUNT` ) ( `DIFFERENCEQUANTITY` ) ( `UUID` ) ).
   ENDMETHOD.
 
 
