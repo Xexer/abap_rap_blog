@@ -1,0 +1,4 @@
+@EndUserText.label: 'Hybrid Performance'
+define service ZBS_HYB_PERFORMANCE {
+  expose ZBS_C_HYBPerformanceData as Performance;
+}

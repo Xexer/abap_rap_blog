@@ -1,0 +1,43 @@
+managed implementation in class zbp_bs_hybrid_performance unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZBS_R_HYBPerformanceData alias Performance
+draft table zbs_hyp_draft
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( instance )
+with unmanaged save
+{
+  internal create;
+  update;
+  internal delete;
+
+  field ( readonly, numbering : managed ) Identifier;
+
+  field ( readonly )
+  ItemDescription,
+  RandomDescription,
+  Amount,
+  Currency,
+  NewDate,
+  NewTime;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zbs_hyb_perf_add
+    {
+      Identifier         = identifier;
+      LineComment        = line_comment;
+      ResponsiblePerson  = responsible;
+      LastChangedAt      = last_changed_at;
+      LocalCreatedAt     = local_created_at;
+      LocalCreatedBy     = local_created_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LocalLastChangedBy = local_last_changed_by;
+    }
+}

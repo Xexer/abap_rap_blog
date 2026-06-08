@@ -1,0 +1,80 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZBS_C_HYBPerformanceData with
+{
+  @UI.facet: [
+    {
+      id: 'idGeneral',
+      label: 'General Information',
+      position: 10 ,
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'GENERAL'
+    },
+    {
+      id: 'idAdditional',
+      label: 'Additional',
+      position: 20,
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'ADD'
+    }
+  ]
+
+  @UI.identification: [ { position: 10 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'ID'
+  Identifier;
+
+  @UI.selectionField: [ { position: 10 } ]
+  @UI.lineItem: [ { position: 20  } ]
+  @UI.identification: [ { position: 20 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Description'
+  ItemDescription;
+
+  @UI.identification: [ { position: 30 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Random Text'
+  RandomDescription;
+
+  @UI.lineItem: [ { position: 40  } ]
+  @UI.identification: [ { position: 40 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Amount'
+  Amount;
+
+  @UI.lineItem: [ { position: 50  } ]
+  @UI.identification: [ { position: 50 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Currency'
+  Currency;
+
+  @UI.lineItem: [ { position: 60  } ]
+  @UI.identification: [ { position: 60 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'New Date'
+  NewDate;
+
+  @UI.lineItem: [ { position: 70  } ]
+  @UI.identification: [ { position: 70 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'New Time'
+  NewTime;
+
+  @UI.identification: [ { position: 80 , qualifier: 'ADD' } ]
+  @EndUserText.label: 'Comment'
+  LineComment;
+
+  @UI.selectionField: [ { position: 20 } ]
+  @UI.lineItem: [ { position: 90  } ]
+  @UI.identification: [ { position: 90 , qualifier: 'ADD' } ]
+  @EndUserText.label: 'Responsible'
+  ResponsiblePerson;
+
+  @UI.hidden: true
+  LocalCreatedBy;
+
+  @UI.hidden: true
+  LocalCreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+}
