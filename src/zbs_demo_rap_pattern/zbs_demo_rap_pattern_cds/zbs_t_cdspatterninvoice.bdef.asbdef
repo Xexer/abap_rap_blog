@@ -3,7 +3,7 @@ strict ( 2 );
 with draft;
 
 define behavior for ZBS_T_CDSPatternInvoice alias Invoice
-draft table zbs_cp_invoice_d
+draft table ZBS_T_CDSPatternInvDraft
 lock master total etag LastChangedAt
 authorization master ( instance )
 etag master LocalLastChangedAt
@@ -25,7 +25,7 @@ late numbering
 }
 
 define behavior for ZBS_T_CDSPatternPosition alias Position
-draft table zbs_cp_pos_d
+draft table ZBS_T_CDSPatternPosDraft
 lock dependent by _Document
 authorization dependent by _Document
 late numbering
