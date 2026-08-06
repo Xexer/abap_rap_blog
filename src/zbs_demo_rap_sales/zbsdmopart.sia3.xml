@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SIA3" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SIA3>
+    <NAME>ZBSDMOPART</NAME>
+    <DESCRIPTION>Demo Partner</DESCRIPTION>
+    <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    <AUTH_OBJECT_ID>ZBSDMOPART</AUTH_OBJECT_ID>
+    <AUTH_OBJECT>ZBSDMOPART</AUTH_OBJECT>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
+    <ACTIVITY_MAPPING>
+     <item>
+      <ACTIVITY>01</ACTIVITY>
+      <ACCESS_CATEGORY>W</ACCESS_CATEGORY>
+      <ACTIVITY_TEXT>Create or generate</ACTIVITY_TEXT>
+     </item>
+     <item>
+      <ACTIVITY>02</ACTIVITY>
+      <ACCESS_CATEGORY>W</ACCESS_CATEGORY>
+      <ACTIVITY_TEXT>Change</ACTIVITY_TEXT>
+     </item>
+     <item>
+      <ACTIVITY>03</ACTIVITY>
+      <ACCESS_CATEGORY>R</ACCESS_CATEGORY>
+      <ACTIVITY_TEXT>Display</ACTIVITY_TEXT>
+     </item>
+     <item>
+      <ACTIVITY>06</ACTIVITY>
+      <ACCESS_CATEGORY>W</ACCESS_CATEGORY>
+      <ACTIVITY_TEXT>Delete</ACTIVITY_TEXT>
+     </item>
+    </ACTIVITY_MAPPING>
+   </SIA3>
+  </asx:values>
+ </asx:abap>
+</abapGit>

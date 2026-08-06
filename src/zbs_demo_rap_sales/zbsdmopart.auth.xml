@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_AUTH" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AUTHX>
+    <FIELDNAME>ZBSDMOPART</FIELDNAME>
+    <ROLLNAME>ZBS_DEMO_SA_PARTNER</ROLLNAME>
+    <CHECKTABLE>ZBS_DMO_PARTNER</CHECKTABLE>
+   </AUTHX>
+   <AUTHX_ATTR>
+    <FIELDNAME>ZBSDMOPART</FIELDNAME>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
+   </AUTHX_ATTR>
+  </asx:values>
+ </asx:abap>
+</abapGit>
