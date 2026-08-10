@@ -1,0 +1,42 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "information": "... from the Manifest",
+    "targetMappingTitle": "Global Sales"
+  },
+  "ui5AppDetails": {
+    "appId": "swh.test.zbsglobalsales"
+  },
+  "navigation": {
+    "targetMappingId": "ZBS_GLOBAL_SALE_UI5R_TM",
+    "semanticObject": "ZBS_DEMO_GSALE",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZBS_GLOBAL_SALE_UI5R_AL",
+      "tileType": "dynamic",
+      "isDefault": true,
+      "standard": {
+        "title": "Global Sales",
+        "subtitle": "Demo",
+        "information": "... from the Manifest",
+        "icon": "sap-icon://travel-expense-report",
+        "dynamic": {
+          "serviceBaseUrl": "/sap/opu/odata4/sap/zbs_ui_globalsale_o4/srvd/sap/zbs_ui_globalsale_o4/0001/SASale/$count",
+          "refreshInterval": 10
+        }
+      }
+    }
+  ]
+}

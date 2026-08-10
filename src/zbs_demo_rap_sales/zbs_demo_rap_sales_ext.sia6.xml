@@ -63,23 +63,24 @@
         <STATUS>U</STATUS>
         <VALUES>
          <item>
-          <FIELD>ALG_OBJECT</FIELD>
-          <VALUE>Z_AML_LOG</VALUE>
+          <FIELD>ACTVT</FIELD>
+          <VALUE>Display</VALUE>
           <VALUES>
            <item>
-            <UUID>UhHNJzoDH9GYgduTCNx86Q==</UUID>
-            <LOW_VALUE>Z_AML_LOG</LOW_VALUE>
+            <UUID>xhfYXmD9H+GlmAtbZxKUZg==</UUID>
+            <LOW_VALUE>03</LOW_VALUE>
            </item>
           </VALUES>
-          <TEXT>Application Log: Object</TEXT>
+          <TEXT>Activity</TEXT>
           <STATUS>U</STATUS>
+          <IS_ACTVT>X</IS_ACTVT>
          </item>
          <item>
           <FIELD>ALG_SUBOBJ</FIELD>
           <VALUE>TEST</VALUE>
           <VALUES>
            <item>
-            <UUID>UhHNJzoDH9GYgduTCNy86Q==</UUID>
+            <UUID>xhfYXmD9H+GlmAtbZxLUZg==</UUID>
             <LOW_VALUE>TEST</LOW_VALUE>
            </item>
           </VALUES>
@@ -87,17 +88,16 @@
           <STATUS>U</STATUS>
          </item>
          <item>
-          <FIELD>ACTVT</FIELD>
-          <VALUE>Display</VALUE>
+          <FIELD>ALG_OBJECT</FIELD>
+          <VALUE>Z_AML_LOG</VALUE>
           <VALUES>
            <item>
-            <UUID>UhHNJzoDH9GYgduTCNyc6Q==</UUID>
-            <LOW_VALUE>03</LOW_VALUE>
+            <UUID>xhfYXmD9H+GlmAtbZxK0Zg==</UUID>
+            <LOW_VALUE>Z_AML_LOG</LOW_VALUE>
            </item>
           </VALUES>
-          <TEXT>Activity</TEXT>
+          <TEXT>Application Log: Object</TEXT>
           <STATUS>U</STATUS>
-          <IS_ACTVT>X</IS_ACTVT>
          </item>
         </VALUES>
        </item>
@@ -115,32 +115,68 @@
           <FIELD>ALG_OBJECT</FIELD>
           <VALUES>
            <item>
-            <UUID>UhHNJzoDH9GYgduTCNzc6Q==</UUID>
+            <UUID>xhfYXmD9H+GlmAtbZxL0Zg==</UUID>
            </item>
           </VALUES>
           <TEXT>Application Log: Object</TEXT>
           <STATUS>S</STATUS>
          </item>
          <item>
-          <FIELD>ACTVT</FIELD>
-          <VALUES>
-           <item>
-            <UUID>UhHNJzoDH9GYgduTCN0c6Q==</UUID>
-           </item>
-          </VALUES>
-          <TEXT>Activity</TEXT>
-          <STATUS>S</STATUS>
-          <IS_ACTVT>X</IS_ACTVT>
-         </item>
-         <item>
           <FIELD>ALG_SUBOBJ</FIELD>
           <VALUES>
            <item>
-            <UUID>UhHNJzoDH9GYgduTCNz86Q==</UUID>
+            <UUID>xhfYXmD9H+GlmAtbZxMUZg==</UUID>
            </item>
           </VALUES>
           <TEXT>Application Log: Subobject</TEXT>
           <STATUS>S</STATUS>
+         </item>
+         <item>
+          <FIELD>ACTVT</FIELD>
+          <TEXT>Activity</TEXT>
+          <STATUS>S</STATUS>
+          <IS_ACTVT>X</IS_ACTVT>
+         </item>
+        </VALUES>
+       </item>
+      </AUTH_ITEM>
+     </item>
+     <item>
+      <AUTH_OBJECT>ZBSDMOPART</AUTH_OBJECT>
+      <STATUS>U</STATUS>
+      <TEXT>Demo Partner</TEXT>
+      <AUTH_ITEM>
+       <item>
+        <UUID>xhfYXmD9H+GlmAtbZxM0Zg==</UUID>
+        <AUTH_OBJECT>ZBSDMOPART</AUTH_OBJECT>
+        <AUTH_OBJECT_INSTANCE>0001</AUTH_OBJECT_INSTANCE>
+        <TEXT>Demo Partner</TEXT>
+        <STATUS>U</STATUS>
+        <VALUES>
+         <item>
+          <FIELD>ACTVT</FIELD>
+          <VALUE>Display</VALUE>
+          <VALUES>
+           <item>
+            <UUID>xhfYXmD9H+GlmAtbZxNUZg==</UUID>
+            <LOW_VALUE>03</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Activity</TEXT>
+          <STATUS>U</STATUS>
+          <IS_ACTVT>X</IS_ACTVT>
+         </item>
+         <item>
+          <FIELD>ZBSDMOPART</FIELD>
+          <VALUE>1000000005</VALUE>
+          <VALUES>
+           <item>
+            <UUID>xhfYXmD9H+GlmAtbZxN0Zg==</UUID>
+            <LOW_VALUE>1000000005</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Partner ID</TEXT>
+          <STATUS>U</STATUS>
          </item>
         </VALUES>
        </item>

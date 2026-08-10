@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SIA5" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SIA5>
+    <FIELD_NAME>ZBSDMOPART</FIELD_NAME>
+    <PFCG_FIELD_NAME>ZBSDMOPART</PFCG_FIELD_NAME>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
+    <NAME>ZBSDMOPART</NAME>
+    <DESCRIPTION>Partner ID</DESCRIPTION>
+    <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    <OBJECT_VISIBILITY>
+     <IS_CREATE_RT_VISIBLE>X</IS_CREATE_RT_VISIBLE>
+     <IS_ASSIGN_TO_RT_VISIBLE>X</IS_ASSIGN_TO_RT_VISIBLE>
+    </OBJECT_VISIBILITY>
+   </SIA5>
+  </asx:values>
+ </asx:abap>
+</abapGit>

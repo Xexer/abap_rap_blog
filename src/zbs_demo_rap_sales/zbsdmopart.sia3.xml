@@ -31,6 +31,12 @@
       <ACTIVITY_TEXT>Delete</ACTIVITY_TEXT>
      </item>
     </ACTIVITY_MAPPING>
+    <RESTRICTION_TYPE>
+     <item>
+      <RTYPE_ID>ZBSDMOPART</RTYPE_ID>
+      <TEXT>Demo Partner</TEXT>
+     </item>
+    </RESTRICTION_TYPE>
    </SIA3>
   </asx:values>
  </asx:abap>
