@@ -10,6 +10,7 @@ ENDCLASS.
 CLASS lsc_zbs_r_sasale IMPLEMENTATION.
   METHOD save_modified.
     TRY.
+        " TODO: variable is assigned but only used in commented-out code (ABAP cleaner)
         DATA(helper) = NEW zcl_bs_demo_rap_auxiliary( ).
 *        helper->change_document_for_create( create ).
 *        helper->change_document_for_update( update ).
@@ -78,6 +79,14 @@ CLASS lhc_zbs_r_sasale DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS createPercent FOR MODIFY
       IMPORTING keys FOR ACTION SASale~createPercent.
+    METHODS get_instance_features FOR INSTANCE FEATURES
+      IMPORTING keys REQUEST requested_features FOR SASale RESULT result.
+
+    METHODS get_global_features FOR GLOBAL FEATURES
+      IMPORTING REQUEST requested_features FOR SASale RESULT result.
+
+    METHODS AuthorizationForPartner FOR VALIDATE ON SAVE
+      IMPORTING keys FOR SASale~AuthorizationForPartner.
 ENDCLASS.
 
 
@@ -133,6 +142,99 @@ CLASS lhc_zbs_r_sasale IMPLEMENTATION.
                    DifferenceUnit     = key-%param-DifferenceUnit ) ).
 
       INSERT LINES OF mapped_result-sasale INTO TABLE mapped-sasale.
+    ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD get_global_features.
+    FINAL(can_create) = NEW zcl_bs_demo_rap_sales_auth( )->has_authorization(
+        activity = zcl_bs_demo_rap_sales_auth=>activities-create ).
+
+    IF requested_features-%create = if_abap_behv=>mk-on.
+      IF can_create = abap_true.
+        result-%create = if_abap_behv=>fc-o-enabled.
+      ELSE.
+        result-%create = if_abap_behv=>fc-o-disabled.
+      ENDIF.
+    ENDIF.
+
+    IF requested_features-%action-createFixValue = if_abap_behv=>mk-on.
+      IF can_create = abap_true.
+        result-%action-createFixValue = if_abap_behv=>fc-o-enabled.
+      ELSE.
+        result-%action-createFixValue = if_abap_behv=>fc-o-disabled.
+      ENDIF.
+    ENDIF.
+
+    IF requested_features-%action-createPercent = if_abap_behv=>mk-on.
+      IF can_create = abap_true.
+        result-%action-createPercent = if_abap_behv=>fc-o-enabled.
+      ELSE.
+        result-%action-createPercent = if_abap_behv=>fc-o-disabled.
+      ENDIF.
+    ENDIF.
+  ENDMETHOD.
+
+
+  METHOD get_instance_features.
+    FINAL(auth) = NEW zcl_bs_demo_rap_sales_auth( ).
+
+    READ ENTITIES OF zbs_r_sasale IN LOCAL MODE
+         ENTITY SASale
+         FIELDS ( PartnerNumber ) WITH CORRESPONDING #( keys )
+         RESULT FINAL(check_sales).
+
+    LOOP AT check_sales INTO FINAL(check_sale).
+      INSERT VALUE #( %tky = check_sale-%tky ) INTO TABLE result REFERENCE INTO DATA(result_auth).
+
+      IF requested_features-%update = if_abap_behv=>mk-on.
+        IF auth->has_authorization( activity   = auth->activities-change
+                                    parnter_id = check_sale-PartnerNumber ).
+          result_auth->%features-%update = if_abap_behv=>fc-o-enabled.
+        ELSE.
+          result_auth->%features-%update = if_abap_behv=>fc-o-disabled.
+        ENDIF.
+      ENDIF.
+
+      IF requested_features-%action-Edit = if_abap_behv=>mk-on.
+        IF auth->has_authorization( activity   = auth->activities-change
+                                    parnter_id = check_sale-PartnerNumber ).
+          result_auth->%features-%action-Edit = if_abap_behv=>fc-o-enabled.
+        ELSE.
+          result_auth->%features-%action-Edit = if_abap_behv=>fc-o-disabled.
+        ENDIF.
+      ENDIF.
+
+      IF requested_features-%delete = if_abap_behv=>mk-on.
+        IF auth->has_authorization( activity   = auth->activities-delete
+                                    parnter_id = check_sale-PartnerNumber ).
+          result_auth->%features-%delete = if_abap_behv=>fc-o-enabled.
+        ELSE.
+          result_auth->%features-%delete = if_abap_behv=>fc-o-disabled.
+        ENDIF.
+      ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD AuthorizationForPartner.
+    FINAL(auth) = NEW zcl_bs_demo_rap_sales_auth( ).
+
+    READ ENTITIES OF zbs_r_sasale IN LOCAL MODE
+         ENTITY SASale
+         FIELDS ( PartnerNumber ) WITH CORRESPONDING #( keys )
+         RESULT FINAL(check_sales).
+
+    LOOP AT check_sales INTO FINAL(check_sale).
+      IF NOT auth->has_authorization( activity   = auth->activities-change
+                                      parnter_id = check_sale-PartnerNumber ).
+        INSERT VALUE #( %tky = check_sale-%tky
+                        %msg = new_message( id       = 'ZBS_DEMO_RAP'
+                                            number   = '010'
+                                            severity = if_abap_behv_message=>severity-error
+                                            v1       = check_sale-PartnerNumber ) )
+               INTO TABLE reported-sasale.
+      ENDIF.
     ENDLOOP.
   ENDMETHOD.
 ENDCLASS.

@@ -67,7 +67,7 @@
           <VALUE>Display</VALUE>
           <VALUES>
            <item>
-            <UUID>xhfYXmD9H+GlmAtbZxKUZg==</UUID>
+            <UUID>usKvSPU9H9Gl32LxMkhc8Q==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
            </item>
           </VALUES>
@@ -80,7 +80,7 @@
           <VALUE>TEST</VALUE>
           <VALUES>
            <item>
-            <UUID>xhfYXmD9H+GlmAtbZxLUZg==</UUID>
+            <UUID>usKvSPU9H9Gl32LxMkic8Q==</UUID>
             <LOW_VALUE>TEST</LOW_VALUE>
            </item>
           </VALUES>
@@ -92,7 +92,7 @@
           <VALUE>Z_AML_LOG</VALUE>
           <VALUES>
            <item>
-            <UUID>xhfYXmD9H+GlmAtbZxK0Zg==</UUID>
+            <UUID>usKvSPU9H9Gl32LxMkh88Q==</UUID>
             <LOW_VALUE>Z_AML_LOG</LOW_VALUE>
            </item>
           </VALUES>
@@ -115,27 +115,32 @@
           <FIELD>ALG_OBJECT</FIELD>
           <VALUES>
            <item>
-            <UUID>xhfYXmD9H+GlmAtbZxL0Zg==</UUID>
+            <UUID>usKvSPU9H9Gl32LxMki88Q==</UUID>
            </item>
           </VALUES>
           <TEXT>Application Log: Object</TEXT>
           <STATUS>S</STATUS>
          </item>
          <item>
+          <FIELD>ACTVT</FIELD>
+          <VALUES>
+           <item>
+            <UUID>usKvSPU9H9Gl32LxMkj88Q==</UUID>
+           </item>
+          </VALUES>
+          <TEXT>Activity</TEXT>
+          <STATUS>S</STATUS>
+          <IS_ACTVT>X</IS_ACTVT>
+         </item>
+         <item>
           <FIELD>ALG_SUBOBJ</FIELD>
           <VALUES>
            <item>
-            <UUID>xhfYXmD9H+GlmAtbZxMUZg==</UUID>
+            <UUID>usKvSPU9H9Gl32LxMkjc8Q==</UUID>
            </item>
           </VALUES>
           <TEXT>Application Log: Subobject</TEXT>
           <STATUS>S</STATUS>
-         </item>
-         <item>
-          <FIELD>ACTVT</FIELD>
-          <TEXT>Activity</TEXT>
-          <STATUS>S</STATUS>
-          <IS_ACTVT>X</IS_ACTVT>
          </item>
         </VALUES>
        </item>
@@ -155,11 +160,19 @@
         <VALUES>
          <item>
           <FIELD>ACTVT</FIELD>
-          <VALUE>Display</VALUE>
+          <VALUE>Display,Change,Create or generate</VALUE>
           <VALUES>
            <item>
-            <UUID>xhfYXmD9H+GlmAtbZxNUZg==</UUID>
+            <UUID>usKvSPU9H9Gl32LxMkkc8Q==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
+           </item>
+           <item>
+            <UUID>usKvSPU9H9Gl32LxMklc8Q==</UUID>
+            <LOW_VALUE>02</LOW_VALUE>
+           </item>
+           <item>
+            <UUID>usKvSPU9H9Gl32LxMkk88Q==</UUID>
+            <LOW_VALUE>01</LOW_VALUE>
            </item>
           </VALUES>
           <TEXT>Activity</TEXT>
@@ -171,7 +184,7 @@
           <VALUE>1000000005</VALUE>
           <VALUES>
            <item>
-            <UUID>xhfYXmD9H+GlmAtbZxN0Zg==</UUID>
+            <UUID>usKvSPU9H9Gl32LxMkl88Q==</UUID>
             <LOW_VALUE>1000000005</LOW_VALUE>
            </item>
           </VALUES>

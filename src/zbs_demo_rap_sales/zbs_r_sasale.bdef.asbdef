@@ -25,14 +25,16 @@ changedocuments master utc ( ZBS_CO_SALES )
   field ( numbering : managed )
   UUID;
 
-  static factory action ( authorization : global ) createFixValue parameter ZBS_S_SAPopupFixValue [1];
-  static factory action ( authorization : global ) createPercent parameter ZBS_S_SAPopupPercent [1];
+  static factory action ( authorization : global, features : global ) createFixValue parameter ZBS_S_SAPopupFixValue [1];
+  static factory action ( authorization : global, features : global ) createPercent parameter ZBS_S_SAPopupPercent [1];
   action ConsistencyCheck;
   action ClearDifferences;
 
-  create;
-  update;
-  delete;
+  create (features : global );
+  update (features : instance );
+  delete (features : instance );
+
+  validation AuthorizationForPartner on save { create; update; field PartnerNumber; }
 
   side effects {
     action ConsistencyCheck affects field LoggingId;
@@ -42,9 +44,9 @@ changedocuments master utc ( ZBS_CO_SALES )
 
   draft action Activate optimized;
   draft action Discard;
-  draft action Edit;
+  draft action ( features : instance ) Edit;
   draft action Resume;
-  draft determine action Prepare;
+  draft determine action Prepare { validation AuthorizationForPartner; }
 
   mapping for zbs_sasale corresponding extensible
     {
