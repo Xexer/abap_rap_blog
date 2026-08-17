@@ -23,6 +23,7 @@ use etag
   use action createPercent;
   use action ConsistencyCheck;
   use action ClearDifferences;
+  use action UploadFlatFile;
 
   use association _SAInfo { create; with draft; }
   use association _SASold { create; with draft; }

@@ -64,6 +64,7 @@ annotate view ZBS_C_SASALE with
 
   @UI.lineItem: [
     { position: 300 },
+    { position: 3, type: #FOR_ACTION, label: 'Upload Flatfile', dataAction: 'UploadFlatFile' },
     { position: 5, type: #FOR_ACTION_GROUP, label: 'Create', actionGroupId: 'idCreateGroup' },
     { position: 10, type: #FOR_ACTION, dataAction: 'createFixValue', label: 'Create Fix Value', actionGroupId: 'idCreateGroup' },
     { position: 20, type: #FOR_ACTION, dataAction: 'createPercent', label: 'Create Percent', actionGroupId: 'idCreateGroup' }

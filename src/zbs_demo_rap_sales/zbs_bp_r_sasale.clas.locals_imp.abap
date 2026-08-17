@@ -87,6 +87,8 @@ CLASS lhc_zbs_r_sasale DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS AuthorizationForPartner FOR VALIDATE ON SAVE
       IMPORTING keys FOR SASale~AuthorizationForPartner.
+    METHODS UploadFlatFile FOR MODIFY
+      keys FOR ACTION SASale~UploadFlatFile.
 ENDCLASS.
 
 
@@ -235,6 +237,15 @@ CLASS lhc_zbs_r_sasale IMPLEMENTATION.
                                             v1       = check_sale-PartnerNumber ) )
                INTO TABLE reported-sasale.
       ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD UploadFlatFile.
+    LOOP AT keys INTO FINAL(key).
+      FINAL(file_content) = xco_cp=>xstring( key-%param-_files-Attachment )->as_string(
+          xco_cp_character=>code_page->utf_8 ).
+
     ENDLOOP.
   ENDMETHOD.
 ENDCLASS.

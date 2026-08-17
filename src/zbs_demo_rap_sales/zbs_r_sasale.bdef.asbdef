@@ -25,6 +25,7 @@ changedocuments master utc ( ZBS_CO_SALES )
   field ( numbering : managed )
   UUID;
 
+  static action UploadFlatFile deep parameter ZBS_S_SAPopupFlatFile;
   static factory action ( authorization : global, features : global ) createFixValue parameter ZBS_S_SAPopupFixValue [1];
   static factory action ( authorization : global, features : global ) createPercent parameter ZBS_S_SAPopupPercent [1];
   action ConsistencyCheck;

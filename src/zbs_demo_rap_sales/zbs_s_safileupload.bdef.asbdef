@@ -1,0 +1,7 @@
+abstract;
+strict ( 2 );
+with hierarchy;
+
+define behavior for ZBS_S_SAFileUpload
+{
+}
