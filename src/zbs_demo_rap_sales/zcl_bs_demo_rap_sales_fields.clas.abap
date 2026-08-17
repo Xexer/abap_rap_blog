@@ -11,7 +11,10 @@ CLASS zcl_bs_demo_rap_sales_fields DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_rap_sales_fields IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_RAP_SALES_FIELDS IMPLEMENTATION.
+
+
   METHOD main.
     DATA(abstract_entities) = VALUE zif_gen_objects=>abstract_entities(
         ( name        = 'ZBS_S_SASale'

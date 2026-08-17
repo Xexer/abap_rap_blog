@@ -9,7 +9,10 @@ CLASS zcl_bs_demo_rap_sales_ve DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_rap_sales_ve IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_RAP_SALES_VE IMPLEMENTATION.
+
+
   METHOD if_sadl_exit_calc_element_read~calculate.
     DATA originals TYPE STANDARD TABLE OF zbs_c_sasale WITH EMPTY KEY.
 

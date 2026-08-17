@@ -14,7 +14,10 @@ CLASS zcl_bs_demo_rap_sales_data DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_rap_sales_data IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_RAP_SALES_DATA IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     cleanup_old_data( ).
     create_and_insert_new_data( out ).

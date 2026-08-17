@@ -22,7 +22,10 @@ CLASS zcl_bs_demo_rap_sales_auth DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_rap_sales_auth IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_RAP_SALES_AUTH IMPLEMENTATION.
+
+
   METHOD has_authorization.
     IF parnter_id IS INITIAL.
       AUTHORITY-CHECK OBJECT 'ZBSDMOPART'

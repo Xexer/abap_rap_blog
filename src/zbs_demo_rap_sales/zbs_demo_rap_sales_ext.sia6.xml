@@ -112,16 +112,6 @@
         <INACTIVE>X</INACTIVE>
         <VALUES>
          <item>
-          <FIELD>ALG_OBJECT</FIELD>
-          <VALUES>
-           <item>
-            <UUID>usKvSPU9H9Gl32LxMki88Q==</UUID>
-           </item>
-          </VALUES>
-          <TEXT>Application Log: Object</TEXT>
-          <STATUS>S</STATUS>
-         </item>
-         <item>
           <FIELD>ACTVT</FIELD>
           <VALUES>
            <item>
@@ -140,6 +130,16 @@
            </item>
           </VALUES>
           <TEXT>Application Log: Subobject</TEXT>
+          <STATUS>S</STATUS>
+         </item>
+         <item>
+          <FIELD>ALG_OBJECT</FIELD>
+          <VALUES>
+           <item>
+            <UUID>usKvSPU9H9Gl32LxMki88Q==</UUID>
+           </item>
+          </VALUES>
+          <TEXT>Application Log: Object</TEXT>
           <STATUS>S</STATUS>
          </item>
         </VALUES>

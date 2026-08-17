@@ -31,7 +31,10 @@ CLASS zcl_zbs_co_sales_chdo DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_zbs_co_sales_chdo IMPLEMENTATION.
+
+CLASS ZCL_ZBS_CO_SALES_CHDO IMPLEMENTATION.
+
+
   METHOD write.
 *"----------------------------------------------------------------------
 *"         this WRITE method is generated for object ZBS_CO_SALES

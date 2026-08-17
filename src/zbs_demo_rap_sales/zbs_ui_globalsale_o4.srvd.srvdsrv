@@ -6,8 +6,7 @@
     name: 'ZBS_C_SASALE'
   }
 }
-define service ZBS_UI_GLOBALSALE_O4
-  provider contracts odata_v4_ui {
+define service ZBS_UI_GLOBALSALE_O4 {
   expose ZBS_C_SASALE         as SASale;
   expose ZBS_C_SAINFO         as SAInfo;
   expose ZBS_C_SASOLD         as SASold;
