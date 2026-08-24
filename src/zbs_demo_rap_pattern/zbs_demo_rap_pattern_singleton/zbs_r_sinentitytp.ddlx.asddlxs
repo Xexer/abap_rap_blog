@@ -1,0 +1,45 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZBS_R_SinEntityTP with
+{
+  @UI.facet: [
+    {
+      id: 'idGeneral',
+      label: 'Event Organizer',
+      position: 10 ,
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'GENERAL'
+    },
+    {
+      id: 'idParticipant',
+      position: 20 ,
+      type: #LINEITEM_REFERENCE,
+      targetElement: '_Participant'
+    }
+  ]
+
+  @UI.hidden: true
+  NavigationKey;
+
+  @UI.lineItem: [ { position: 20  } ]
+  @UI.identification: [ { position: 20 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Organizer Name'
+  UserName;
+
+  @UI.lineItem: [ { position: 30  } ]
+  @UI.identification: [ { position: 30 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Some ID'
+  RandomId;
+
+  @UI.hidden: true
+  LocalCreatedBy;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+}

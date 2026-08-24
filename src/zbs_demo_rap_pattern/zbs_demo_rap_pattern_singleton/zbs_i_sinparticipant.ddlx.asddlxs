@@ -1,0 +1,26 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo.typeName: 'Particpant'
+@UI.headerInfo.typeNamePlural: 'Particpants'
+annotate entity ZBS_I_SinParticipant with
+{
+  @UI.facet: [
+    {
+      id: 'idGeneral',
+      label: 'General Information',
+      position: 10 ,
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'GENERAL'
+    }
+  ]
+
+  @UI.hidden: true
+  ParticipantKey;
+
+  @UI.lineItem: [ { position: 20  } ]
+  @EndUserText.label: 'Participant Name'
+  Participant;
+
+  @UI.hidden: true
+  NavigationKey;
+
+}

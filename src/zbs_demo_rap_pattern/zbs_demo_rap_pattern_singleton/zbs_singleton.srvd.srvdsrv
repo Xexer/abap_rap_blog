@@ -1,0 +1,6 @@
+@EndUserText.label: 'Singleton Service'
+@ObjectModel.leadingEntity.name: 'ZBS_R_SinEntityTP'
+define service ZBS_SINGLETON {
+  expose ZBS_R_SinEntityTP    as Singleton;
+  expose ZBS_I_SinParticipant as Participant;
+}

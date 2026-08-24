@@ -1,0 +1,41 @@
+managed implementation in class zbp_bs_singleton unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZBS_R_SinEntityTP alias Singleton
+draft table zbs_tst_singled query ZBS_I_SinSingletonDraft
+lock master total etag LastChangedAt
+authorization master ( instance )
+with unmanaged save
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  field ( readonly ) NavigationKey, UserID;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  association _Participant { create; with draft; }
+}
+
+define behavior for ZBS_I_SinParticipant alias Participant
+draft table zbs_tst_sinpad query ZBS_I_SinParticipantDraft
+lock dependent by _MainForm
+authorization dependent by _MainForm
+with unmanaged save
+{
+  field ( readonly ) NavigationKey, UserID;
+  field ( numbering : managed, readonly ) ParticipantKey;
+
+  update;
+  delete;
+
+  determination FillUserID on modify { create; }
+
+  association _MainForm { with draft; }
+}
