@@ -68,6 +68,12 @@
      <MSGNR>009</MSGNR>
      <TEXT>Error while updating the log</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBS_DEMO_RAP</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>No authorization for Partner ID &amp;1</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

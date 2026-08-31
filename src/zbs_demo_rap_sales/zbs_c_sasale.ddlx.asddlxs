@@ -23,13 +23,13 @@ annotate view ZBS_C_SASALE with
       type: #IDENTIFICATION_REFERENCE,
       targetQualifier: 'DIFF'
     },
-//    {
-//      id: 'idInformation',
-//      label: 'Information',
-//      position: 30,
-//      type: #IDENTIFICATION_REFERENCE,
-//      targetQualifier: 'INFO'
-//    },
+  //    {
+  //      id: 'idInformation',
+  //      label: 'Information',
+  //      position: 30,
+  //      type: #IDENTIFICATION_REFERENCE,
+  //      targetQualifier: 'INFO'
+  //    },
     {
       id: 'idAdmin',
       label: 'Admin Fields',
@@ -75,25 +75,76 @@ annotate view ZBS_C_SASALE with
   ]
   UUID;
 
+//  @Consumption: {
+//    semanticObject: 'ZBS_DEMO_PMANUAL',
+//    semanticObjectMapping.element: 'PartnerNumber'
+//  }
   @UI.selectionField: [ { position: 10 } ]
-  @UI.lineItem: [ { position: 20  } ]
+  @UI.lineItem: [
+    { position: 20,
+      type: #WITH_INTENT_BASED_NAVIGATION,
+      semanticObject: 'ZBS_DEMO_PMANUAL',
+      semanticObjectAction: 'manage'
+//      semanticObjectBinding: [{ localElement: 'PartnerNumber', element: 'PartnerNumber' }]
+    }
+  ]
   @UI.identification: [ { position: 20 , qualifier: 'GENERAL' } ]
   @EndUserText.label: 'Partner'
   PartnerNumber;
 
+  
   @UI.selectionField: [ { position: 20 } ]
   @UI.lineItem: [ { position: 30  } ]
   @UI.identification: [ { position: 30 , qualifier: 'GENERAL' } ]
   @EndUserText.label: 'Sales Date'
   SalesDate;
 
-  @UI.lineItem: [ { position: 32, importance: #LOW  } ]
+//  @Consumption: {
+//    semanticObject: 'ZBS_DEMO_PMANUAL',
+//    semanticObjectMapping.additionalBinding: [
+//      { localElement: 'PartnerNumber', element: 'PartnerNumber' }]
+//  }
+  @UI.lineItem: [ 
+    { position: 32, 
+      importance: #LOW,
+      type: #WITH_INTENT_BASED_NAVIGATION,
+      semanticObject: 'ZBS_DEMO_PMANUAL',
+      semanticObjectAction: 'manage'
+//      semanticObjectBinding: [{ localElement: 'PartnerNumber', element: 'PartnerNumber' }]
+    }
+  ]
   @UI.identification: [ { position: 32 , qualifier: 'GENERAL' } ]
   @EndUserText.label: 'Sales Year'
   SalesYear;
 
-  @UI.lineItem: [ { position: 33, criticality: 'DataCriticality', criticalityRepresentation: #WITH_ICON, importance: #LOW  } ]
-  @UI.identification: [ { position: 33 , qualifier: 'GENERAL', criticality: 'DataCriticality', criticalityRepresentation: #WITH_ICON } ]
+  @Consumption: {
+    semanticObject: 'ZBS_DEMO_PMANUAL',
+    semanticObjectMapping.additionalBinding: [
+      { localElement: 'PartnerNumber', element: 'PartnerNumber' }]
+  }
+  @UI.lineItem: [
+    { position: 33, 
+      criticality: 'DataCriticality', 
+      criticalityRepresentation: #WITH_ICON, 
+      importance: #LOW }
+//      type: #WITH_INTENT_BASED_NAVIGATION,
+//      semanticObject: 'ZBS_DEMO_PMANUAL',
+//      semanticObjectAction: 'manage',
+//      semanticObjectBinding: [{ localElement: 'PartnerNumber', element: 'PartnerNumber' }] }      
+//    { type: #FOR_INTENT_BASED_NAVIGATION, 
+//      semanticObject: 'ZBS_DEMO_PMANUAL',
+//      semanticObjectAction: 'manage', 
+//      semanticObjectBinding: [{ localElement: 'PartnerNumber', element: 'PartnerNumber' }],
+//      label: 'To Partner' }
+  ]
+  @UI.identification: [
+    { position: 33 , qualifier: 'GENERAL', criticality: 'DataCriticality', criticalityRepresentation: #WITH_ICON }
+//    { type: #FOR_INTENT_BASED_NAVIGATION,
+//      semanticObject: 'ZBS_DEMO_PMANUAL',    
+//      semanticObjectAction: 'manage',
+//      semanticObjectBinding: [{ localElement: 'PartnerNumber', element: 'PartnerNumber' }],
+//      label: 'Open Partner' }
+  ]
   @EndUserText.label: 'Sales Month'
   SalesMonth;
 
@@ -130,8 +181,8 @@ annotate view ZBS_C_SASALE with
   @EndUserText.label: 'Unit'
   DifferenceUnit;
 
-//  @UI.identification: [ { position: 100 , qualifier: 'INFO' } ]
-//  @EndUserText.label: 'Comment'
+  //  @UI.identification: [ { position: 100 , qualifier: 'INFO' } ]
+  //  @EndUserText.label: 'Comment'
   @UI.hidden: true
   SaleComment;
 
@@ -168,7 +219,7 @@ annotate view ZBS_C_SASALE with
 
   @UI.hidden: true
   isQuantityHidden;
-  
+
   @UI.lineItem: [ { position: 1, label: 'Icon', cssDefault.width: '7em'  } ]
   LineIcon;
 
