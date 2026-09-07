@@ -1,8 +1,8 @@
 @Metadata.layer: #CORE
-@UI.headerInfo.title.type: #STANDARD
-@UI.headerInfo.title.value: 'UUID'
-@UI.headerInfo.description.type: #STANDARD
-@UI.headerInfo.description.value: 'UUID'
+//@UI.headerInfo.title.type: #STANDARD
+//@UI.headerInfo.title.value: 'UUID'
+//@UI.headerInfo.description.type: #STANDARD
+//@UI.headerInfo.description.value: 'UUID'
 annotate view ZBS_C_SAINFO with
 {
   @UI.facet: [
@@ -16,7 +16,7 @@ annotate view ZBS_C_SAINFO with
   ]
 
   @UI.hidden: true
-  UUID;
+  uuid;
 
   @UI.hidden: true
   ParentUUID;
