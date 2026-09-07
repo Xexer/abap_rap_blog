@@ -80,7 +80,10 @@ CLASS zcl_bs_demo_rap_auxiliary DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_rap_auxiliary IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_RAP_AUXILIARY IMPLEMENTATION.
+
+
   METHOD get_supported_languages.
     RETURN VALUE #( ( language = 'D' )
                     ( language = 'E' )
@@ -205,50 +208,6 @@ CLASS zcl_bs_demo_rap_auxiliary IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD is_consistent.
-    DATA(logger) = zcl_aml_log_factory=>create( VALUE #( object                = 'Z_AML_LOG'
-                                                         subobject             = 'TEST'
-                                                         default_message_class = 'ZBS_DEMO_RAP'
-                                                         use_2nd_db_connection = abap_true ) ).
-
-    READ ENTITIES OF zbs_r_sasale IN LOCAL MODE
-         ENTITY SASale
-         ALL FIELDS WITH CORRESPONDING #( keys )
-         RESULT DATA(selected_sales)
-
-         ENTITY SASale BY \_SASeller
-         ALL FIELDS WITH CORRESPONDING #( keys )
-         RESULT DATA(selected_sellers)
-
-         ENTITY SASale BY \_SAInfo
-         ALL FIELDS WITH CORRESPONDING #( keys )
-         RESULT DATA(selected_infos)
-
-         ENTITY SASale BY \_SASold
-         ALL FIELDS WITH CORRESPONDING #( keys )
-         RESULT DATA(selected_materials).
-
-    check_general( selected_sales     = selected_sales
-                   selected_materials = selected_materials
-                   selected_infos     = selected_infos
-                   logger             = logger ).
-
-    check_sellers( selected_sellers = selected_sellers
-                   logger           = logger ).
-
-    logger->save( ).
-
-    MODIFY ENTITIES OF zbs_r_sasale IN LOCAL MODE
-           ENTITY SASale
-           UPDATE FIELDS ( LoggingId )
-           WITH VALUE #( FOR key IN keys
-                         ( %tky = key-%tky LoggingId = logger->get_log_handle( ) ) )
-           FAILED DATA(failed_updates).
-
-    RETURN xsdbool( failed_updates-sasale IS INITIAL ).
-  ENDMETHOD.
-
-
   METHOD check_general.
     LOOP AT selected_sales INTO DATA(sale).
       IF    sale-DifferenceAmount IS NOT INITIAL AND sale-DifferenceQuantity IS NOT INITIAL
@@ -298,5 +257,49 @@ CLASS zcl_bs_demo_rap_auxiliary IMPLEMENTATION.
       MESSAGE e003(zbs_demo_rap) INTO logger->message_text.
       logger->add_message_system( ).
     ENDIF.
+  ENDMETHOD.
+
+
+  METHOD is_consistent.
+    DATA(logger) = zcl_aml_log_factory=>create( VALUE #( object                = 'Z_AML_LOG'
+                                                         subobject             = 'TEST'
+                                                         default_message_class = 'ZBS_DEMO_RAP'
+                                                         use_2nd_db_connection = abap_true ) ).
+
+    READ ENTITIES OF zbs_r_sasale IN LOCAL MODE
+         ENTITY SASale
+         ALL FIELDS WITH CORRESPONDING #( keys )
+         RESULT DATA(selected_sales)
+
+         ENTITY SASale BY \_SASeller
+         ALL FIELDS WITH CORRESPONDING #( keys )
+         RESULT DATA(selected_sellers)
+
+         ENTITY SASale BY \_SAInfo
+         ALL FIELDS WITH CORRESPONDING #( keys )
+         RESULT DATA(selected_infos)
+
+         ENTITY SASale BY \_SASold
+         ALL FIELDS WITH CORRESPONDING #( keys )
+         RESULT DATA(selected_materials).
+
+    check_general( selected_sales     = selected_sales
+                   selected_materials = selected_materials
+                   selected_infos     = selected_infos
+                   logger             = logger ).
+
+    check_sellers( selected_sellers = selected_sellers
+                   logger           = logger ).
+
+    logger->save( ).
+
+    MODIFY ENTITIES OF zbs_r_sasale IN LOCAL MODE
+           ENTITY SASale
+           UPDATE FIELDS ( LoggingId )
+           WITH VALUE #( FOR key IN keys
+                         ( %tky = key-%tky LoggingId = logger->get_log_handle( ) ) )
+           FAILED DATA(failed_updates).
+
+    RETURN xsdbool( failed_updates-sasale IS INITIAL ).
   ENDMETHOD.
 ENDCLASS.

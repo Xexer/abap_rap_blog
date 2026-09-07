@@ -15,7 +15,10 @@ CLASS zcl_bs_demo_tile_query DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_tile_query IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_TILE_QUERY IMPLEMENTATION.
+
+
   METHOD if_rap_query_provider~select.
     DATA tiles TYPE STANDARD TABLE OF ZBS_I_DMOCustomTile WITH EMPTY KEY.
 

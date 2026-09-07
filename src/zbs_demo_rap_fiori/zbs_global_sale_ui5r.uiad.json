@@ -1,7 +1,7 @@
 {
   "formatVersion": "2",
   "header": {
-    "description": "An SAP Fiori application.",
+    "description": "A simple Sales exmaple",
     "originalLanguage": "en",
     "abapLanguageVersion": "cloudDevelopment"
   },

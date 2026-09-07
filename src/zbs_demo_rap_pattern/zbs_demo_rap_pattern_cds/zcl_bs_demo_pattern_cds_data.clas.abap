@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_bs_demo_pattern_cds_data IMPLEMENTATION.
+CLASS ZCL_BS_DEMO_PATTERN_CDS_DATA IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

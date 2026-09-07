@@ -31,7 +31,7 @@
       <TYPE_TEXT>OData V2</TYPE_TEXT>
      </item>
     </SERVICE>
-    <PUBLISH_STATUS>p</PUBLISH_STATUS>
+    <PUBLISH_STATUS>u</PUBLISH_STATUS>
    </SIA6>
   </asx:values>
  </asx:abap>

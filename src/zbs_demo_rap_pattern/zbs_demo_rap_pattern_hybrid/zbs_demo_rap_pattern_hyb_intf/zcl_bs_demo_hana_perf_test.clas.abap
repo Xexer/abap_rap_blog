@@ -7,7 +7,10 @@ CLASS zcl_bs_demo_hana_perf_test DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_hana_perf_test IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_HANA_PERF_TEST IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     TRY.
         SELECT FROM ZBS_X_DemoSQLPerformance

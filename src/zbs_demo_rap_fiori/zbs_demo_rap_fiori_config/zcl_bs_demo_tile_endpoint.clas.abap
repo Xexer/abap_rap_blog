@@ -26,7 +26,10 @@ CLASS zcl_bs_demo_tile_endpoint DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bs_demo_tile_endpoint IMPLEMENTATION.
+
+CLASS ZCL_BS_DEMO_TILE_ENDPOINT IMPLEMENTATION.
+
+
   METHOD if_http_service_extension~handle_request.
     DATA(endpoint) = get_tile_endpoint( request->get_header_field( `~path` ) ).
 

@@ -1,0 +1,35 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Partner Navigation (Alternative)",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_ALV5_DEFAULT"
+  },
+  "ui5AppDetails": {
+    "appId": "test.bs.zbsdemopartner"
+  },
+  "navigation": {
+    "targetMappingId": "ZBS_DEMO_PARTNER_ALT_TM",
+    "semanticObject": "ZBS_DEMO_PMANUAL",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZBS_DEMO_PARTNER_ALT_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Partner",
+        "subtitle": "2nd Alternative",
+        "icon": "sap-icon://building"
+      }
+    }
+  ]
+}
