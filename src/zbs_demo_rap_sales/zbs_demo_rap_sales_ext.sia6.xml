@@ -76,18 +76,6 @@
           <IS_ACTVT>X</IS_ACTVT>
          </item>
          <item>
-          <FIELD>ALG_SUBOBJ</FIELD>
-          <VALUE>TEST</VALUE>
-          <VALUES>
-           <item>
-            <UUID>usKvSPU9H9Gl32LxMkic8Q==</UUID>
-            <LOW_VALUE>TEST</LOW_VALUE>
-           </item>
-          </VALUES>
-          <TEXT>Application Log: Subobject</TEXT>
-          <STATUS>U</STATUS>
-         </item>
-         <item>
           <FIELD>ALG_OBJECT</FIELD>
           <VALUE>Z_AML_LOG</VALUE>
           <VALUES>
@@ -97,6 +85,18 @@
            </item>
           </VALUES>
           <TEXT>Application Log: Object</TEXT>
+          <STATUS>U</STATUS>
+         </item>
+         <item>
+          <FIELD>ALG_SUBOBJ</FIELD>
+          <VALUE>TEST</VALUE>
+          <VALUES>
+           <item>
+            <UUID>usKvSPU9H9Gl32LxMkic8Q==</UUID>
+            <LOW_VALUE>TEST</LOW_VALUE>
+           </item>
+          </VALUES>
+          <TEXT>Application Log: Subobject</TEXT>
           <STATUS>U</STATUS>
          </item>
         </VALUES>
@@ -112,15 +112,14 @@
         <INACTIVE>X</INACTIVE>
         <VALUES>
          <item>
-          <FIELD>ACTVT</FIELD>
+          <FIELD>ALG_OBJECT</FIELD>
           <VALUES>
            <item>
-            <UUID>usKvSPU9H9Gl32LxMkj88Q==</UUID>
+            <UUID>usKvSPU9H9Gl32LxMki88Q==</UUID>
            </item>
           </VALUES>
-          <TEXT>Activity</TEXT>
+          <TEXT>Application Log: Object</TEXT>
           <STATUS>S</STATUS>
-          <IS_ACTVT>X</IS_ACTVT>
          </item>
          <item>
           <FIELD>ALG_SUBOBJ</FIELD>
@@ -133,14 +132,15 @@
           <STATUS>S</STATUS>
          </item>
          <item>
-          <FIELD>ALG_OBJECT</FIELD>
+          <FIELD>ACTVT</FIELD>
           <VALUES>
            <item>
-            <UUID>usKvSPU9H9Gl32LxMki88Q==</UUID>
+            <UUID>usKvSPU9H9Gl32LxMkj88Q==</UUID>
            </item>
           </VALUES>
-          <TEXT>Application Log: Object</TEXT>
+          <TEXT>Activity</TEXT>
           <STATUS>S</STATUS>
+          <IS_ACTVT>X</IS_ACTVT>
          </item>
         </VALUES>
        </item>
@@ -160,19 +160,19 @@
         <VALUES>
          <item>
           <FIELD>ACTVT</FIELD>
-          <VALUE>Display,Change,Create or generate</VALUE>
+          <VALUE>Display,Create or generate,Change</VALUE>
           <VALUES>
            <item>
             <UUID>usKvSPU9H9Gl32LxMkkc8Q==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
            </item>
            <item>
-            <UUID>usKvSPU9H9Gl32LxMklc8Q==</UUID>
-            <LOW_VALUE>02</LOW_VALUE>
-           </item>
-           <item>
             <UUID>usKvSPU9H9Gl32LxMkk88Q==</UUID>
             <LOW_VALUE>01</LOW_VALUE>
+           </item>
+           <item>
+            <UUID>usKvSPU9H9Gl32LxMklc8Q==</UUID>
+            <LOW_VALUE>02</LOW_VALUE>
            </item>
           </VALUES>
           <TEXT>Activity</TEXT>
@@ -196,7 +196,7 @@
       </AUTH_ITEM>
      </item>
     </AUTH>
-    <PUBLISH_STATUS>u</PUBLISH_STATUS>
+    <PUBLISH_STATUS>p</PUBLISH_STATUS>
    </SIA6>
   </asx:values>
  </asx:abap>

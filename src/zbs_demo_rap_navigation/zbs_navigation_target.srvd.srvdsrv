@@ -1,0 +1,4 @@
+@EndUserText.label: 'Navigation Target'
+define service ZBS_NAVIGATION_TARGET {
+  expose ZBS_C_NavigationTarget as NavigationTarget;
+}

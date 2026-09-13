@@ -1,0 +1,45 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Navigation Target",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_ALV5_DEFAULT"
+  },
+  "ui5AppDetails": {
+    "appId": "bs.demo.ybsnavtarget"
+  },
+  "navigation": {
+    "targetMappingId": "ZBS_DEMO_NAVIGATION_TARGET_TM",
+    "semanticObject": "ZBS_NAV_TARGET",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true,
+    "parameters": [
+      {
+        "name": "PartnerNumber",
+        "renameTo": "Partner"
+      },
+      {
+        "name": "SalesDate",
+        "renameTo": "SalesDate"
+      }
+    ],
+    "additionalParameterHandling": "ignored"
+  },
+  "tiles": [
+    {
+      "id": "ZBS_DEMO_NAVIGATION_TARGET_AL",
+      "tileType": "static",
+      "standard": {
+        "title": "Navigation Target",
+        "subtitle": "Demo",
+        "icon": "sap-icon://navigation-down-arrow"
+      }
+    }
+  ]
+}

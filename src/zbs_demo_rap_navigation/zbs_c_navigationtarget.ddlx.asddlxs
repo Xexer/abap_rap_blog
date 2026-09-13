@@ -1,0 +1,76 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZBS_C_NavigationTarget with
+{
+  @UI.facet: [
+    {
+      id: 'idGeneral',
+      label: 'General Information',
+      position: 10 ,
+      type: #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'GENERAL'
+    }
+  ]
+
+  @UI.hidden: true
+  UniqueKey;
+
+  @UI.selectionField: [ { position: 20 } ]
+  @UI.lineItem: [ { position: 20  } ]
+  @UI.identification: [ { position: 20 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Partner'
+  Partner;
+
+  @UI.selectionField: [ { position: 50 } ]
+  @UI.lineItem: [ { position: 30  } ]
+  @UI.identification: [ { position: 30 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Sales Date'
+  SalesDate;
+
+  @UI.lineItem: [ { position: 40  } ]
+  @UI.identification: [ { position: 40 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Volume'
+  SalesVolume;
+
+  @UI.selectionField: [ { position: 30 } ]
+  @UI.lineItem: [ { position: 50  } ]
+  @UI.identification: [ { position: 50 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Currency'
+  Currency;
+
+  @UI.hidden: true
+  DifferenceAmount;
+
+  @UI.hidden: true
+  DifferenceCurrency;
+
+  @UI.hidden: true
+  DifferenceQuantity;
+
+  @UI.hidden: true
+  DifferenceUnit;
+
+  @UI.hidden: true
+  SaleComment;
+
+  @UI.hidden: true
+  LoggingId;
+
+  @UI.selectionField: [ { position: 40 } ]
+  @UI.lineItem: [ { position: 120  } ]
+  @UI.identification: [ { position: 120 , qualifier: 'GENERAL' } ]
+  @EndUserText.label: 'Created By'
+  LocalCreatedBy;
+
+  @UI.hidden: true
+  LocalCreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+}
